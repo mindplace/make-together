@@ -1,14 +1,21 @@
 <main class="Site-content">
-<div class="container">
+  <div class="container">
 
-  <h1>Users index page</h1>
+    <h1>Users index page</h1>
 
-  <%= @developers.each do |developer| %>
-    <div class="box">
-      <%= binding.pry %>
-      <%= link_to developer.visible_name, user_path(developer) %>
-    </div>
-  <% end %>
+    <h2>Developers</h2>
+    <% @developers.each do |developer| %>
+      <div class="box">
+        <%= link_to developer.visible_name, user_path(developer) %>
+      </div>
+    <% end %>
 
-</div>
+    <h2>Designers</h2>
+    <% @designers.each do |designer| %>
+      <div class="box">
+        <%= link_to designer.visible_name, user_path(designer) %>
+      </div>
+    <% end %>
+
+  </div>
 </main>
