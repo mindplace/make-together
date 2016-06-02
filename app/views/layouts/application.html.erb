@@ -6,11 +6,17 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-     <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+<body class="Site">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
-<%= yield %>
 
+  <%= yield %>
+
+  <footer>
+    <ul>
+      <li><%= link_to "Contact Us", contact_path %></li>
+    </ul>
+  </footer>
 </body>
 </html>

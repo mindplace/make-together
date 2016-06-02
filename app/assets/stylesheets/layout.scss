@@ -1,0 +1,37 @@
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.Site-content {
+  flex: 1;
+}
+.navbar-default {
+  margin-bottom: 0;
+}
+.custom-header {
+  background-color: rgba(187, 79, 34, 0.4);
+  padding: 250px 0 250px 0;
+  margin: 0;
+}
+footer {
+    color: #666;
+    padding: 19px 0 30px 0;
+    border-top: 1px solid #000;
+}
+footer a {
+    color: #999;
+}
+footer a:hover {
+    color: #BB4F22;
+    text-decoration: none;
+}
+footer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+footer ul li {
+  display: inline-block;
+}
