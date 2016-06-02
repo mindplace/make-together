@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
 
   def image
   end
+
+  def visible_name
+    "#{first_name} #{last_name[0]}."
+  end
 end

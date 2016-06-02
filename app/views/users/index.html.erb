@@ -1,0 +1,14 @@
+<main class="Site-content">
+<div class="container">
+
+  <h1>Users index page</h1>
+
+  <%= @developers.each do |developer| %>
+    <div class="box">
+      <%= binding.pry %>
+      <%= link_to developer.visible_name, user_path(developer) %>
+    </div>
+  <% end %>
+
+</div>
+</main>
