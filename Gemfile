@@ -9,8 +9,9 @@ gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-
+# Bootstrap gems:
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'autoprefixer-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -18,8 +19,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
 gem 'devise'
-# Use ActiveModel has_secure_password
 
 # Use Unicorn as the app server
 # gem 'unicorn'

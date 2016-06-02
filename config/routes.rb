@@ -13,4 +13,9 @@ Rails.application.routes.draw do
   resources :users, except: [:create, :new]
 
   resources :projects
+
+  # static pages
+  get '/contact', to: "application#contact", as: "contact"
+  get '/report_abuse', to: "application#report_abuse", as: "report_abuse"
+  get '/creators', to: "application#creators", as: "creators"
 end
