@@ -43,6 +43,10 @@ I want to be reminded when one of my posts is expiring
 I want to be able to review other users and rate them.
  reviews/ratings/ average star rating (flag reviews?)
 ```
+```
+I want to be able to add friends/followers.
+ view following-users' projects
+```
 
 ## Projects
 ```
