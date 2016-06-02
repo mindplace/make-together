@@ -10,10 +10,10 @@
   <ul>
     <% most_recent.each do |project| %>
       <h3><%= project.title %></h3>
-      <h4><%= project.tagline %></h4>
-      <h4><%= project.expiration %></h4>
-      <h3>posted by:<%= format_name(project.user) %></h3>
-        <h4><%= project.description %></h4>
+      <h4>posted by: <%= project.user.visible_name %> (<%= project.user.role %>)</h4>
+      <h5><%= project.tagline %></h5>
+      <h5><%= project.expiration %></h5>
+        <h5><%= project.description %></h5>
     <% end %>
   </ul>
 </div>
@@ -23,16 +23,23 @@
   <ul>
     <% posted_by_developers.each do |project| %>
       <h3><%= project.title %></h3>
-        <h4><%= project.description %></h4>
+      <h4>posted by: <%= project.user.visible_name %> (<%= project.user.role %>)</h4>
+      <h5><%= project.tagline %></h5>
+      <h5><%= project.expiration %></h5>
+        <h5><%= project.description %></h5>
     <% end %>
   </ul>
+</div>
 
 <div class = "projects-by-designers">
   <h1 class = "title">Projects Posted By Designers</h1>
   <ul>
     <% posted_by_designers.each do |project| %>
       <h3><%= project.title %></h3>
-        <h4><%= project.description %></h4>
+      <h4>posted by: <%= project.user.visible_name %> (<%= project.user.role %>)</h4>
+      <h5><%= project.tagline %></h5>
+      <h5><%= project.expiration %></h5>
+      <h5><%= project.description %></h5>
     <% end %>
   </ul>
 </div>
@@ -42,7 +49,10 @@
   <ul>
     <% expiring_soon.each do |project| %>
       <h3><%= project.title %></h3>
-        <h4><%= project.description %></h4>
+      <h4>posted by: <%= project.user.visible_name %> (<%= project.user.role %>)</h4>
+      <h5><%= project.tagline %></h5>
+      <h5><%= project.expiration %></h5>
+      <h5><%= project.description %></h5>
     <% end %>
   </ul>
 </div>
