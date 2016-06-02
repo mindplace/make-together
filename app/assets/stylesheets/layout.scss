@@ -17,7 +17,7 @@
 footer {
     color: #666;
     padding: 19px 0 30px 0;
-    border-top: 1px solid #000;
+    border-top: 1px solid #d3d3d3;
 }
 footer a {
     color: #999;
@@ -30,8 +30,9 @@ footer ul {
   list-style: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  padding: 0 2%;
 }
 footer ul li {
   display: inline-block;
+  padding: 0 3%;
 }

@@ -7,15 +7,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="Site">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">MakeTogether</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Projects", projects_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to current_user.first_name, user_path(current_user) %></li>
+          <li><%= link_to "Sign Out", users_sign_out_path %></li>
 
+        <% else %>
+          <li><%= link_to "Register", new_user_registration_path %></li>
+          <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
   <%= yield %>
 
   <footer>
     <ul>
       <li><%= link_to "Contact Us", contact_path %></li>
+      <li><%= link_to "Report Abuse", report_abuse_path %></li>
+      <li><%= link_to "Meet the Creators", creators_path %></li>
     </ul>
   </footer>
 </body>

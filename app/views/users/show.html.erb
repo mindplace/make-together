@@ -1,13 +1,17 @@
 <main class="Site-content">
 
   <div class="container">
+    <div class="user-img">
+      <img src=<%= @user.image %> >
+    </div>
+
     <div class="container">
       <div class="box">
         <h1><%= @user.email %></h1>
         <p>Role: <%= @user.role.capitalize %></p>
       </div>
     </div>
-    
+
 
   </div>
 </main>

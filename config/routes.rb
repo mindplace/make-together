@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   # static pages
   get '/contact', to: "application#contact", as: "contact"
+  get '/report_abuse', to: "application#report_abuse", as: "report_abuse"
+  get '/creators', to: "application#creators", as: "creators"
 end
