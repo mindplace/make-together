@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out', to: 'users/sessions#destroy'
   end
+
+  resources :users, except: [:create, :new]
+
+  resources :projects
 end
