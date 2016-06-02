@@ -10,6 +10,9 @@
   <ul>
     <% most_recent.each do |project| %>
       <h3><%= project.title %></h3>
+      <h4><%= project.tagline %></h4>
+      <h4><%= project.expiration %></h4>
+      <h3>posted by:<%= format_name(project.user) %></h3>
         <h4><%= project.description %></h4>
     <% end %>
   </ul>
