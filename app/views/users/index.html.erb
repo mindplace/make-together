@@ -6,7 +6,8 @@
     <h2>Developers</h2>
     <% @developers.each do |developer| %>
       <div class="box">
-        <%= link_to developer.visible_name, user_path(developer) %>
+        <p><%= link_to developer.visible_name, user_path(developer) %></p>
+        <p><%=
       </div>
     <% end %>
 
