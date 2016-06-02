@@ -8,7 +8,9 @@ class Project < ActiveRecord::Base
 
   private
   def set_expiration
-    self.expiration = Date.today + 7.days
+    if !self.expiration
+      self.expiration = Date.today + 7.days
+    end
   end
 
   def set_tagline

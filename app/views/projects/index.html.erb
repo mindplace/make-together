@@ -1,0 +1,42 @@
+<div class = "projects-list">
+
+</div>
+
+<div class = "most-recent-project">
+  <h1 class = "title">Most Recent Projects</h1>
+  <ul>
+    <% most_recent.each do |project| %>
+      <h3><%= project.title %></h3>
+        <h4><%= project.description %></h4>
+    <% end %>
+  </ul>
+</div>
+
+<div class = "projects-by-developers">
+  <h1 class = "title">Projects Posted By Developers</h1>
+  <ul>
+    <% posted_by_developers.each do |project| %>
+      <h3><%= project.title %></h3>
+        <h4><%= project.description %></h4>
+    <% end %>
+  </ul>
+
+<div class = "projects-by-designers">
+  <h1 class = "title">Projects Posted By Designers</h1>
+  <ul>
+    <% posted_by_designers.each do |project| %>
+      <h3><%= project.title %></h3>
+        <h4><%= project.description %></h4>
+    <% end %>
+  </ul>
+</div>
+
+<div class = "expiring-soon">
+  <h1 class = "title">Projects Expiring Soon</h1>
+  <ul>
+    <% expiring_soon.each do |project| %>
+      <h3><%= project.title %></h3>
+        <h4><%= project.description %></h4>
+    <% end %>
+  </ul>
+</div>
