@@ -1,4 +1,5 @@
 class SkillsController < ApplicationController
+  before_action :set_skill, except: [:new, :create]
   def new
     if user_signed_in?
       @skill = Skill.new
