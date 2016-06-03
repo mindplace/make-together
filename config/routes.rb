@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :projects
 
   resources :skills, except: [:index]
+  resources :tags, except: [:index]
 
   resources :favorites
 
