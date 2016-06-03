@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MakeTogether</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
+ <title>MakeTogether</title>
+ <%= stylesheet_link_tag    'application', media: 'all' %>
+ <%= javascript_include_tag 'application' %>
+ <%= csrf_meta_tags %>
 </head>
 <body class="Site">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">MakeTogether</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Projects", projects_path %></li>
-        <li><%= link_to "Collaborators", users_path %></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li><%= link_to current_user.first_name, user_path(current_user) %></li>
-          <li><%= link_to "Sign Out", users_sign_out_path %></li>
+ <nav class="navbar navbar-default">
+   <div class="container-fluid">
+     <div class="navbar-header">
+       <a class="navbar-brand" href="/">MakeTogether</a>
+     </div>
+     <ul class="nav navbar-nav">
+       <li><%= link_to "Projects", projects_path %></li>
 
-        <% else %>
-          <li><%= link_to "Register", new_user_registration_path %></li>
-          <li><%= link_to "Sign In", new_user_session_path %></li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
+       <li><%= link_to "Collaborators", users_path %></li>
+     </ul>
+     <ul class="nav navbar-nav navbar-right">
+       <% if user_signed_in? %>
+         <li><%= link_to current_user.first_name, user_path(current_user) %></li>
+         <li><%= link_to "New Project", new_project_path %></li>
+         <li><%= link_to "Sign Out", users_sign_out_path %></li>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+       <% else %>
+         <li><%= link_to "Register", new_user_registration_path %></li>
+         <li><%= link_to "Sign In", new_user_session_path %></li>
+       <% end %>
+     </ul>
+   </div>
+ </nav>
 
-  <%= yield %>
+ <p class="notice"><%= notice %></p>
+ <p class="alert"><%= alert %></p>
 
-  <footer>
-    <ul>
-      <li><%= link_to "Meet the Creators", creators_path %></li>
-      <li><%= link_to "Contact Us", contact_path %></li>
-      <li><%= link_to "Report Abuse", report_abuse_path %></li>
-    </ul>
-  </footer>
+ <%= yield %>
+
+ <footer>
+   <ul>
+     <li><%= link_to "Meet the Creators", creators_path %></li>
+     <li><%= link_to "Contact Us", contact_path %></li>
+     <li><%= link_to "Report Abuse", report_abuse_path %></li>
+   </ul>
+ </footer>
 </body>
 </html>

@@ -1,0 +1,17 @@
+<%= form_for @project, :url => {:action => "update"} do |f| %>
+ <%= f.label :title %>
+ <%= f.text_field :title, value: @project.title,  autofocus: true %>
+
+ <%= f.label :tagline %>
+ <%= f.text_field :tagline, value: @project.tagline %>
+
+ <%= f.label :description %>
+ <%=f.text_field :description, value: @project.description %>
+
+ <%= f.label :expiration %>
+ <%= f.text_field :expiration, value: @project.expiration %>
+
+
+ <%= f.hidden_field :user_id, value: current_user.id %>
+ <%= f.submit %>
+<%end%>
