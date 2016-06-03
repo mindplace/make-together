@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root :to => 'application#index'
-  
+
   devise_for :users, controllers:{
     omniauth_callbacks: "users/omniauth_callbacks",
     sessions: 'users/sessions',
@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: [:create, :new]
-
   resources :projects
 
   # static pages
