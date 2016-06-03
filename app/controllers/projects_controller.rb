@@ -6,7 +6,11 @@ class ProjectsController < ApplicationController
  end
 
  def new
-   @project = Project.new
+    if user_signed_in?
+       @project = Project.new
+    else
+      render "/_unauthorized"
+    end
  end
 
  def create
