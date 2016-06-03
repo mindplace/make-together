@@ -1,0 +1,26 @@
+<main class="Site-content">
+
+<div class="container">
+  <%if @project.user.id === current_user.id %>
+    <%=link_to 'edit | ', edit_project_path(@project) %>
+  <%end%>
+
+<%=link_to 'back to projects', projects_path%>
+<div id="project-header">
+  <h1>more info for <%= @project.title %></h1>
+  <h3>Status: <%= @project.tagline%></h3>
+</div>
+
+<div id="project-data">
+ <h3>posted by: <%=@project.user.visible_name %></h3>
+ <h3>expires: <%=@project.expiration%></h3>
+ <h3>likes:</h3>
+</div>
+
+<div id="project-description">
+  <h4>Description:</h4>
+  <p><%=@project.description%></p>
+</div>
+
+</div>
+</main>
