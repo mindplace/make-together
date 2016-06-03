@@ -11,6 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     if params[:role] == 'developer' || params[:role] == 'designer'
+      binding.pry
       current_user.update_attributes(role: params[:role] )
     else
       current_user.update_attributes(role: 'designer')

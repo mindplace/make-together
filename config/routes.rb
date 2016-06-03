@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
+  root :to => 'application#index'
 
   devise_for :users, controllers:{
+    omniauth_callbacks: "users/omniauth_callbacks",
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  root :to => 'application#index'
+  get '/auth/:provider/callback', to: 'sessions#create'
 
   devise_scope :user do
     get '/users/sign_out', to: 'users/sessions#destroy'
   end
 
   resources :users, except: [:create, :new]
-
   resources :projects
 
   # static pages
