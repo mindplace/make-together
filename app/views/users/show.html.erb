@@ -9,6 +9,12 @@
       <div class="box">
         <h1><%= @user.email %></h1>
         <p>Role: <%= @user.role.capitalize %></p>
+        <h3>Skills</h3>
+        <ul><% @user.skills.each do |skill| %>
+          <li><%= skill.body %></li>
+          <% end %>
+          <%= link_to "Add Skill", new_skill_path %>
+        </ul>
       </div>
     </div>
 

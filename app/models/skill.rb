@@ -5,6 +5,6 @@ class Skill < ActiveRecord::Base
   has_many :users, through: :skill_users
 
   def self.build_from_string(string)
-    string.split(",").map {|skill| Skill.find_or_create_by(body: skill.strip.downcase)}
+    try = string.split(",").map {|skill| Skill.find_or_create_by(body: skill.strip.downcase)}
   end
 end

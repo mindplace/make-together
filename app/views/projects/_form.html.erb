@@ -9,7 +9,7 @@
  <%=f.text_field :description %>
 
  <%= f.label :expiration %>
- <%= f.text_field :expiration %>
+ <%= f.date_field :expiration %>
 
 
  <%= f.hidden_field :user_id, value: current_user.id %>
