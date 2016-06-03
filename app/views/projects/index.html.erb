@@ -13,6 +13,8 @@
      <h5><%= project.tagline %></h5>
      <h5><%= project.expiration %></h5>
      <h5><%= project.description %></h5>
+
+
      <% if current_user %>
      <%= form_for @favorite do |f| %>
       <%=f.label :favorite %>
@@ -21,6 +23,12 @@
       <%=f.submit %>
      <%end%>
      <%end%>
+
+     <% project.tags.each do |tag| %>
+      #<%= link_to tag.body, tag_path(tag) %>
+     <% end %><br>
+
+
      <% if current_user && project.user.id == current_user.id %>
        <%=link_to 'edit', edit_project_path(project)%>
        <%end%>
