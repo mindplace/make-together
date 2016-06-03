@@ -1,7 +1,7 @@
 <main class="Site-content">
 
 <div class="container">
-  <%if @project.user.id === current_user.id %>
+  <%if current_user && @project.user.id === current_user.id %>
     <%=link_to 'edit | ', edit_project_path(@project) %>
   <%end%>
 
@@ -14,7 +14,7 @@
 <div id="project-data">
  <h3>posted by: <%=@project.user.visible_name %></h3>
  <h3>expires: <%=@project.expiration%></h3>
- <h3>likes:</h3>
+ <h3>likes: <%=@project.favorites.length%></h3>
 </div>
 
 <div id="project-description">
