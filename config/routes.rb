@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'users/sessions#create'
 
   devise_scope :user do
     get '/users/sign_out', to: 'users/sessions#destroy'

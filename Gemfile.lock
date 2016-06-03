@@ -232,6 +232,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.0)
   jquery-rails
+  omniauth
   omniauth-facebook
   omniauth-github
   omniauth-openid
