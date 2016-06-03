@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603192833) do
+
+ActiveRecord::Schema.define(version: 20160603202501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +50,21 @@ ActiveRecord::Schema.define(version: 20160603192833) do
 
   add_index "skills", ["body"], name: "index_skills_on_body", unique: true, using: :btree
 
+  create_table "tag_projects", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "body",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tags", ["body"], name: "index_tags_on_body", unique: true, using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -75,4 +91,6 @@ ActiveRecord::Schema.define(version: 20160603192833) do
 
   add_foreign_key "skill_users", "skills"
   add_foreign_key "skill_users", "users"
+  add_foreign_key "tag_projects", "projects"
+  add_foreign_key "tag_projects", "tags"
 end

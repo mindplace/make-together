@@ -6,6 +6,9 @@ class Project < ActiveRecord::Base
 
   validates :title, :description, presence: true
 
+  has_many :tag_projects
+  has_many :tags, through: :tag_projects
+
 
 
   private
