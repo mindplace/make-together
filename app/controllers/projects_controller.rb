@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
  def index
    @projects = Project.all
+   @favorite = Favorite.new
  end
 
  def new
@@ -34,6 +35,7 @@ class ProjectsController < ApplicationController
  end
 
  def show
+
  end
 
  private

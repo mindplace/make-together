@@ -14,7 +14,7 @@
 <div id="project-data">
  <h3>posted by: <%=@project.user.visible_name %></h3>
  <h3>expires: <%=@project.expiration%></h3>
- <h3>likes:</h3>
+ <h3>likes: <%=@project.favorites.length%></h3>
 </div>
 
 <div id="project-description">

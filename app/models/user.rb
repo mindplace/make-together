@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :skill_users
   has_many :skills, through: :skill_users
+  has_many :favorites
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
