@@ -2,8 +2,6 @@
 <div class="container">
 <h2>Register</h2>
 
-<%= link_to "Sign in with Github", user_omniauth_authorize_path(:github) %>
-
 <div class="username-box">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
