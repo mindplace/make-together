@@ -11,7 +11,7 @@
         <p>Role: <%= @user.role.capitalize %></p>
         <h3>Skills</h3>
         <ul><% @user.skills.each do |skill| %>
-          <li><%= skill.body %></li>
+          <li><%= link_to skill.body, skill_path(skill)%></li>
           <% end %>
           <%= link_to "Add Skill", new_skill_path %>
         </ul>
