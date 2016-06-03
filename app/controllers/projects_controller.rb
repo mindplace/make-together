@@ -1,4 +1,3 @@
-
 class ProjectsController < ApplicationController
  before_action :set_project, except: [:index, :new, :create]
 
@@ -7,7 +6,7 @@ class ProjectsController < ApplicationController
  end
 
  def new
-   @user = current_user
+   @project = Project.new
  end
 
  def create
@@ -20,7 +19,6 @@ class ProjectsController < ApplicationController
  end
 
  def edit
-   @project = Project.find_by(id: @project.id)
  end
 
  def update
@@ -29,9 +27,7 @@ class ProjectsController < ApplicationController
  end
 
  def show
-   @project = Project.find_by(id: params[:id])
  end
-
 
  private
 
