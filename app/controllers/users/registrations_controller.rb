@@ -10,13 +10,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    if params[:role] == 'developer' || params[:role] == 'designer'
-      binding.pry
-      current_user.update_attributes(role: params[:role] )
-    else
-      current_user.update_attributes(role: 'designer')
+    if current_user
+      if params[:role] == 'developer' || params[:role] == 'designer'
+        current_user.update_attributes(role: params[:role] )
+      else
+        current_user.update_attributes(role: 'designer')
+      end
+      current_user.update_attributes(first_name: params[:user][:first_name],  last_name: params[:user][:last_name])
     end
-    current_user.update_attributes(first_name: params[:user][:first_name], last_name: params[:user][:last_name])
   end
 
   # GET /resource/edit
