@@ -1,6 +1,3 @@
-
-
-
 <%= form_for @project do |f| %>
  <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -23,11 +20,10 @@
  <%=f.text_field :description %>
 
  <%= f.label :expiration %>
- <%= f.date_field :expiration %>
+ <%= f.date_field :expiration %><br>
 
- <%= f.label :body, "Enter tags as a comma separated list"%><br>
- <%= f.text_field :body, autofocus: true %>
-
+ <%= f.label :tags, "Enter tags as a comma separated list"%><br>
+ <%= f.text_field :tags, autofocus: true %>
 
  <%= f.hidden_field :user_id, value: current_user.id %>
  <%= f.submit %>
