@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :skill_users
   has_many :skills, through: :skill_users
   has_many :favorites
+  has_many :reviews
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
