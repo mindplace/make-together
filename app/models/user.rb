@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   end
 
   def avg_star_rating
-    self.reviews.sum(:rating) / self.reviews.length
+    self.reviews.length != 0 ?
+    self.reviews.sum(:rating) / self.reviews.length :
+    0
   end
 end

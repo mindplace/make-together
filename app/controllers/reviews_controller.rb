@@ -18,16 +18,20 @@ class ReviewsController < ApplicationController
 
 
   def update
-      @review = Review.find_by(id: params[:id])
+    @review = Review.find_by(id: params[:id])
     @user = User.find_by(id: @review.user_id)
     @review.update_attributes(reviews_params)
     redirect_to user_path(@user)
-
   end
 
 private
+
   def reviews_params
     params.require(:review).permit(:rating, :body, :user_id)
+  end
+
+  def is_poster?
+
   end
 
 end
