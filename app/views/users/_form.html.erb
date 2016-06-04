@@ -1,0 +1,35 @@
+<%= form_for @user do |f| %>
+ <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <%= f.label :first_name %>
+ <%= f.text_field :first_name, autofocus: true %>
+
+ <%= f.label :last_name %>
+ <%= f.text_field :last_name %>
+
+  <%= f.label :bio %>
+ <%= f.text_field :bio %>
+
+ <%= f.label :email %>
+ <%=f.text_field :email %>
+
+  <div class="field">
+    <%= f.label 'I am a...' %>
+    <%= radio_button_tag :role, 'developer', :checked => true %>
+    <%= label_tag :role, 'Developer' %>
+    <%= radio_button_tag :role, 'designer' %>
+    <%= label_tag :role, 'Designer' %>
+  </div>
+
+ <%= f.submit %>
+<%end%>

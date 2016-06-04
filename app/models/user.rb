@@ -23,6 +23,6 @@ class User < ActiveRecord::Base
   end
 
   def visible_name
-    "#{first_name} #{last_name[0]}."
+    "#{first_name.capitalize} #{last_name[0].upcase}."
   end
 end

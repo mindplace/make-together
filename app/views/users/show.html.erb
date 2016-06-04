@@ -1,23 +1,41 @@
 <main class="Site-content">
 
   <div class="container">
+     <% if user_signed_in? && @user == current_user %>
+      <%= link_to "Edit Profile", edit_user_path(@user) %>
+        <p><%=link_to 'Favorited projects', favorite_path %>
+          <% end %>
+
     <div class="user-img">
       <img src=<%= @user.image %> >
     </div>
 
     <div class="container">
       <div class="box">
-        <h1><%= @user.email %></h1>
+        <h1><%= @user.visible_name %></h1>
+        <h3><%= @user.email %></h3>
         <p>Role: <%= @user.role.capitalize %></p>
 
+        <p>Bio: <%= @user.bio %></p>
+
+        <div class ="skills">
         <h3>Skills</h3>
         <ul><% @user.skills.each do |skill| %>
           <li><%= link_to skill.body, skill_path(skill)%></li>
           <% end %>
-          <%= link_to "Add Skill", new_skill_path %>
+          <% if user_signed_in? && @user == current_user %>
+            <%= link_to "Add Skill", new_skill_path %>
+          <% end %>
+        </ul>
+      </div>
+
+        <div class="users-posted-projects">
+          <h3>Seeking Collaborators on...</h3>
+        <ul><% @user.projects.each do |project| %>
+          <li><%= link_to project.title, project_path(project)%></li>
+          <% end %>
         </ul>
 
-        <p><%=link_to 'Favorited projects', favorite_path %>
 
       </div>
     </div>
