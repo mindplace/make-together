@@ -27,6 +27,9 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-openid'
 
+gem 'private_pub'
+gem 'thin'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
+
  <title>MakeTogether</title>
  <%= stylesheet_link_tag    'application', media: 'all' %>
+ <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
  <%= javascript_include_tag 'application' %>
  <%= csrf_meta_tags %>
 </head>
+<audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
 <body class="Site">
  <nav class="navbar navbar-default">
    <div class="container-fluid">
