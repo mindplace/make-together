@@ -19,6 +19,15 @@ class ConversationsController < ApplicationController
     @message = Message.new
   end
 
+  #new email
+  def mail
+    @conversation = Conversation.find_or_create_by(sender_id: params[:sender_id], recipient_id: params[:recipient_id] )
+    @reciever = interlocutor(@conversation)
+    @messages = @conversation.messages
+    @message = Message.new
+    render :mail
+  end
+
   private
   def conversation_params
     params.permit(:sender_id, :recipient_id)
