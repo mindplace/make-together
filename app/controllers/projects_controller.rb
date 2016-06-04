@@ -27,16 +27,24 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    if !user_signed_in? || user_signed_in? &&!is_poster?
+      render :_unauthorized
+    end
   end
 
   def update
-    binding.pry
-    @project.update_attributes(project_params)
-    redirect_to project_path(@project)
+    if user_signed_in? && is_poster?
+      if @project.update(project_params)
+        redirect_to project_path(@project)
+      else
+        render :edit
+      end
+    else
+      render :_unauthorized
+    end
   end
 
   def show
-
   end
 
   private
@@ -47,5 +55,9 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find_by(id: params[:id])
+  end
+
+  def is_poster?
+    @project.user == current_user
   end
 end

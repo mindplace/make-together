@@ -7,7 +7,9 @@
           <% end %>
 
     <div class = "avg-rating">
+      <% if @user.avg_star_rating != 0 %>
       <h4>Average Rating: <%= @user.avg_star_rating %> Stars</h4>
+      <% end %>
     </div>
 
     <div class="user-img">
