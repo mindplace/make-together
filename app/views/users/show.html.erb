@@ -12,8 +12,10 @@
       <% end %>
     </div>
 
-    <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id %>
+    <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id %>
 
+
+    <%= link_to "Send Message", {action: 'mail', controller: 'conversations',sender_id: current_user.id, recipient_id: @user.id}, class: "btn btn-success btn-xs start-mail-conversation" %>
 
     <div class="user-img">
       <img src=<%= @user.image %> >
