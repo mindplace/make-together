@@ -6,22 +6,15 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :conversations, foreign_key: :sender_id
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  devise :omniauthable, :omniauth_providers => [:github]
+  has_secure_password
+  validates :email, :password, presence: true
+  validates :email, uniqueness: true
+  validate :is_valid_email, on: :create
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      # user.name = auth.info.name   # assuming the user model has a name
-      # user.image = auth.info.image # assuming the user model has an image
+  def is_valid_email
+    unless email.match(/\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i)
+      self.errors[:email].push("Not a valid email address: should resemble 'user@example.com'")
     end
-  end
-
-  def image
   end
 
   def visible_name

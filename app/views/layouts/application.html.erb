@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
+  <meta content='<%= logged_in? ? current_user.id : "" %>' name='user-id'/>
 
  <title>MakeTogether</title>
  <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -24,18 +24,17 @@
      </div>
      <ul class="nav navbar-nav">
        <li><%= link_to "Projects", projects_path %></li>
-
        <li><%= link_to "Collaborators", users_path %></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
-       <% if user_signed_in? %>
+       <% if logged_in? %>
          <li><%= link_to current_user.first_name, user_path(current_user) %></li>
          <li><%= link_to "New Project", new_project_path %></li>
-         <li><%= link_to "Sign Out", users_sign_out_path %></li>
+         <li><%= link_to "Sign Out", logout_path %></li>
 
        <% else %>
-         <li><%= link_to "Register", new_user_registration_path %></li>
-         <li><%= link_to "Sign In", new_user_session_path %></li>
+         <li><%= link_to "Register", new_user_path %></li>
+         <li><%= link_to "Sign In", login_path %></li>
        <% end %>
      </ul>
    </div>
