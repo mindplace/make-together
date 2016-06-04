@@ -1,5 +1,9 @@
-<%@favorites.each do |favorite| %>
-<%=link_to favorite.project.title, project_path(favorite.project)%>
-<%=favorite.project.user.visible_name%>
-<%=favorite.project.description%>
-<%end%>
+<main class = "site-content">
+  <div class = "container">
+    <h1>Favorites</h1>
+    <%@favorites.each do |favorite| %>
+      <h4><%=link_to favorite.project.title,  project_path(favorite.project)%></h4>
+      <%=favorite.project.description%>
+    <%end%>
+  </div>
+</main>
