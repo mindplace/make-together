@@ -36,10 +36,11 @@ ActiveRecord::Schema.define(version: 20160603204123) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
-    t.text     "body",       null: false
+    t.text     "body",        null: false
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "reviewer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "skill_users", force: :cascade do |t|

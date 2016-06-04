@@ -17,11 +17,13 @@ Rails.application.routes.draw do
     get '/users/auth/dribbble/callback', to: 'users/registrations#passthru', as: "user_dribbble_callback"
   end
 
+  get '/favorites', to: 'favorites#show'
+
   resources :users, except: [:create, :new]
   resources :projects
   resources :skills, except: [:index]
   resources :tags, except: [:index]
-  resources :favorites
+  resources :favorites, only: [:create, :destroy]
   resources :reviews, except: [:index, :show]
 
   # static pages

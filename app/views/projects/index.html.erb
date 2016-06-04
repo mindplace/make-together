@@ -35,16 +35,15 @@
      <h5><%= project.description %></h5>
 
 
-     <% if current_user && !(current_user.favorites.include?(Favorite.find_by(project_id: project.id))) %>
+     <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
        <%= form_for @favorite do |f| %>
         <%= f.label :favorite %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%=f.hidden_field :project_id, value: project.id %>
-        <%=f.submit %>
-
-      <%end%>
+        <%= f.hidden_field :project_id, value: project.id %>
+        <%= f.submit %>
+        <% end %>
       <%else%>
-        <p> you've already favorited this project!</p>
+        <p> <%= link_to "Unfavorite this project", favorite_path(Favorite.find_by(project_id: project.id, user_id: current_user.id)), method: :delete %> </p>
      <%end%>
 
 
@@ -77,7 +76,7 @@
      <h5><%= project.description %></h5>
 
 
-     <% if current_user && !(current_user.favorites.include?(Favorite.find_by(project_id: project.id))) %>
+   <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
        <%= form_for @favorite do |f| %>
         <%= f.label :favorite %>
         <%= f.hidden_field :user_id, value: current_user.id %>
@@ -119,7 +118,7 @@
      <h5><%= project.description %></h5>
 
 
-    <% if current_user && !(current_user.favorites.include?(Favorite.find_by(project_id: project.id))) %>
+   <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
        <%= form_for @favorite do |f| %>
         <%= f.label :favorite %>
         <%= f.hidden_field :user_id, value: current_user.id %>
@@ -161,7 +160,7 @@
      <h5><%= project.description %></h5>
 
 
-    <% if current_user && !(current_user.favorites.include?(Favorite.find_by(project_id: project.id))) %>
+    <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
        <%= form_for @favorite do |f| %>
         <%= f.label :favorite %>
         <%= f.hidden_field :user_id, value: current_user.id %>
