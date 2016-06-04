@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user!
   before_action :set_user
+
+  def new
+    if logged_in?
+      redirect_to root_path
+    else
+      @user = User.new
+    end
+  end
 
   def index
     @designers = User.where(role: "designer")
@@ -11,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if !user_signed_in? || (user_signed_in? && !current_user == @user)
+    unless logged_in?
       render "/_unauthorized"
     end
   end
@@ -32,9 +39,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.find_or_create_from_auth_hash(auth_hash)
-    self.current_user = @user
-    redirect_to '/'
+    @user = User.create(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   private
@@ -44,8 +55,9 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :bio)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :role)
   end
+
   protected
 
   def auth_hash

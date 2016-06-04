@@ -1,7 +1,7 @@
 <main class="Site-content">
 
   <div class="container">
-     <% if user_signed_in? && @user == current_user %>
+     <% if logged_in? && @user == current_user %>
       <%= link_to "Edit Profile", edit_user_path(@user) %>
         <p><%=link_to 'Favorited projects', favorites_path %>
           <% end %>
@@ -19,7 +19,7 @@
     <%= link_to "Send Message", {action: 'mail', controller: 'conversations',sender_id: current_user.id, recipient_id: @user.id}, class: "btn btn-success btn-xs start-mail-conversation" %>
 
     <div class="user-img">
-      <img src=<%= @user.image %> >
+      <img src=<%= @user.img %> >
     </div>
 
 
@@ -39,7 +39,7 @@
         <ul><% @user.skills.each do |skill| %>
           <li><%= link_to skill.body, skill_path(skill)%></li>
           <% end %>
-          <% if user_signed_in? && @user == current_user %>
+          <% if logged_in? && @user == current_user %>
             <%= link_to "Add Skill", new_skill_path %>
           <% end %>
         </ul>
@@ -53,7 +53,7 @@
         </ul>
 
           <h3>Reviews</h3>
-        <%if user_signed_in? && !(current_user.id == @user.id)%>
+        <%if logged_in? && !(current_user.id == @user.id)%>
         <%=link_to 'Leave a Review', new_review_path(params:{user_id: @user.id})  %>
           <%end%>
           <% if @user.reviews %>

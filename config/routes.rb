@@ -2,20 +2,18 @@ Rails.application.routes.draw do
 
   root :to => 'application#index'
 
-  devise_for :users, controllers:{
-    omniauth_callbacks: "users/omniauth_callbacks",
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
-  get '/auth/:provider/callback', to: 'users/sessions#create'
+  # sessions routes
+  get   'login',  to: "sessions#new"
+  post  'login',  to: "sessions#create"
+  get   'logout', to: "sessions#destroy"
 
-  devise_scope :user do
-    get '/users/sign_out', to: 'users/sessions#destroy'
-    # Dribbble
-    get '/users/dribbble',          to: 'users/registrations#passthru', as: "user_dribbble_authorize"
-    get '/users/dribbble_request',  to: 'users/registrations#dribbble_oauth_request', as: "user_dribbble_oauth_request"
-    get '/users/auth/dribbble/callback', to: 'users/registrations#passthru', as: "user_dribbble_callback"
-  end
+  # Github
+  get '/auth/github/callback', to: 'omniauth#github'
+
+  # Dribbble
+  get '/users/dribbble',          to: 'omniauth#passthru', as: "user_dribbble_authorize"
+  get '/users/dribbble_request',  to: 'omniauth#dribbble_oauth_request', as: "user_dribbble_oauth_request"
+  get '/users/auth/dribbble/callback', to: 'omniauth#passthru', as: "user_dribbble_callback"
 
   get '/favorites', to: 'favorites#show'
   get 'users/conversations/:id', to: 'conversations#show'
@@ -29,8 +27,7 @@ Rails.application.routes.draw do
 
   get '/search', to: 'tags#show', as: "search"
 
-
-  resources :users, except: [:create, :new]
+  resources :users
   resources :projects
   resources :skills, except: [:index]
   resources :tags, except: [:index]
