@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
   def visible_name
     "#{first_name.capitalize} #{last_name[0].upcase}."
   end
+
+  def avg_star_rating
+    self.reviews.sum(:rating) / self.reviews.length
+  end
 end
