@@ -1,12 +1,56 @@
+require "uri"
+require "net/http"
+
 class Users::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def dribbble_oauth_request
+    # redirect to https://dribbble.com/oauth/authorize
+    dribbble = "https://dribbble.com/oauth/authorize"
+    params = {"client_id" => ENV["DRIBBBLE_CLIENT_ID"]}
+    redirect_to "#{dribbble}?#{params.to_query}"
+  end
 
+  def passthru
+    # get back the code
+    params = {"client_id" => ENV["DRIBBBLE_CLIENT_ID"],
+              "client_secret" => ENV["DRIBBBLE_CLIENT_SECRET"],
+              "code" => request.env["QUERY_STRING"][5..-1],
+              'button1' => 'Submit'
+              }
+
+    # use code to request access token
+    uri = URI.parse('https://dribbble.com/oauth/token')
+    request = Net::HTTP.post_form(uri, params)
+    token = JSON.parse(request.response.body)["access_token"]
+
+    # use access token to get access to the API
+    params = {"access_token" => token}
+    uri = URI.parse('https://api.dribbble.com/v1/user')
+    uri.query = URI.encode_www_form(params)
+    response = Net::HTTP.get(uri)
+
+    if response.blank?
+      redirect_to new_user_registration_url
+    else
+      user_data = JSON.parse(response)
+      @user = User.new(first_name: user_data["name"].split[0], last_name: user_data["name"].split[1],
+                       role: "designer", email: "#{user_data["name"].split[0]}@#{user_data["name"].split[1]}.com", password: "unknown",
+                       bio: user_data["bio"])
+
+      binding.pry
+
+      if User.find_by(email: @user.email) || @user.save
+        sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
+        set_flash_message(:notice, :success, :kind => "Dribbble") if is_navigational_format?
+      else
+        session["devise.dribbble_data"] = user_data["id"]
+        set_flash_message(:notive, :failure) # trying to get this to render...
+        redirect_to new_user_registration_url
+      end
+    end
+  end
 
   def create
     super
@@ -18,6 +62,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
       current_user.update_attributes(first_name: params[:user][:first_name],  last_name: params[:user][:last_name])
     end
+  end
+
+  def failure
+    binding.pry
+    redirect_to root_path
   end
 
   # GET /resource/edit

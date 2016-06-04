@@ -48,7 +48,10 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="actions">
+  <%= link_to "Register with Github", user_github_omniauth_authorize_path %>
+  <%= link_to "Register with Dribbble", user_dribbble_oauth_request_path %>
+</div>
 </div>
 
 </div>

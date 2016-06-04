@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root :to => 'application#index'
 
   devise_for :users, controllers:{
@@ -10,6 +11,10 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get '/users/sign_out', to: 'users/sessions#destroy'
+    # Dribbble
+    get '/users/dribbble',          to: 'users/registrations#passthru', as: "user_dribbble_authorize"
+    get '/users/dribbble_request',  to: 'users/registrations#dribbble_oauth_request', as: "user_dribbble_oauth_request"
+    get '/users/auth/dribbble/callback', to: 'users/registrations#passthru', as: "user_dribbble_callback"
   end
 
   resources :users, except: [:create, :new]
