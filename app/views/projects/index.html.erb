@@ -1,15 +1,31 @@
+
 <main class="Site-content"><div class="container">
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">most recent projects
+      </li>
+      <li class="sidebar-brand">developer posts
+      </li>
+      <li class="sidebar-brand">designer posts
+      </li>
+      <li class="sidebar-brand">expiring soon
+      </li>
+    </ul>
+  </div>
 
-<div class = "projects-list">
 
-</div>
-
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
 <div class = "most-recent-project">
  <h1 class = "title">Most Recent Projects</h1>
  <ul>
    <% most_recent.each do |project| %>
 
-
+<div class="panel panel-default">
+  <div class="panel-body">
      <h3><%=link_to project.title, project_path(project)%></h3>
      <h4>posted by: <%=link_to project.user.visible_name, user_path(project.user) %> (<%= project.user.role %>)</h4>
 
@@ -40,14 +56,20 @@
      <% if current_user && project.user.id == current_user.id %>
        <%=link_to 'edit', edit_project_path(project)%>
        <%end%>
+       </div>
+</div>
    <%end%>
  </ul>
+
 </div>
+
 
 <div class = "projects-by-developers">
  <h1 class = "title">Projects Posted By Developers</h1>
  <ul>
    <% posted_by_developers.each do |project| %>
+   <div class="panel panel-default">
+  <div class="panel-body">
      <h3><%=link_to project.title.capitalize, project_path(project)%></h3>
      <h4>posted by: <%= link_to project.user.visible_name, user_path(project.user) %> (<%= project.user.role %>)</h4>
      <h5><%= project.tagline %></h5>
@@ -75,14 +97,21 @@
      <% if current_user && project.user.id == current_user.id %>
        <%=link_to 'edit', edit_project_path(project)%>
        <%end%>
+     </div>
+   </div>
    <% end %>
  </ul>
 </div>
 
-<div class = "projects-by-designers">
+
+
+
  <h1 class = "title">Projects Posted By Designers</h1>
  <ul>
    <% posted_by_designers.each do |project| %>
+   <div class = "projects-by-designers">
+  <div class="panel panel-default">
+      <div class="panel-body">
      <h3><%=link_to project.title.capitalize, project_path(project)%></h3>
      <h4>posted by: <%= link_to project.user.visible_name, user_path(project.user) %> (<%= project.user.role %>)</h4>
      <h5><%= project.tagline %></h5>
@@ -110,14 +139,21 @@
      <% if current_user && project.user.id == current_user.id %>
        <%=link_to 'edit', edit_project_path(project)%>
        <%end%>
+     </div>
+   </div>
    <% end %>
  </ul>
 </div>
 
-<div class = "expiring-soon">
+
+
+
  <h1 class = "title">Projects Expiring Soon</h1>
  <ul>
    <% expiring_soon.each do |project| %>
+   <div class = "expiring-soon">
+  <div class="panel panel-default">
+     <div class="panel-body">
      <h3><%=link_to project.title.capitalize, project_path(project)%></h3>
      <h4>posted by: <%= link_to project.user.visible_name, user_path(project.user) %> (<%= project.user.role %>)</h4>
      <h5><%= project.tagline %></h5>
@@ -144,8 +180,16 @@
      <% if current_user && project.user.id == current_user.id %>
        <%=link_to 'edit', edit_project_path(project)%>
        <%end%>
+     </div>
+   </div>
    <% end %>
  </ul>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </main>
