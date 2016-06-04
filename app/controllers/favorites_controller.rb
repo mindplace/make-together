@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
 
+
   def create
    @project = Project.find_by(id: params[:favorite][:project_id])
    favorite = Favorite.find_or_create_by(user:current_user, project: @project)

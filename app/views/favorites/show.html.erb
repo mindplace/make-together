@@ -1,9 +1,15 @@
 <main class = "site-content">
   <div class = "container">
+
     <h1>Favorites</h1>
     <%@favorites.each do |favorite| %>
+    <div class="col-md-4">
+      <div class="panel panel-default">
       <h4><%=link_to favorite.project.title,  project_path(favorite.project)%></h4>
       <%=favorite.project.description%>
-    <%end%>
+
+  </div>
+    </div>
+     <%end%>
   </div>
 </main>
