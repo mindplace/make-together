@@ -25,7 +25,10 @@
         <%= f.hidden_field :user_id, value: current_user.id %>
         <%=f.hidden_field :project_id, value: project.id %>
         <%=f.submit %>
+
       <%end%>
+      <%else%>
+        <p> you've already favorited this project!</p>
      <%end%>
 
 
@@ -52,13 +55,16 @@
      <h5><%= project.description %></h5>
 
 
-     <% if current_user %>
-     <%= form_for @favorite do |f| %>
-      <%=f.label :favorite %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%=f.hidden_field :project_id, value: project.id %>
-      <%=f.submit %>
-     <%end%>
+     <% if current_user && !(current_user.favorites.include?(Favorite.find_by(project_id: project.id))) %>
+       <%= form_for @favorite do |f| %>
+        <%= f.label :favorite %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%=f.hidden_field :project_id, value: project.id %>
+        <%=f.submit %>
+
+      <%end%>
+      <%else%>
+        <p> you've already favorited this project!</p>
      <%end%>
 
      <% project.tags.each do |tag| %>
@@ -84,13 +90,16 @@
      <h5><%= project.description %></h5>
 
 
-     <% if current_user %>
-     <%= form_for @favorite do |f| %>
-      <%=f.label :favorite %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%=f.hidden_field :project_id, value: project.id %>
-      <%=f.submit %>
-     <%end%>
+    <% if current_user && !(current_user.favorites.include?(Favorite.find_by(project_id: project.id))) %>
+       <%= form_for @favorite do |f| %>
+        <%= f.label :favorite %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%=f.hidden_field :project_id, value: project.id %>
+        <%=f.submit %>
+
+      <%end%>
+      <%else%>
+        <p> you've already favorited this project!</p>
      <%end%>
 
      <% project.tags.each do |tag| %>
@@ -116,15 +125,17 @@
      <h5><%= project.description %></h5>
 
 
-     <% if current_user %>
-     <%= form_for @favorite do |f| %>
-      <%=f.label :favorite %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%=f.hidden_field :project_id, value: project.id %>
-      <%=f.submit %>
-     <%end%>
-     <%end%>
+    <% if current_user && !(current_user.favorites.include?(Favorite.find_by(project_id: project.id))) %>
+       <%= form_for @favorite do |f| %>
+        <%= f.label :favorite %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%=f.hidden_field :project_id, value: project.id %>
+        <%=f.submit %>
 
+      <%end%>
+      <%else%>
+        <p> you've already favorited this project!</p>
+     <%end%>
      <% project.tags.each do |tag| %>
       <%= link_to tag.body, tag_path(tag) %>
      <% end %><br>
