@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if !user_signed_in? || (user_signed_in? && !current_user == @user)
+      render "/_unauthorized"
+    end
   end
 
   def update

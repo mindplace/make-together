@@ -3,9 +3,13 @@
 <%= f.label :rating %>
 <%= f.number_field :rating %>
 
-<%= f.label :body, "leave a review"%>
+<%= f.label :body, "Leave a Review"%>
 <%= f.text_area :body %>
 
 <%= f.hidden_field :user_id, value: @user.id %>
 <%= f.submit %>
 <%end%>
+
+<% if @review.reviewer %>
+<p> <%= link_to "Delete Review", review_path(Review.find_by(user_id: params[:id])), method: :delete %> </p>
+<% end %>

@@ -3,7 +3,7 @@
   <div class="container">
      <% if user_signed_in? && @user == current_user %>
       <%= link_to "Edit Profile", edit_user_path(@user) %>
-        <p><%=link_to 'Favorited projects', favorite_path %>
+        <p><%=link_to 'Favorited projects', favorites_path %>
           <% end %>
 
     <div class = "avg-rating">
@@ -42,16 +42,14 @@
           <% end %>
         </ul>
 
-
-        <p><%=link_to 'Favorited projects', favorite_path %></p>
-
           <h3>Reviews</h3>
-        <%if user_signed_in? && !(current_user.id === @user.id)%>
+        <%if user_signed_in? && !(current_user.id == @user.id)%>
         <%=link_to 'Leave a Review', new_review_path(params:{user_id: @user.id})  %>
           <%end%>
+          <% if @user.reviews %>
           <% @user.reviews.each do |review| %>
-          <p><%=review.rating%> stars | <%=review.body.capitalize%> | <%= link_to 'edit', edit_review_path(params:{id: review.id})%></p>
-
+          <p><%=review.rating%> stars | <%=review.body.capitalize%> | <% if review.reviewer == current_user %> <%= link_to 'edit', edit_review_path(params:{id: review.id})%> <% end %></p>
+          <% end %>
           <%end%>
       </div>
     </div>

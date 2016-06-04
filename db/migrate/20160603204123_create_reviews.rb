@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration
       t.integer :rating
       t.text :body, null: false
       t.references :user, foreign_key: true
+      t.integer :reviewer_id, foreign_key: true
       t.timestamps null: false
     end
   end
