@@ -12,16 +12,18 @@
       <% end %>
     </div>
 
-    <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id %>
+    <% if logged_in? && @user != current_user %>
+      <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id %>
 
-    <%= link_to "Send Message", {action: 'mail', controller: 'conversations',sender_id: current_user.id, recipient_id: @user.id}, class: "btn btn-success btn-xs start-mail-conversation" %>
+      <%= link_to "Send Message", {action: 'mail', controller: 'conversations',sender_id: current_user.id, recipient_id: @user.id}, class: "btn btn-success btn-xs start-mail-conversation" %>
+    <% end %>
 
-    <div class="user-img">
-      <img src=<%= @user.img %> >
-    </div>
 
     <div class="col-md-8">
       <h1><%= @user.visible_name %></h1>
+        <div class="user-img">
+          <img src=<%= @user.img %> >
+        </div>
       <h3><%= @user.email %></h3>
       <p>Role: <%= @user.role.capitalize %></p>
       <p>Bio: <%= @user.bio %></p>
