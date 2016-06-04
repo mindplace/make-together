@@ -18,23 +18,17 @@ class UsersController < ApplicationController
   end
 
   def edit
-    unless logged_in?
-      render "/_unauthorized"
+    if !logged_in? || @user != current_user
+      redirect_to root_path
     end
   end
 
   def update
-    if current_user == @user
-      if params[:role] == 'developer' || params[:role] == 'designer'
-        current_user.update_attributes(role: params[:role])
-        if current_user.update_attributes(user_params)
-          redirect_to user_path(current_user)
-        else
-          render :edit
-        end
-      else
-        render :edit
-      end
+    @user.update_attributes(updating_user_params)
+    if @user.save
+      redirect_to user_path(@user)
+    else
+      render 'edit'
     end
   end
 
@@ -55,13 +49,10 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :role)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :role, :bio)
   end
 
-  protected
-
-  def auth_hash
-    request.env['omniauth.auth']
+  def updating_user_params
+    user_params.select{|k, v| v != ""}
   end
-
 end

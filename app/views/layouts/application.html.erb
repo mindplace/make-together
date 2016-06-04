@@ -31,7 +31,6 @@
          <li><%= link_to current_user.first_name, user_path(current_user) %></li>
          <li><%= link_to "New Project", new_project_path %></li>
          <li><%= link_to "Sign Out", logout_path %></li>
-
        <% else %>
          <li><%= link_to "Register", new_user_path %></li>
          <li><%= link_to "Sign In", login_path %></li>
@@ -40,10 +39,7 @@
    </div>
  </nav>
 
- <p class="notice"><%= notice %></p>
- <p class="alert"><%= alert %></p>
-
- <%= yield %>
+   <%= yield %>
 
  <footer>
    <ul>

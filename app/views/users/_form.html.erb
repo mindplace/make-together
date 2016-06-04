@@ -1,15 +1,5 @@
 <%= form_for @user do |f| %>
- <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/error_messages', locals: { object: @user } %>
 
  <%= f.label :first_name %>
  <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
@@ -17,14 +7,14 @@
  <%= f.label :last_name %>
  <%= f.text_field :last_name, class: 'form-control' %>
 
-  <%= f.label :bio %>
+ <%= f.label :bio %>
  <%= f.text_area :bio, class: 'form-control' %>
 
  <%= f.label :email %>
  <%=f.text_field :email, class: 'form-control' %>
 
  <%= f.label :password %><br />
- <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+ <%= f.password_field :password, class: 'form-control' %>
 
 
   <div class="field">
