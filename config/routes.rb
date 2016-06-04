@@ -18,6 +18,11 @@ Rails.application.routes.draw do
   end
 
   get '/favorites', to: 'favorites#show'
+  get 'users/conversations/:id', to: 'conversations#show'
+
+  resources :conversations do
+    resources :messages
+  end
 
   resources :users, except: [:create, :new]
   resources :projects

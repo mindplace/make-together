@@ -12,6 +12,9 @@
       <% end %>
     </div>
 
+    <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id %>
+
+
     <div class="user-img">
       <img src=<%= @user.image %> >
     </div>

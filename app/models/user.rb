@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :skills, through: :skill_users
   has_many :favorites
   has_many :reviews
+  has_many :conversations, foreign_key: :sender_id
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
