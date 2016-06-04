@@ -1,10 +1,10 @@
 <main class="Site-content">
 
   <div class="container">
-     <% if logged_in? && @user == current_user %>
-      <%= link_to "Edit Profile", edit_user_path(@user) %>
-        <p><%=link_to 'Favorited projects', favorites_path %>
-          <% end %>
+    <% if logged_in? && @user == current_user %>
+      <p><%= link_to "Edit Profile", edit_user_path(@user) %></p>
+      <p><%=link_to 'Favorited projects', favorites_path %></p>
+    <% end %>
 
     <div class = "avg-rating">
       <% if @user.avg_star_rating != 0 %>
@@ -12,9 +12,7 @@
       <% end %>
     </div>
 
-
     <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id %>
-
 
     <%= link_to "Send Message", {action: 'mail', controller: 'conversations',sender_id: current_user.id, recipient_id: @user.id}, class: "btn btn-success btn-xs start-mail-conversation" %>
 
@@ -22,45 +20,44 @@
       <img src=<%= @user.img %> >
     </div>
 
-
-    <div class="container">
-       <div class="col-md-4">
-      <img src=<%= @user.image %> >
+    <div class="col-md-8">
+      <h1><%= @user.visible_name %></h1>
+      <h3><%= @user.email %></h3>
+      <p>Role: <%= @user.role.capitalize %></p>
+      <p>Bio: <%= @user.bio %></p>
     </div>
-      <div class="col-md-8">
-        <h1><%= @user.visible_name %></h1>
-        <h3><%= @user.email %></h3>
-        <p>Role: <%= @user.role.capitalize %></p>
 
-        <p>Bio: <%= @user.bio %></p>
-    </div>
-        <div class ="col-md-4">
-        <h3>Skills</h3>
-        <ul><% @user.skills.each do |skill| %>
+    <div class ="col-md-4">
+      <h3>Skills</h3>
+      <ul>
+        <% @user.skills.each do |skill| %>
           <li><%= link_to skill.body, skill_path(skill)%></li>
-          <% end %>
-          <% if logged_in? && @user == current_user %>
-            <%= link_to "Add Skill", new_skill_path %>
-          <% end %>
-        </ul>
-      </div>
+        <% end %>
 
-        <div class="col-md-8">
-          <h3>Seeking Collaborators on...</h3>
-        <ul><% @user.projects.each do |project| %>
+        <% if logged_in? && @user == current_user %>
+          <%= link_to "Add Skill", new_skill_path %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-8">
+      <h3>Seeking Collaborators on...</h3>
+      <ul>
+        <% @user.projects.each do |project| %>
           <li><%= link_to project.title, project_path(project)%></li>
-          <% end %>
-        </ul>
+        <% end %>
+      </ul>
 
-          <h3>Reviews</h3>
-        <%if logged_in? && !(current_user.id == @user.id)%>
+      <h3>Reviews</h3>
+      <%if logged_in? && !(current_user.id == @user.id)%>
         <%=link_to 'Leave a Review', new_review_path(params:{user_id: @user.id})  %>
-          <%end%>
-          <% if @user.reviews %>
-          <% @user.reviews.each do |review| %>
+      <%end%>
+
+      <% if @user.reviews %>
+        <% @user.reviews.each do |review| %>
           <p><%=review.rating%> stars | <%=review.body.capitalize%> | <% if review.reviewer == current_user %> <%= link_to 'edit', edit_review_path(params:{id: review.id})%> <% end %></p>
-          <% end %>
-          <%end%>
+        <% end %>
+      <%end%>
       </div>
     </div>
 
