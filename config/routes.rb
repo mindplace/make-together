@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  get '/search', to: 'tags#show', as: "search"
+
+
   resources :users, except: [:create, :new]
   resources :projects
   resources :skills, except: [:index]
