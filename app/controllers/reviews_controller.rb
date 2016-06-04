@@ -1,8 +1,7 @@
 class ReviewsController < ApplicationController
   def new
     @user = User.find_by(id: params[:user_id])
-    @review = Review.new(params[:review])
-
+    @review = Review.new
   end
 
   def create
@@ -28,7 +27,7 @@ class ReviewsController < ApplicationController
 
 private
   def reviews_params
-    params.require(:review).permit(:body, :user_id)
+    params.require(:review).permit(:rating, :body, :user_id)
   end
 
 end

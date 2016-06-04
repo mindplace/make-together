@@ -6,6 +6,10 @@
         <p><%=link_to 'Favorited projects', favorite_path %>
           <% end %>
 
+    <div class = "avg-rating">
+      <h4>Average Rating: <%= @user.avg_star_rating %> Stars</h4>
+    </div>
+
     <div class="user-img">
       <img src=<%= @user.image %> >
     </div>
@@ -38,13 +42,13 @@
 
 
         <p><%=link_to 'Favorited projects', favorite_path %></p>
-        <%if !(current_user.id === @user.id)%>
-        <%=link_to 'leave a review', new_review_path(params:{user_id: @user.id})  %>
-          <%end%>
 
           <h3>Reviews</h3>
+        <%if user_signed_in? && !(current_user.id === @user.id)%>
+        <%=link_to 'Leave a Review', new_review_path(params:{user_id: @user.id})  %>
+          <%end%>
           <% @user.reviews.each do |review| %>
-          <p><%=review.body%> | <%= link_to 'edit', edit_review_path(params:{id: review.id})%></p>
+          <p><%=review.rating%> stars | <%=review.body.capitalize%> | <%= link_to 'edit', edit_review_path(params:{id: review.id})%></p>
 
           <%end%>
       </div>
