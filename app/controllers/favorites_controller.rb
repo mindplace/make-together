@@ -10,7 +10,7 @@ class FavoritesController < ApplicationController
 
   def create
    @project = Project.find_by(id: params[:favorite][:project_id])
-    @project.favorites << Favorite.new(user: current_user, project: @project)
+   favorite = Favorite.find_or_create_by(user:current_user, project: @project)
     redirect_to project_path(@project)
   end
 
