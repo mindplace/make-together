@@ -14,12 +14,10 @@ Rails.application.routes.draw do
 
   resources :users, except: [:create, :new]
   resources :projects
-
   resources :skills, except: [:index]
   resources :tags, except: [:index]
-
   resources :favorites
-
+  resources :reviews, except: [:index, :show]
 
   # static pages
   get '/contact', to: "application#contact", as: "contact"

@@ -1,0 +1,6 @@
+<%=form_for @review do |f| %>
+<%=f.label :body, "leave a review"%>
+<%= f.text_area :body %>
+<%= f.hidden_field :user_id, value: @user.id %>
+<%= f.submit %>
+<%end%>
