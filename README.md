@@ -1,21 +1,13 @@
-## Git workflow:
+# [Make Together](http://make-together.herokuapp.com)
+A social media platform for web designers and web developers to meet each other, post projects they are seeking collaborators on, and have conversations.
 
-### update your local repo
-git checkout master  
-git pull origin master  
+## Contributing
 
-### make changes
-git checkout -b 'feature'  
-​*make changes*​  
-add  
-commit  
+Please reach out directly to one of us via our contact information below if you would like to contribute.
 
-### re-update local repo
-git checkout master    
-git pull origin master  
+## About
 
-### push your changes
-git checkout 'feature'  
-git rebase master  
-git push origin 'feature'  
-**make a pull request**
+**Make Together** is maintained by [Esther Leytush](), [Lisa Buch](), [Samantha Holmes](), and [Caitlin Hoffman]().
+
+See [our other projects]("/community")
+or [hire us]("/hire") to help build your product.
