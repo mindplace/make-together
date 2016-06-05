@@ -9,7 +9,7 @@
     <img src=<%= @user.img %> width="100%">
   </div>
 
-  <div class="row">
+  <div class="row container-fluid">
     <div class="panel-body col-md-4">
       <h1><%= @user.visible_name %></h1>
       <h3><%= link_to @user.role.capitalize, users_path %></h3>
