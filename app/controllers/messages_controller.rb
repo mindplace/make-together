@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  layout false
 
   def create
     if params[:id]
