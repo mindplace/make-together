@@ -1,62 +1,60 @@
 <%= render partial: 'shared/navbar_opaque' %>
 
 <main class="Site-content">
-<div class="container">
-<div id="wrapper">
-  <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li>
-        <div class="search-bar">
-          <%= form_tag search_path do %>
-          <p><%= text_field_tag :body, params[:body] %>
-            <%= submit_tag "Search by Tag" %></p>
-          <% end %>
-        </div>
-      </li>
-      <li class="sidebar-brand">most recent projects</li>
-      <li class="sidebar-brand">developer posts</li>
-      <li class="sidebar-brand">designer posts</li>
-      <li class="sidebar-brand">expiring soon</li>
-    </ul>
-  </div>
+<div class="wrapper">
+<div class="row">
+<div class="col-md-2 left">
+  <div class="container navigation">
+    <div class="col-md-3 left">
+      <form class="input-group" action="/search" method="post">
+        <input type="text" name="body" class="form-control" placeholder="Search tagged posts...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Go!</button>
+        </span>
+      </form>
+    </div>
+    <h2>Recent</h2>
+    <h2>Expiring</h2>
+    <h2>Developers</h2>
+    <h2>Designers</h2>
+  </ul>
+</div>
+</div>
 
-  <div id="page-content-wrapper">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
+<div class="col-md-8">
+  <div class="row">
+    <div class="col-md-12">
+      <div class = "most-recent-project">
+       <h1 class = "title">Most Recent Projects</h1>
+         <% most_recent.each do |project| %>
+          <%= render partial: "index_show", locals: { project: project } %>
+         <%end%>
+      </div>
 
-          <div class = "most-recent-project">
-           <h1 class = "title">Most Recent Projects</h1>
-             <% most_recent.each do |project| %>
-              <%= render partial: "index_show", locals: { project: project } %>
-             <%end%>
-          </div>
+      <div class = "projects-by-developers">
+       <h1 class = "title">Projects Posted By Developers</h1>
+         <% posted_by_developers.each do |project| %>
+           <%= render partial: "index_show", locals: { project: project } %>
+         <% end %>
+      </div>
 
-          <div class = "projects-by-developers">
-           <h1 class = "title">Projects Posted By Developers</h1>
-             <% posted_by_developers.each do |project| %>
-               <%= render partial: "index_show", locals: { project: project } %>
+     <h1 class = "title">Projects Posted By Designers</h1>
+       <div class = "projects-by-designers">
+
+         <% posted_by_designers.each do |project| %>
+           <%= render partial: "index_show", locals: { project: project } %>
+         <% end %>
+      </div>
+
+       <h1 class = "title">Projects Expiring Soon</h1>
+        <div class = "expiring-soon">
+           <% expiring_soon.each do |project| %>
+             <%= render partial: "index_show", locals: { project: project } %>
              <% end %>
-          </div>
-
-           <h1 class = "title">Projects Posted By Designers</h1>
-             <div class = "projects-by-designers">
-
-               <% posted_by_designers.each do |project| %>
-                 <%= render partial: "index_show", locals: { project: project } %>
-               <% end %>
-            </div>
-
-             <h1 class = "title">Projects Expiring Soon</h1>
-              <div class = "expiring-soon">
-                 <% expiring_soon.each do |project| %>
-                   <%= render partial: "index_show", locals: { project: project } %>
-                   <% end %>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
+    </div>
   </div>
+</div>
 </div>
 </main>

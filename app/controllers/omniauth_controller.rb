@@ -55,6 +55,8 @@ class OmniauthController < ApplicationController
     user = request.env["omniauth.auth"]["info"]
     @user = User.find_by(email: user["email"])
 
+    # needs to be stronger and handle things like changing emails
+    
     if @user
       session[:user_id] = @user.id
       redirect_to root_path
