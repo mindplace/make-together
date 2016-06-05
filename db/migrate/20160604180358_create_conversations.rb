@@ -1,7 +1,7 @@
 class CreateConversations < ActiveRecord::Migration
   def change
     create_table :conversations do |t|
-      t.boolean :inbox_message, default: false
+      t.string :conversation_type
       t.integer :sender_id
       t.integer :recipient_id
 

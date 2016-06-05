@@ -1,16 +1,40 @@
 class ConversationsController < ApplicationController
   layout false
 
+  # def create
+  #   if Conversation.between(params[:sender_id],params[:recipient_id]).present?
+  #     @conversation = Conversation.between(params[:sender_id],params[:recipient_id])
+  #     if !@conversation.inbox_message
+  #       @conversation = Conversation.create!(conversation_params)
+  #     end
+  #   end
+  #   if params[:inbox_message]
+  #     @conversation.update_attributes(inbox_message: true)
+  #     @conversations = current_user.conversations.where(inbox_message: true)
+  #     render :inbox
+  #   else
+  #     render json: { conversation_id: @conversation.id }
+  #   end
+  # end
+
   def create
-    if Conversation.between(params[:sender_id],params[:recipient_id]).present?
-      @conversation = Conversation.between(params[:sender_id],params[:recipient_id]).first
-    else
-      @conversation = Conversation.create!(conversation_params)
-    end
-    if params[:inbox_message]
-      render :inbox
-    else
-      render json: { conversation_id: @conversation.id }
+    if params[:conversation_type] == "inbox_message"
+    @conversations = current_user.conversations.where(conversation_type: "inbox_message")
+      @conversation = Conversation.between(params[:sender_id],params[:recipient_id])
+      if @conversation.first && @conversation.where(conversation_type: "inbox_message").first
+        render :inbox
+      else
+        @conversation = Conversation.create!(conversation_params)
+        render :inbox
+      end
+    elsif params[:conversation_type] == "chat"
+      @conversation = Conversation.between(params[:sender_id],params[:recipient_id])
+      if @conversation.first && @conversation.where(conversation_type: "chat").first
+        render json: { conversation_id: @conversation.id }
+      else
+        @conversation = Conversation.create!(conversation_params)
+        render json: { conversation_id: @conversation.id }
+      end
     end
   end
 
@@ -39,7 +63,7 @@ class ConversationsController < ApplicationController
 
   private
   def conversation_params
-    params.permit(:sender_id, :recipient_id)
+    params.permit(:sender_id, :recipient_id, :conversation_type)
   end
 
   def interlocutor(conversation)

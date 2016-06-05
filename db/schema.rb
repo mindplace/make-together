@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 20160604180745) do
   enable_extension "plpgsql"
 
   create_table "conversations", force: :cascade do |t|
-    t.boolean  "inbox_message", default: false
+    t.string   "conversation_type"
     t.integer  "sender_id"
     t.integer  "recipient_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree

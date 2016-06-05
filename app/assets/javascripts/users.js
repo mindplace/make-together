@@ -11,8 +11,9 @@ var ready = function () {
 
         var sender_id = $(this).data('sid');
         var recipient_id = $(this).data('rip');
+        var conversation_type = $(this).data('im');
 
-        $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id }, function (data) {
+        $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id, conversation_type: conversation_type }, function (data) {
             chatBox.chatWith(data.conversation_id);
         });
     });
