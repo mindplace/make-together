@@ -5,6 +5,7 @@ class CreateProjects < ActiveRecord::Migration
       t.text :description, null: false
       t.date :expiration
       t.string :tagline
+      t.string :img
       t.boolean :flagged, default: false
       t.references :user
 

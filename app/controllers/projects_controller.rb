@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.set_image
     Tag.build_from_string(params[:project][:tags]).each do |tag|
          @project.tags << tag unless @project.tags.include?(tag)
        end
@@ -55,5 +56,10 @@ class ProjectsController < ApplicationController
 
   def is_poster?
     @project.user == current_user
+  end
+
+  def set_image
+    images = ["http://image005.flaticon.com/1/svg/59/59118.svg", "http://image005.flaticon.com/1/svg/59/59505.svg", "http://image005.flaticon.com/1/svg/14/14427.svg", "http://image005.flaticon.com/1/svg/29/29104.svg", "http://image005.flaticon.com/17/svg/56/56361.svg", "http://image005.flaticon.com/11/svg/9/9299.svg", "http://image005.flaticon.com/1/svg/29/29594.svg", "http://image005.flaticon.com/1/svg/71/71724.svg", "http://image005.flaticon.com/1/svg/35/35446.svg", "http://image005.flaticon.com/1/svg/21/21520.svg", "http://image005.flaticon.com/1/svg/68/68792.svg"]
+    @project.img = images.sample
   end
 end
