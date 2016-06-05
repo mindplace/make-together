@@ -1117,6 +1117,7 @@ figure {
 img {
   vertical-align: middle;
 }
+
 .img-responsive,
 .thumbnail > img,
 .thumbnail a > img,
@@ -3066,6 +3067,11 @@ fieldset[disabled] a.btn {
   background-color: #fff;
   border-color: #ccc;
 }
+.btn-default-like {
+  color: #333;
+  background-color: #fff;
+
+}
 .btn-default:focus,
 .btn-default.focus {
   color: #333;
@@ -3177,8 +3183,8 @@ fieldset[disabled] .btn-primary.focus {
 }
 .btn-success {
   color: #fff;
-  background-color: #BB4F22;
-  border-color: #BB4F22;
+  background-color: #764E7f;
+  border-color: #764E7f;
 }
 .btn-success:focus,
 .btn-success.focus {
@@ -3188,8 +3194,8 @@ fieldset[disabled] .btn-primary.focus {
 }
 .btn-success:hover {
   color: #fff;
-  background-color: #D95C27;
-  border-color: #D95C27;
+  background-color: #A271AD;
+  border-color: #A271AD;
 }
 .btn-success:active,
 .btn-success.active,
@@ -4060,6 +4066,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   top: auto;
   left: auto;
 }
+
 @media (min-width: 768px) {
   .nav-tabs.nav-justified > li {
     display: table-cell;

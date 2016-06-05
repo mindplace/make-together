@@ -27,10 +27,18 @@
        <li><%= link_to "Collaborators", users_path %></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
+
        <% if logged_in? %>
          <li><%= link_to current_user.first_name, user_path(current_user) %></li>
          <li><%= link_to "New Project", new_project_path %></li>
          <li><%= link_to "Sign Out", logout_path %></li>
+
+       <% if user_signed_in? %>
+         <li id="user"><%= link_to current_user.first_name, user_path(current_user) %></li>
+         <li><%=link_to "Favorited Projects", favorites_path %></li>
+         <li><%= link_to "New Project", new_project_path %></li>
+         <li><%= link_to "Sign Out", users_sign_out_path %></li>
+
        <% else %>
          <li><%= link_to "Register", new_user_path %></li>
          <li><%= link_to "Sign In", login_path %></li>
