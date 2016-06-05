@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160604180745) do
     t.text     "description",                 null: false
     t.date     "expiration"
     t.string   "tagline"
+    t.string   "img"
     t.boolean  "flagged",     default: false
     t.integer  "user_id"
     t.datetime "created_at",                  null: false

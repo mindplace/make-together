@@ -8,7 +8,7 @@
     <% @developers.each do |developer| %>
      <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
-        <img src="https://s-media-cache-ak0.pinimg.com/736x/e9/51/8b/e9518b87347e41c55ce179cbc59b1f41.jpg"/>
+        <img style= "width:200px; height: 200px" src= <%= developer.img %> class = "user-img"/>
         <div class="caption">
         <p><%= link_to developer.visible_name, user_path(developer) %></p>
       </div>
@@ -23,7 +23,7 @@
     <% @designers.each do |designer| %>
      <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
-        <img src="https://s-media-cache-ak0.pinimg.com/736x/e9/51/8b/e9518b87347e41c55ce179cbc59b1f41.jpg"/>
+        <img style= "width:200px; height: 200px" src= <%= designer.img %> class = "user-img"/>
         <%= link_to designer.visible_name, user_path(designer) %>
       </div>
     </div>

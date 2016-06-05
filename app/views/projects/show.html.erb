@@ -7,7 +7,8 @@
 
 <%=link_to 'back to projects', projects_path%>
 <div id="project-header">
-  <h1>more info for <%= @project.title.capitalize %></h1>
+  <h1><%= @project.title.capitalize %></h1>
+  <img src= <%=@project.img%> class="img-responsive project-img">
   <h3>Status: <%= @project.tagline%></h3>
 </div>
 
