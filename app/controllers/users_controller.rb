@@ -59,7 +59,6 @@ class UsersController < ApplicationController
   end
 
   def set_image
-    avatars = ["http://s33.postimg.org/bxh2ye0qn/av1.png", "http://s33.postimg.org/i28lbpsu7/av2.png", "http://s33.postimg.org/t5s7hbe4f/av3.png", "http://s33.postimg.org/wvn8wh0lb/av4.png", "http://s33.postimg.org/5qaabyudb/av5.png", "http://s33.postimg.org/usctot0sf/av6.png", "http://s33.postimg.org/yen8f6wjj/av7.png", "http://s33.postimg.org/nvn8q0tvj/av8.png", "http://s33.postimg.org/66vhyei4f/av9.png", "http://s33.postimg.org/8ph6z33un/av10.png", "http://s33.postimg.org/jdkxxxdtr/av11.png", "http://s33.postimg.org/b9ctt6ren/av12.png" ]
-    @user.img = avatars.sample
+    @user.img = "https://www.mautic.org/media/images/default_avatar.png"
   end
 end
