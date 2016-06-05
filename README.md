@@ -9,5 +9,4 @@ Please reach out directly to one of us via our contact information below if you 
 
 **Make Together** is maintained by [Esther Leytush](), [Lisa Buch](), [Samantha Holmes](), and [Caitlin Hoffman]().
 
-See [our other projects]("/community")
-or [hire us]("/hire") to help build your product.
+See [our other projects](community) or [hire us](hire) to help build your product.
