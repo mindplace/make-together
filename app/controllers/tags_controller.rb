@@ -2,8 +2,12 @@ class TagsController < ApplicationController
   before_action :set_tag, except: [:new, :create]
 
   def show
-    @tag = Tag.find_by(body: params[:body])
-    @searched = params[:body]
+    if params[:body]
+      @tag = Tag.find_by(body: params[:body])
+      @searched = params[:body]
+    else
+      @tag = Tag.find_by(id: params[:id])
+    end
     if !@tag
       render "/_no_results"
     end

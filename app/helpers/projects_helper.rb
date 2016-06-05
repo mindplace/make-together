@@ -15,12 +15,12 @@ module ProjectsHelper
     Project.where('projects.expiration >=? AND projects.expiration <=?', Date.today, 3.days.from_now)
   end
 
-  def format_tag_list(project)
+  def format_tags(project)
     tags = []
     project.tags.each do |tag|
-      tags << tag.name
+      tags << tag.body
     end
-    return tags
+    tags.join(", ")
   end
 
 end

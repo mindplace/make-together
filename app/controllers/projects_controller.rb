@@ -35,6 +35,9 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
+      Tag.build_from_string(params[:project][:tags]).each do |tag|
+         @project.tags << tag unless @project.tags.include?(tag)
+       end
       redirect_to project_path(@project)
     else
       render :edit
@@ -47,7 +50,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :tagline, :description, :expiration, :user_id)
+    params.require(:project).permit(:title, :tagline, :description, :expiration, :user_id, :img)
   end
 
   def set_project
@@ -62,4 +65,5 @@ class ProjectsController < ApplicationController
     images = ["http://image005.flaticon.com/1/svg/14/14427.svg", "http://image005.flaticon.com/1/svg/29/29104.svg", "http://image005.flaticon.com/17/svg/56/56361.svg", "http://image005.flaticon.com/11/svg/9/9299.svg", "http://image005.flaticon.com/1/svg/29/29594.svg", "http://image005.flaticon.com/1/svg/71/71724.svg", "http://image005.flaticon.com/1/svg/35/35446.svg", "http://image005.flaticon.com/1/svg/68/68792.svg"]
     @project.img = images.sample
   end
+
 end
