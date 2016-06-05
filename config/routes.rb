@@ -17,8 +17,10 @@ Rails.application.routes.draw do
 
   get '/favorites', to: 'favorites#show'
   get 'users/conversations/:id', to: 'conversations#show'
-  get '/users/mail_conversations', to: 'conversations#mail'
-  post '/mail_conversations', to: 'conversations#mail', as: 'mail'
+  get '/users/mail_conversations', to: 'conversations#create_mail'
+  post '/users/mail_conversations', to: 'conversations#inbox', as: 'inbox'
+  get '/users/inbox_conversations/:id', to: 'conversations#inbox_show', as: 'inbox_show'
+  post '/users/inbox_conversations/:id', to: 'messages#create', as: 'inbox_message'
 
   resources :conversations do
     resources :messages

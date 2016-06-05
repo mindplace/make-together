@@ -2,9 +2,11 @@
   <div class= "container">
     <h1>Send a message to <%= @reciever.visible_name %></h1>
 
-    <%= form_for 'new_message_path' do |f| %>
+    <%= form_for @message, url: {controller: 'conversations', action: 'inbox'} do |f| %>
     <%= f.label :body %>
     <%= f.text_area :body, autofocus: true, class: 'form-control'%>
+    <%= f.hidden_field :sender_id, value: current_user.id %>
+    <%= f.hidden_field :recipient_id, value: @reciever.id %>
     <%= f.submit "Send" %>
     <% end %>
 

@@ -1,6 +1,4 @@
 class ConversationsController < ApplicationController
-  before_filter :authenticate_user!
-
   layout false
 
   def create
@@ -9,7 +7,11 @@ class ConversationsController < ApplicationController
     else
       @conversation = Conversation.create!(conversation_params)
     end
-    render json: { conversation_id: @conversation.id }
+    if params[:inbox_message]
+      render :inbox
+    else
+      render json: { conversation_id: @conversation.id }
+    end
   end
 
   def show
@@ -20,12 +22,19 @@ class ConversationsController < ApplicationController
   end
 
   #new email
-  def mail
-    @conversation = Conversation.find_or_create_by(sender_id: params[:sender_id], recipient_id: params[:recipient_id] )
+  # def mail_show
+  #   @conversation = Conversation.find_or_create_by(sender_id: params[:sender_id], recipient_id: params[:recipient_id] )
+  #   @reciever = interlocutor(@conversation)
+  #   @messages = @conversation.messages
+  #   @message = Message.new
+  #   render :mail
+  # end
+
+  def inbox_show
+    @conversation = Conversation.find_or_create_by(id: params[:id])
     @reciever = interlocutor(@conversation)
     @messages = @conversation.messages
-    @message = Message.new
-    render :mail
+    render :inbox_show
   end
 
   private
