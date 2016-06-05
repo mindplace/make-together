@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-xs-6 col-md-4">
+      <img src= <%= %> class="img-responsive project-img">
+    </div>
+
+    <div class="col-xs-12 col-md-8">
+     <h4><%=link_to project.title, project_path(project)%></h4>
+     <h4><%=link_to project.user.visible_name, user_path(project.user) %> (<%= project.user.role %>)</h4>
+     <h5><%= project.tagline %></h5>
+
+     <h5>Available until: <%= project.expiration %></h5>
+     <h5> &#9829; <%=project.favorites.length%></h5>
+     <p><%= project.description %></p>
+
+     <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
+       <%= form_for @favorite do |f| %>
+          <%= f.label :favorite %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :project_id, value: project.id %>
+          <%= button_tag(type: "submit", class: "btn btn-default-like") do %>
+            &#9825; <i class="icon-repeat"></i>
+          <% end %>
+        <% end %>
+    <% elsif current_user %>
+        <p> <%= link_to "Unfavorite this project", favorite_path(Favorite.find_by(project_id: project.id, user_id: current_user.id)), method: :delete %> </p>
+    <% end %>
+
+
+   <% project.tags.each do |tag| %>
+    <%= link_to "##{tag.body}", tag_path(tag) %>
+   <% end %><br>
+
+   <% if current_user && project.user.id == current_user.id %>
+     <%=link_to 'edit', edit_project_path(project)%>
+   <%end%>
+  </div>
+</div>
+</div>

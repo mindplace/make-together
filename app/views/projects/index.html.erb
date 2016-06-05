@@ -1,6 +1,7 @@
 <%= render partial: 'shared/navbar_opaque' %>
 
-<main class="Site-content"><div class="container">
+<main class="Site-content">
+<div class="container">
 <div id="wrapper">
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
@@ -32,200 +33,36 @@
 
 <div class = "most-recent-project">
  <h1 class = "title">Most Recent Projects</h1>
-
    <% most_recent.each do |project| %>
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="col-xs-6 col-md-4">
-      <img src= <%=project.img%> class="img-responsive project-img">
-    </div>
-    <div class="col-xs-12 col-md-8">
-     <h3><%=link_to project.title, project_path(project)%></h3>
-     <h4>posted by: <%=link_to project.user.visible_name, user_path(project.user) %> (<%= project.user.role %>)</h4>
-
-     <h5><%= project.tagline %></h5>
-     <h5>project expires: <%= project.expiration %></h5>
-     <h5> &#9829; <%=project.favorites.length%></h5>
-     <h5><%= project.description %></h5>
-
-
-
-     <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
-
-       <%= form_for @favorite do |f| %>
-        <%= f.label :favorite %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :project_id, value: project.id %>
-        <%= button_tag(type: "submit", class: "btn btn-default-like") do %>
-            &#9825; <i class="icon-repeat"></i>
-        <% end %>
-      <% end %>
-
-    <%elsif current_user%>
-        <p> <%= link_to "Unfavorite this project", favorite_path(Favorite.find_by(project_id: project.id, user_id: current_user.id)), method: :delete %> </p>
-    <%end%>
-
-
-     <% project.tags.each do |tag| %>
-      #<%= link_to tag.body, tag_path(tag) %>
-     <% end %><br>
-
-
-     <% if current_user && project.user.id == current_user.id %>
-       <%=link_to 'edit', edit_project_path(project)%>
-     <%end%>
-       </div>
-</div>
-</div>
+    <%= render partial: "index_show", locals: { project: project } %>
    <%end%>
- </ul>
-
 </div>
 
 
 <div class = "projects-by-developers">
  <h1 class = "title">Projects Posted By Developers</h1>
- <ul>
    <% posted_by_developers.each do |project| %>
-   <div class="panel panel-default">
-  <div class="panel-body">
-    <div class="col-xs-6 col-md-4">
-      <img src= <%=project.img%> class="img-responsive project-img">
-    </div>
-     <h3><%=link_to project.title.capitalize, project_path(project)%></h3>
-     <h4>posted by: <%= link_to project.user.visible_name, user_path(project.user) %> (<%= project.user.role %>)</h4>
-     <h5><%= project.tagline %></h5>
-     <h5>project expires: <%= project.expiration %></h5>
-     <h5> &#9829; <%=project.favorites.length%></h5>
-     <h5><%= project.description %></h5>
-
-
-   <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
-
-       <%= form_for @favorite do |f| %>
-        <%= f.label :favorite %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :project_id, value: project.id %>
-        <%= button_tag(type: "submit", class: "btn btn-default-like") do %>
-            &#9825; <i class="icon-repeat"></i>
-        <% end %>
-      <% end %>
-      <%elsif current_user%>
-        <p> you've already favorited this project!</p>
-     <%end%>
-
-     <% project.tags.each do |tag| %>
-      #<%= link_to tag.body, tag_path(tag) %>
-     <% end %><br>
-
-
-     <% if current_user && project.user.id == current_user.id %>
-       <%=link_to 'edit', edit_project_path(project)%>
-       <%end%>
-     </div>
-   </div>
-
+     <%= render partial: "index_show", locals: { project: project } %>
    <% end %>
- </ul>
 </div>
 
 
 
 
  <h1 class = "title">Projects Posted By Designers</h1>
-
    <div class = "projects-by-designers">
 
-   <% posted_by_designers.each do |project| %>
-   <div class="panel panel-default">
-  <div class="panel-body">
-    <div class="col-xs-6 col-md-4">
-      <img src= <%=project.img%> class="img-responsive project-img">
-    </div>
-
-     <h3><%=link_to project.title.capitalize, project_path(project)%></h3>
-     <h4>posted by: <%= link_to project.user.visible_name, user_path(project.user) %> (<%= project.user.role %>)</h4>
-     <h5><%= project.tagline %></h5>
-     <h5> &#9829; <%=project.favorites.length%></h5>
-     <h5><%= project.description %></h5>
-
-
-    <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
-
-       <%= form_for @favorite do |f| %>
-        <%= f.label :favorite %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :project_id, value: project.id %>
-        <%= button_tag(type: "submit", class: "btn btn-default-like") do %>
-            &#9825; <i class="icon-repeat"></i>
-        <% end %>
-      <% end %>
-      <%elsif current_user%>
-        <p> You've already favorited this project!</p>
-     <%end%>
-
-     <% project.tags.each do |tag| %>
-      #<%= link_to tag.body, tag_path(tag) %>
-     <% end %><br>
-
-
-     <% if current_user && project.user.id == current_user.id %>
-       <%=link_to 'edit', edit_project_path(project)%>
-       <%end%>
-     </div>
-   </div>
-   <% end %>
- </ul>
-</div>
-
-
-
+     <% posted_by_designers.each do |project| %>
+       <%= render partial: "index_show", locals: { project: project } %>
+     <% end %>
+  </div>
 
  <h1 class = "title">Projects Expiring Soon</h1>
-<div class = "expiring-soon">
-   <% expiring_soon.each do |project| %>
-     <div class="panel panel-default">
-  <div class="panel-body">
-    <div class="col-xs-6 col-md-4">
-      <img src= <%=project.img%> class="img-responsive project-img">
-    </div>
-
-
-     <h3><%=link_to project.title.capitalize, project_path(project)%></h3>
-     <h4>posted by: <%= link_to project.user.visible_name, user_path(project.user) %> (<%= project.user.role %>)</h4>
-     <h5><%= project.tagline %></h5>
-     <h5>project expires: <%= project.expiration %></h5>
-     <h5> &#9829; <%=project.favorites.length%></h5>
-     <h5><%= project.description %></h5>
-
-
-     <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
-
-       <%= form_for @favorite do |f| %>
-        <%= f.label :favorite %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :project_id, value: project.id %>
-        <%= button_tag(type: "submit", class: "btn btn-default-like") do %>
-            &#9825; <i class="icon-repeat"></i>
-        <% end %>
-      <% end %>
-      <%elsif current_user%>
-        <p> you've already favorited this project!</p>
-     <%end%>
-     <% project.tags.each do |tag| %>
-      <%= link_to tag.body, tag_path(tag) %>
-     <% end %><br>
-
-
-     <% if current_user && project.user.id == current_user.id %>
-       <%=link_to 'edit', edit_project_path(project)%>
-       <%end%>
-     </div>
-   </div>
-   <% end %>
- </ul>
- </div>
+  <div class = "expiring-soon">
+     <% expiring_soon.each do |project| %>
+       <%= render partial: "index_show", locals: { project: project } %>
+       <% end %>
+  </div>
 </div>
 </div>
 </div>
