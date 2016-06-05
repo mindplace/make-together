@@ -18,13 +18,13 @@ class ConversationsController < ApplicationController
   # end
 
   def create
-    if params[:conversation_type] == "inbox_message"
+    if params[:conversation][:conversation_type] == "inbox_message"
     @conversations = current_user.conversations.where(conversation_type: "inbox_message")
-      @conversation = Conversation.between(params[:sender_id],params[:recipient_id])
+      @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:recipient_id])
       if @conversation.first && @conversation.where(conversation_type: "inbox_message").first
         render :inbox
       else
-        @conversation = Conversation.create!(conversation_params)
+        @conversation = Conversation.create!(inbox_message_params)
         render :inbox
       end
     elsif params[:conversation_type] == "chat"
@@ -58,12 +58,17 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find_or_create_by(id: params[:id])
     @reciever = interlocutor(@conversation)
     @messages = @conversation.messages
+    @message = Message.new
     render :inbox_show
   end
 
   private
   def conversation_params
     params.permit(:sender_id, :recipient_id, :conversation_type)
+  end
+
+  def inbox_message_params
+    params.require(:conversation).permit(:sender_id, :recipient_id, :conversation_type)
   end
 
   def interlocutor(conversation)

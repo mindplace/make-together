@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @conversation = Conversation.new
   end
 
   def edit

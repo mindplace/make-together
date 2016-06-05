@@ -15,6 +15,17 @@
       <h3><%= link_to @user.role.capitalize, users_path %></h3>
       <% if logged_in? && @user == current_user %>
         <h3><%= link_to "Edit Profile", edit_user_path(@user) %></h3>
+        <p><%=link_to 'Favorited projects', favorites_path %></p>
+      <% elsif logged_in? && @user != current_user %>
+        <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id, "data-im" => "chat" %>
+
+        <%= form_for(@conversation) do |f| %>
+        <%= f.hidden_field :sender_id, value: current_user.id %>
+        <%= f.hidden_field :recipient_id, value: @user.id %>
+        <%= f.hidden_field :conversation_type, value: "inbox_message" %>
+        <%= f.submit "Send Message", class: "btn btn-success btn-xs start-mail-conversation"%>
+        <% end %>
+
       <% end %>
     </div>
 
