@@ -101,14 +101,16 @@
 
 
    <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
+
        <%= form_for @favorite do |f| %>
         <%= f.label :favorite %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%=f.hidden_field :project_id, value: project.id %>
-        <%=f.submit %>
-
-      <%end%>
-      <%else%>
+        <%= f.hidden_field :project_id, value: project.id %>
+        <%= button_tag(type: "submit", class: "btn btn-default-like") do %>
+            &#9825; <i class="icon-repeat"></i>
+        <% end %>
+      <% end %>
+      <%elsif current_user%>
         <p> you've already favorited this project!</p>
      <%end%>
 
@@ -148,16 +150,18 @@
      <h5><%= project.description %></h5>
 
 
-   <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
+    <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
+
        <%= form_for @favorite do |f| %>
         <%= f.label :favorite %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%=f.hidden_field :project_id, value: project.id %>
-        <%=f.submit %>
-
-      <%end%>
-      <%else%>
-        <p> you've already favorited this project!</p>
+        <%= f.hidden_field :project_id, value: project.id %>
+        <%= button_tag(type: "submit", class: "btn btn-default-like") do %>
+            &#9825; <i class="icon-repeat"></i>
+        <% end %>
+      <% end %>
+      <%elsif current_user%>
+        <p> You've already favorited this project!</p>
      <%end%>
 
      <% project.tags.each do |tag| %>
@@ -183,7 +187,7 @@
      <div class="panel panel-default">
   <div class="panel-body">
     <div class="col-xs-6 col-md-4">
-      <img src="https://s-media-cache-ak0.pinimg.com/736x/31/fe/d7/31fed7e8cd074201e8044a8c9de807dc.jpg" alt="..." class="img-responsive">
+      <img src= <%=project.img%> class="img-responsive">
     </div>
 
 
@@ -195,15 +199,17 @@
      <h5><%= project.description %></h5>
 
 
-    <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
+     <% if current_user && !(Favorite.find_by(project_id: project.id, user_id: current_user.id)) %>
+
        <%= form_for @favorite do |f| %>
         <%= f.label :favorite %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%=f.hidden_field :project_id, value: project.id %>
-        <%=f.submit %>
-
-      <%end%>
-      <%else%>
+        <%= f.hidden_field :project_id, value: project.id %>
+        <%= button_tag(type: "submit", class: "btn btn-default-like") do %>
+            &#9825; <i class="icon-repeat"></i>
+        <% end %>
+      <% end %>
+      <%elsif current_user%>
         <p> you've already favorited this project!</p>
      <%end%>
      <% project.tags.each do |tag| %>
