@@ -1,0 +1,10 @@
+<h1><%= @reciever.visible_name %></h1>
+<% @messages.each do |message| %>
+  <%= message.body %>
+<% end %>
+
+<%= form_for inbox_message_path(@conversation) do |f| %>
+<%= f.label :body %>
+<%= f.text_area :body %>
+<%= f.submit "Send" %>
+<% end %>
