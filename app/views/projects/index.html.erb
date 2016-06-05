@@ -37,7 +37,7 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="col-xs-6 col-md-4">
-      <img src= <%=project.img%> class="img-responsive">
+      <img src= <%=project.img%> class="img-responsive project-img">
     </div>
     <div class="col-xs-12 col-md-8">
      <h3><%=link_to project.title, project_path(project)%></h3>
@@ -90,7 +90,7 @@
    <div class="panel panel-default">
   <div class="panel-body">
     <div class="col-xs-6 col-md-4">
-      <img src= <%=project.img%> class="img-responsive">
+      <img src= <%=project.img%> class="img-responsive project-img">
     </div>
      <h3><%=link_to project.title.capitalize, project_path(project)%></h3>
      <h4>posted by: <%= link_to project.user.visible_name, user_path(project.user) %> (<%= project.user.role %>)</h4>
@@ -140,7 +140,7 @@
    <div class="panel panel-default">
   <div class="panel-body">
     <div class="col-xs-6 col-md-4">
-      <img src= <%=project.img%> class="img-responsive">
+      <img src= <%=project.img%> class="img-responsive project-img">
     </div>
 
      <h3><%=link_to project.title.capitalize, project_path(project)%></h3>
@@ -187,7 +187,7 @@
      <div class="panel panel-default">
   <div class="panel-body">
     <div class="col-xs-6 col-md-4">
-      <img src= <%=project.img%> class="img-responsive">
+      <img src= <%=project.img%> class="img-responsive project-img">
     </div>
 
 
