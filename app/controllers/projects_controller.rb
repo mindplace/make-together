@@ -7,10 +7,10 @@ class ProjectsController < ApplicationController
   end
 
   def new
-     if user_signed_in?
+     if logged_in?
         @project = Project.new
      else
-       render "/_unauthorized"
+       redirect_to root_path
      end
   end
 
@@ -27,20 +27,16 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    if !user_signed_in? || user_signed_in? &&!is_poster?
-      render :_unauthorized
+    if !logged_in? || current_user && !is_poster?
+      redirect_to root_path
     end
   end
 
   def update
-    if user_signed_in? && is_poster?
-      if @project.update(project_params)
-        redirect_to project_path(@project)
-      else
-        render :edit
-      end
+    if @project.update(project_params)
+      redirect_to project_path(@project)
     else
-      render :_unauthorized
+      render :edit
     end
   end
 

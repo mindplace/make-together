@@ -11,7 +11,7 @@ class FavoritesController < ApplicationController
     if current_user
       @favorites = Favorite.where(user_id: current_user.id)
     else
-      render "/_unauthorized"
+      redirect_to root_path
     end
   end
 

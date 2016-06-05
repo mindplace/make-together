@@ -13,9 +13,9 @@ class TagsController < ApplicationController
   end
 
   private
+
   def set_tag
     @tag = Tag.find_by(id: params[:id])
   end
-
 
 end
