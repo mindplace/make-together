@@ -1,35 +1,12 @@
-<<<<<<< 3a0ae7f4d69505d75d0a956b9a5064c9fbabb256
-<%= form_for @project do |f| %>
-  <%= render partial: 'shared/error_messages', locals: { object: @project } %>
-  
- <%= f.label :title %>
- <%= f.text_field :title, autofocus: true %>
 
- <%= f.label :tagline %>
- <%= f.text_field :tagline %>
-
- <%= f.label :description %>
- <%=f.text_field :description %>
-=======
 <main class = "site-content">
   <div class = "container">
   <div class ="center-block">
 <%= form_for @project, :html =>{:class =>"form-horizontal center"} do |f| %>
- <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-      <ul>
-      <% @project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render partial: 'shared/error_messages', locals: { object: @project } %>
   <div class="form-group">
  <%= f.text_field :title, autofocus: true, class: "form-control",  placeholder: "project title" %>
 </div>
->>>>>>> Add styling across pages
 
 <div class="form-group">
  <%= f.text_field :tagline, class: "form-control",  placeholder: "add a tagline..." %>
@@ -47,14 +24,8 @@
 </div>
 <div class="form-group">
  <%= f.hidden_field :user_id, value: current_user.id %>
-<<<<<<< 3a0ae7f4d69505d75d0a956b9a5064c9fbabb256
- <%= f.submit %>
-<%end%>
-=======
  <%= f.submit "add project", class: 'btn btn-primary btn-lg'%>
 <%end%>
 </div>
 </div>
 </main>
-
->>>>>>> Add styling across pages
