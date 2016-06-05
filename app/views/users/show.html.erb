@@ -1,23 +1,24 @@
 <%= render partial: 'shared/navbar_opaque' %>
+
 <main class="Site-content">
 <div class="container-fluid">
+
 <div class="container">
-  <div class = "avg-rating">
-    <% if @user.avg_star_rating != 0 %>
-    <h4>Average Rating: <%= @user.avg_star_rating %> Stars</h4>
-    <% end %>
-  </div>
 
   <div class="col-md-4">
     <div class="user-img">
       <img src=<%= @user.img %> width="200x200">
     </div>
 
-      <% if logged_in? && @user == current_user %>
-        <p><%= link_to "Edit Profile", edit_user_path(@user) %></p>
-        <p><%=link_to 'Favorited projects', favorites_path %></p>
-      <% elsif logged_in? && @user != current_user %>
-        <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id, "data-im" => "chat" %>
+    <div class = "avg-rating">
+      <% if @user.avg_star_rating != 0 %>
+        <h4>Average Rating: <%= @user.avg_star_rating %> Stars</h4>
+      <% end %>
+    </div>
+
+    <% if logged_in? && @user == current_user %>
+      <p><%= link_to "Edit Profile", edit_user_path(@user) %></p>
+      <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id %>
 
         <%= link_to "Send Message", {action: 'create', controller: 'conversations', sender_id: current_user.id, recipient_id: @user.id, conversation_type: "inbox_message" }, method: :post, class: "btn btn-success btn-xs start-mail-conversation" %>
 
