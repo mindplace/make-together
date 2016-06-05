@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   get '/users/auth/dribbble/callback', to: 'omniauth#passthru', as: "user_dribbble_callback"
 
   get 'users/conversations/:id', to: 'conversations#show'
-  get '/users/mail_conversations', to: 'conversations#create_mail'
   post '/users/mail_conversations', to: 'conversations#inbox', as: 'inbox'
   get '/users/inbox_conversations/:id', to: 'conversations#inbox_show', as: 'inbox_show'
   post '/users/inbox_conversations/:id', to: 'messages#create', as: 'inbox_message'

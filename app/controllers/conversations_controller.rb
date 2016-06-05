@@ -18,24 +18,24 @@ class ConversationsController < ApplicationController
   # end
 
   def create
-    if params[:conversation][:conversation_type] == "inbox_message"
-    @conversations = current_user.conversations.where(conversation_type: "inbox_message")
-      @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:recipient_id])
-      if @conversation.first && @conversation.where(conversation_type: "inbox_message").first
-        render :inbox
-      else
-        @conversation = Conversation.create!(inbox_message_params)
-        render :inbox
+    if params[:conversation]
+      @conversations = current_user.conversations.where(conversation_type: "inbox_message")
+        @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:recipient_id])
+        if @conversation.first && @conversation.where(conversation_type: "inbox_message").first
+          render :inbox
+        else
+          @conversation = Conversation.create!( inbox_message_params)
+          render :inbox
+        end
+      elsif params[:conversation_type] == "chat"
+        @conversation = Conversation.between(params[:sender_id],params[:recipient_id])
+        if @conversation.first && @conversation.where(conversation_type: "chat").first
+          render json: { conversation_id: @conversation.where(conversation_type: "chat").first.id }
+        else
+          @conversation = Conversation.create!( conversation_params)
+          render json: { conversation_id: @conversation.id }
+        end
       end
-    elsif params[:conversation_type] == "chat"
-      @conversation = Conversation.between(params[:sender_id],params[:recipient_id])
-      if @conversation.first && @conversation.where(conversation_type: "chat").first
-        render json: { conversation_id: @conversation.id }
-      else
-        @conversation = Conversation.create!(conversation_params)
-        render json: { conversation_id: @conversation.id }
-      end
-    end
   end
 
   def show
@@ -44,15 +44,6 @@ class ConversationsController < ApplicationController
     @messages = @conversation.messages
     @message = Message.new
   end
-
-  #new email
-  # def mail_show
-  #   @conversation = Conversation.find_or_create_by(sender_id: params[:sender_id], recipient_id: params[:recipient_id] )
-  #   @reciever = interlocutor(@conversation)
-  #   @messages = @conversation.messages
-  #   @message = Message.new
-  #   render :mail
-  # end
 
   def inbox_show
     @conversation = Conversation.find_or_create_by(id: params[:id])
