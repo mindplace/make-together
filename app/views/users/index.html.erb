@@ -6,13 +6,8 @@
     <h2>Developers</h2>
     <div class="row">
     <% @developers.each do |developer| %>
-
-      <div class="box">
-        <%= link_to developer.visible_name, user_path(developer) %>
-
-
-         <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
+     <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
         <img src="https://s-media-cache-ak0.pinimg.com/736x/e9/51/8b/e9518b87347e41c55ce179cbc59b1f41.jpg"/>
         <div class="caption">
         <p><%= link_to developer.visible_name, user_path(developer) %></p>
@@ -26,16 +21,15 @@
     <h2>Designers</h2>
     <div class="row">
     <% @designers.each do |designer| %>
-
-         <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
+     <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
         <img src="https://s-media-cache-ak0.pinimg.com/736x/e9/51/8b/e9518b87347e41c55ce179cbc59b1f41.jpg"/>
         <%= link_to designer.visible_name, user_path(designer) %>
       </div>
     </div>
 
     <% end %>
-      </div>
+  </div>
 
   </div>
 </main>
