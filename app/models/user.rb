@@ -27,6 +27,11 @@ class User < ActiveRecord::Base
     0
   end
 
+  def text_rating
+    avg_star_rating == 0 ? "Not yet rated" : "Rated #{avg_star_rating} Stars"
+  end
+
+
   def has_favorited(project)
     favorites.any?{|fave| fave.project_id == project.id}
   end
