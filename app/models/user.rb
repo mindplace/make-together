@@ -35,10 +35,6 @@ class User < ActiveRecord::Base
     favorites.any?{|fave| fave.project_id == project.id}
   end
 
-  def has_flagged?(project)
-    flagged_projects.include?(project)
-  end
-
   def admin?
     role == "admin"
   end

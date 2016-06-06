@@ -47,13 +47,7 @@ class ProjectsController < ApplicationController
   def show
   end
 
-  def flag
-     @project = Project.find_by(id: params[:project_id])
-     @project.update_attributes(flagged: true)
-     current_user.flagged_projects << @project
-     redirect_to projects_path
 
-  end
 
   private
 
