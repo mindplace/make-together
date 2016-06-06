@@ -31,13 +31,15 @@ class User < ActiveRecord::Base
     avg_star_rating == 0 ? "Not yet rated" : "Rated #{avg_star_rating} Stars"
   end
 
-
   def has_favorited(project)
     favorites.any?{|fave| fave.project_id == project.id}
   end
 
-def has_flagged?(project)
-  flagged_projects.include?(project)
-end
+  def has_flagged?(project)
+    flagged_projects.include?(project)
+  end
 
+  def admin?
+    role == "admin"
+  end
 end

@@ -30,6 +30,9 @@ class UsersController < ApplicationController
     @review = Review.new
   end
 
+  def admin
+  end
+
   def edit
     if !logged_in? || @user != current_user
       redirect_to root_path

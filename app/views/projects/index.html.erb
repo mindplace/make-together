@@ -1,60 +1,66 @@
-<%= render partial: 'shared/navbar_opaque' %>
+<div class="projects-index">
+<%= render partial: 'shared/navbar_transparent' %>
 
 <main class="Site-content">
-<div class="wrapper">
-<div class="row">
-<div class="col-md-2 left">
-  <div class="container navigation">
-    <div class="col-md-3 left">
+<div class="container panel-body">
+<div class="col-md-12 container-fluid row">
+  <div class="container col-md-3">
+    <div class="panel panel-default panel-body">
+      <h3>Search by tags</h3>
       <form class="input-group" action="/search" method="post">
-        <input type="text" name="body" class="form-control" placeholder="Search tagged posts...">
+        <input type="text" name="body" class="form-control" placeholder="Tags...">
         <span class="input-group-btn">
           <button class="btn btn-default" type="button">Go!</button>
         </span>
       </form>
     </div>
-    <h2>Recent</h2>
-    <h2>Expiring</h2>
-    <h2>Developers</h2>
-    <h2>Designers</h2>
-  </ul>
-</div>
-</div>
 
-<div class="col-md-8">
-  <div class="row">
-    <div class="col-md-12">
-      <div class = "most-recent-project">
-       <h1 class = "title">Most Recent Projects</h1>
-         <% most_recent.each do |project| %>
-          <%= render partial: "index_show", locals: { project: project } %>
-         <%end%>
-      </div>
-
-      <div class = "projects-by-developers">
-       <h1 class = "title">Projects Posted By Developers</h1>
-         <% posted_by_developers.each do |project| %>
-           <%= render partial: "index_show", locals: { project: project } %>
-         <% end %>
-      </div>
-
-     <h1 class = "title">Projects Posted By Designers</h1>
-       <div class = "projects-by-designers">
-
-         <% posted_by_designers.each do |project| %>
-           <%= render partial: "index_show", locals: { project: project } %>
-         <% end %>
-      </div>
-
-       <h1 class = "title">Projects Expiring Soon</h1>
-        <div class = "expiring-soon">
-           <% expiring_soon.each do |project| %>
-             <%= render partial: "index_show", locals: { project: project } %>
-             <% end %>
-        </div>
-      </div>
+    <div class="panel panel-default panel-body">
+      <h3><a href="#recent">Recent</a></h3>
+      <h3><a href="#expiring">Expiring</a></h3>
+      <h3><a href="#developers">Developers</a></h3>
+      <h3><a href="#designers">Designers</a></h3>
     </div>
   </div>
-</div>
-</div>
+
+  <div class="row container-fluid col-md-9">
+    <div id="recent">
+      <div class="panel panel-default">
+        <h1 class="title panel-body">Most Recent Projects</h1>
+      </div>
+       <% most_recent.each do |project| %>
+        <%= render partial: "index_show", locals: { project: project } %>
+       <%end%>
+     </div>
+
+     <div id="developers">
+       <div class="panel panel-default">
+         <h1 class = "title">Projects Posted By Developers</h1>
+       </div>
+       <% posted_by_developers.each do |project| %>
+         <%= render partial: "index_show", locals: { project: project } %>
+       <% end %>
+     </div>
+
+     <div id="designers">
+       <div class="panel panel-default">
+         <h1 class = "title">Projects Posted By Designers</h1>
+       </div>
+       <% posted_by_designers.each do |project| %>
+         <%= render partial: "index_show", locals: { project: project } %>
+       <% end %>
+     </div>
+
+     <div id="expiring">
+       <div class="panel panel-default">
+         <h1 class = "title">Projects Expiring Soon</h1>
+       </div>
+       <% expiring_soon.each do |project| %>
+         <%= render partial: "index_show", locals: { project: project } %>
+        <% end %>
+     </div>
+   </div>
+ </div>
+ </div>
 </main>
+</div>
