@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'omniauth#github'
 
   # Dribbble
-  get '/users/dribbble',          to: 'omniauth#passthru', as: "user_dribbble_authorize"
+  # get '/users/dribbble',          to: 'omniauth#passthru', as: "user_dribbble_authorize"
   get '/users/dribbble_request',  to: 'omniauth#dribbble_oauth_request', as: "user_dribbble_oauth_request"
   get '/users/auth/dribbble/callback', to: 'omniauth#passthru', as: "user_dribbble_callback"
+
+  post '/omniauth/password', to: 'omniauth#password', as: "omniauth_set_password"
 
   get 'users/conversations/:id', to: 'conversations#show'
   get '/users/mail_conversations', to: 'conversations#inbox', as: 'inbox'
