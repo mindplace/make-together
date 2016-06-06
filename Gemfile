@@ -26,6 +26,7 @@ gem 'omniauth-github'
 
 gem 'private_pub'
 gem 'thin'
+gem 'jquery-smooth-scroll-rails', '~> 0.0.5'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -54,3 +55,5 @@ group :production do
   gem 'puma'
   gem 'rails_12factor'
 end
+
+
