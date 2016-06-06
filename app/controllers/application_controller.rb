@@ -15,12 +15,8 @@ class ApplicationController < ActionController::Base
   def index
   end
 
-  def contact
-  end
-
-  def report_abuse
-  end
-
+  
   def creators
+    
   end
 end

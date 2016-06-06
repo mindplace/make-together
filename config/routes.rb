@@ -26,13 +26,11 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-<<<<<<< HEAD
+
   resources :reports, only: [:new, :create]
 
-  get '/search', to: 'tags#show', as: "search"
-=======
   post '/search', to: 'tags#show', as: "search"
->>>>>>> master
+
 
   resources :users
   resources :projects
