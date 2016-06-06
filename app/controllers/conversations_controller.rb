@@ -1,9 +1,11 @@
 class ConversationsController < ApplicationController
 
   def create
+    binding.pry
     if params[:conversation]
       @conversations = current_user.conversations.where(conversation_type: "inbox_message")
       @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:recipient_id])
+
       if @conversation.first && @conversation.where(conversation_type: "inbox_message").first
         @conversation = @conversation.where(conversation_type: "inbox_message").first
       else
@@ -20,6 +22,7 @@ class ConversationsController < ApplicationController
       else
         @conversation = Conversation.create!( conversation_params)
         render json: { conversation_id: @conversation.id }
+
       end
     end
   end

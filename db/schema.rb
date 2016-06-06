@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20160606161849) do
+=======
 ActiveRecord::Schema.define(version: 20160606144958) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +63,13 @@ ActiveRecord::Schema.define(version: 20160606144958) do
     t.integer  "user_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.text     "body",       null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -121,6 +132,7 @@ ActiveRecord::Schema.define(version: 20160606144958) do
   add_foreign_key "flagged_projects", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "reports", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "skill_users", "skills"
   add_foreign_key "skill_users", "users"

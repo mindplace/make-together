@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
+  has_secure_password
   has_many :projects
   has_many :skill_users
   has_many :skills, through: :skill_users
   has_many :favorites
   has_many :reviews
+  has_many :reports
   has_many :conversations, foreign_key: :sender_id
   has_many :flagged_projects, class_name: "Project"
-  has_secure_password
   validates :email, :password, presence: true
   validates :email, uniqueness: true
   validate :is_valid_email, on: :create
