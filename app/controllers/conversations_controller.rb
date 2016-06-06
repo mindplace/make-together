@@ -1,7 +1,9 @@
 class ConversationsController < ApplicationController
 
+  # rackup private_pub.ru -s thin -E production
+
   def create
-    binding.pry
+
     if params[:conversation]
       @conversations = current_user.conversations.where(conversation_type: "inbox_message")
       @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:recipient_id])
