@@ -1,0 +1,20 @@
+<%= render partial: 'shared/navbar_opaque' %>
+<main class="Site-content">
+  <div class="container">
+
+    <h2>Developers</h2>
+    <div class="row">
+    <% @developers.each do |developer| %>
+     <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img style= "width:200px; height: 200px" src= <%= developer.img %> class = "user-img"/>
+        <div class="caption">
+        <p><%= link_to developer.visible_name, user_path(developer) %></p>
+        <p><%= link_to developer.bio %> </p>
+      </div>
+    </div>
+  </div>
+    <% end %>
+    </div>
+  </div>
+</main>

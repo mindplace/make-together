@@ -2,27 +2,42 @@
 
 <main class="Site-content">
 
-<div class="container">
+<div class="container-fluid">
   <%if current_user && @project.user.id === current_user.id %>
     <%=link_to 'edit | ', edit_project_path(@project) %>
   <%end%>
 
-<%=link_to 'back to projects', projects_path%>
-<div id="project-header">
-  <h1><%= @project.title.capitalize %></h1>
+<div class="container panel-body"
+<div class="row">
+  <div class="panel panel-default panel-body col-md-3">
   <img src= <%=@project.img%> class="img-responsive project-img">
-  <h3>Status: <%= @project.tagline%></h3>
 </div>
 
-<div id="project-data">
- <h3>posted by: <%=@project.user.visible_name %></h3>
- <h3>expires: <%=@project.expiration%></h3>
- <h3>likes: <%=@project.favorites.length%></h3>
+<div class="row container-fluid">
+    <div class="panel-body col-md-8">
+  <h1><%= @project.title.capitalize %></h1>
+
+  <h3><%= @project.tagline%></h3>
+<!-- </div>
+</div>
+<div class="panel-body col-md-7"> -->
+ <h4>Created by: <%= link_to @project.user.visible_name, user_path(@project.user) %></h4>
+ <p>Expires: <%=@project.date%></p>
+ <h4> <%=@project.favorites.length%>
+ <% if current_user && current_user.has_favorited(@project) %>
+                  <%= link_to image_tag("heart-red.png"), delete_favorite_path(project_id: @project.id, user_id: current_user.id) %>
+                <% elsif current_user %>
+                  <%= link_to image_tag("heart-grey.png"), new_favorite_path(project_id: @project.id, user_id: current_user.id) %>
+                <% end %>
+              </h4>
+</div>
 </div>
 
-<div id="project-description">
+
+  <div class="panel panel-default panel-body col-md-11">
   <h4>Description:</h4>
   <p><%=@project.description%></p>
+  </div>
 </div>
 
 <div id="tags">
