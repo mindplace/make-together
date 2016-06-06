@@ -15,7 +15,6 @@
       <h3><%= link_to @user.role.capitalize, users_path %></h3>
       <% if logged_in? && @user == current_user %>
         <h3><%= link_to "Edit Profile", edit_user_path(@user) %></h3>
-        <p><%=link_to 'Favorited projects', favorites_path %></p>
       <% elsif logged_in? && @user != current_user %>
         <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id, "data-im" => "chat" %>
 
