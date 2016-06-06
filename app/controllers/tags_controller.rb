@@ -15,6 +15,7 @@ class TagsController < ApplicationController
     else
       @tag = Tag.find_by(id: params[:id])
       @projects = @tag.projects
+      @not_ajax = true
     end
   end
 
