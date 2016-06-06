@@ -7,6 +7,10 @@
   flex: 1;
 }
 body {
+background-image: image-url('white-devs-bg.jpg');
+background-size: cover;
+
+background-attachment: fixed;
 
 }
 .navbar-default {
@@ -21,7 +25,7 @@ footer {
     color: #666;
     padding: 19px 0 30px 0;
     border-top: 1px solid #d3d3d3;
-    background-color: white;
+    background-image: image-url('bg-footer.jpg')
 }
 footer a {
     color: #999;
@@ -48,4 +52,13 @@ footer ul li {
 
 .main a{
   color: #fff;
+}
+
+.project-category-1{
+  color: #E86810;
+  text-align:center;
+  border: 5px solid #E86810;
+  font-size: 1.5em;
+  width:auto;
+  padding:2%;
 }
