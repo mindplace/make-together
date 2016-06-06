@@ -1,21 +1,4 @@
 class ConversationsController < ApplicationController
-  layout false
-
-  # def create
-  #   if Conversation.between(params[:sender_id],params[:recipient_id]).present?
-  #     @conversation = Conversation.between(params[:sender_id],params[:recipient_id])
-  #     if !@conversation.inbox_message
-  #       @conversation = Conversation.create!(conversation_params)
-  #     end
-  #   end
-  #   if params[:inbox_message]
-  #     @conversation.update_attributes(inbox_message: true)
-  #     @conversations = current_user.conversations.where(inbox_message: true)
-  #     render :inbox
-  #   else
-  #     render json: { conversation_id: @conversation.id }
-  #   end
-  # end
 
   def create
     if params[:conversation]
