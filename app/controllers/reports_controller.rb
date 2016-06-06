@@ -7,9 +7,8 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params.merge(user_id: current_user.id))
     if @report.save
-      redirect_to :root
+      render 'thank_you'
     else
-      @errors = @report.errors
       render :new
     end
   end

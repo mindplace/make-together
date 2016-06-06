@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def admin
+    @reports = Report.all
   end
 
   def edit

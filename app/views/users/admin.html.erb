@@ -3,5 +3,11 @@
   <div class="container">
     <h1>Admin Dashboard</h1>
     <p>Welcome, <%= current_user.first_name %></p>
+
+    <% @report.each do |report| %>
+      <p><%= report.body %></p>
+
+
+    <% end %>
   </div>
 </main>
