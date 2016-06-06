@@ -12,3 +12,23 @@
   background-position: center;
   background-attachment: fixed;
 }
+.project-white-box {
+  border: 6px solid white;
+  border-radius: 0;
+  color: white;
+  background-color: rgba(211, 211, 211, 0.2);
+}
+.project-white-box a {
+  color: white;
+}
+.project-white-box a:hover {
+  color: black;
+}
+.strong-white {
+  background-color: rgba(211, 211, 211, 0.7);
+  color: black;
+}
+.white-box {
+  border: 6px solid white;
+  border-radius: 0;
+}

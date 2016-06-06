@@ -19,7 +19,13 @@
       <% end %>
       <% if logged_in? && @user == current_user %>
         <h3><%= link_to "Edit Profile", edit_user_path(@user) %></h3>
-      <% elsif logged_in? && @user != current_user %>
+      <% end %>
+    </div>
+
+    <div class="panel-body col-md-4">
+      <h4><%= @user.projects.length %> Current Projects</h4>
+      <h4><%= @user.text_rating %></h4>
+      <% if logged_in? && @user != current_user %>
         <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id, "data-im" => "chat" %>
 
         <%= form_for(@conversation) do |f| %>
@@ -29,16 +35,6 @@
         <%= f.submit "Send Message", class: "btn btn-success btn-xs start-mail-conversation"%>
         <% end %>
       <% end %>
-    </div>
-
-    <div class="panel-body col-md-4">
-      <% if logged_in? && @user != current_user %>
-        <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id %>
-
-        <%= link_to "Send Message", {action: 'create', controller: 'conversations', sender_id: current_user.id, recipient_id: @user.id, conversation_type: "inbox_message" }, method: :post, class: "btn btn-success btn-xs start-mail-conversation" %>
-      <% end %>
-      <h4><%= @user.projects.length %> Current Projects</h4>
-      <h4><%= @user.text_rating %></h4>
     </div>
 
     <div class="panel-body col-md-8">
@@ -98,8 +94,14 @@
       </div>
     <%end%>
 
-    <h3>Leave a review</h3>
-    <%= render partial: "/reviews/form" %>
+    <% if current_user && current_user != @user %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Leave a review</h3>
+          <%= render partial: "/reviews/form", locals: { review: @review } %>
+        </div>
+      </div>
+    <% end %>
 </div>
 </div>
 </div>
