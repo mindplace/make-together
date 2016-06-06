@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :reviews
   has_many :conversations, foreign_key: :sender_id
-
+  has_many :flagged_projects, class_name: "Project"
   has_secure_password
   validates :email, :password, presence: true
   validates :email, uniqueness: true
@@ -35,4 +35,9 @@ class User < ActiveRecord::Base
   def has_favorited(project)
     favorites.any?{|fave| fave.project_id == project.id}
   end
+
+def has_flagged?(project)
+  flagged_projects.include?(project)
+end
+
 end

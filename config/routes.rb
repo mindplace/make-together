@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post '/users/mail_conversations', to: 'conversations#inbox', as: 'inbox'
   get '/users/inbox_conversations/:id', to: 'conversations#inbox_show', as: 'inbox_show'
   post '/users/inbox_conversations/:id', to: 'messages#create', as: 'inbox_message'
+  get "projects/flag" => "projects#flag", :as => "projects/flag"
 
   resources :conversations do
     resources :messages
