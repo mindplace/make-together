@@ -1,10 +1,9 @@
-<%= render partial: 'shared/navbar_opaque' %>
-<main class = "Site-content">
-  <div class = "container">
-    <h1>#<%=@tag.body%></h1>
-    <ul><% @tag.projects.each do |project| %>
-      <li><%= link_to project.title, project_path(project) %><br>
-      </ul>
-    <% end %>
-  </div>
+<main class= "Site-content"
+<div class= "container"
+  <h1>#<%=@tag.body%></h1>
+  <% @projects.each do |project| %>
+    <%= render "projects/index_show", project: project %>
+  <% end %>
+</div>
 </main>
+

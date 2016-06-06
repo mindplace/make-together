@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  get '/search', to: 'tags#show', as: "search"
+  post '/search', to: 'tags#show', as: "search"
 
   resources :users
   resources :projects
