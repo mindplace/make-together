@@ -27,6 +27,7 @@ gem 'omniauth-github'
 gem 'private_pub'
 gem 'thin'
 
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -54,3 +55,5 @@ group :production do
   gem 'puma'
   gem 'rails_12factor'
 end
+
+

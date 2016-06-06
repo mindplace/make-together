@@ -29,51 +29,90 @@ class OmniauthController < ApplicationController
       redirect_to new_user_url
     else
       user_data = JSON.parse(response)
-      @user = User.find_by(first_name: user_data["name"].split[0], last_name: user_data["name"].split[1],
-                            provider: "dribbble", projects_url: user_data["projects_url"])
 
-      if @user
-        session[:user_id] = @user.id
-        redirect_to root_path
-      else
-        @user = User.new(first_name: user_data["name"].split[0], last_name: user_data["name"].split[1],role: "designer", email: "#{user_data["name"].split[0]}@#{user_data["name"].split[1]}.you",
-        password: ENV["PASSWORD"], projects_url: user_data["projects_url"], img: user_data["avatar_url"],
-        bio: user_data["bio"], provider: "dribbble", uid:"")
+      # this is a risk because of potential users sharing names
+      # can't figure out how to pass params to and back from Dribbble
+      @neither_user = User.find_by(first_name: user_data["name"].split[0], last_name: user_data["name"].split[1], github: nil, dribbble: nil)
 
-        if @user.save
-          session[:user_id] = @user.id
-          redirect_to root_path
+      @both_user = User.find_by(first_name: user_data["name"].split[0], last_name: user_data["name"].split[1], dribbble: "dribbble", dribbble_url: user_data["html_url"], github: "github")
+      @github_user = User.find_by(first_name: user_data["name"].split[0],
+                        last_name: user_data["name"].split[1], github: "github")
+      @dribbble_user = User.find_by(dribbble_uid: user_data["id"])
+
+      if @both_user || @dribbble_user
+        if @dribbble_user
+          session[:user_id] = @dribbble_user.id
         else
-          @errors.push("Your Dribbble credentials didn't authenticate you.")
-          render 'new'
+          session[:user_id] = @both_user.id
         end
+        redirect_to root_path
+
+      elsif @github_user
+        @github_user.update_attributes(dribbble: "dribbble", dribbble_uid: user_data["id"], dribbble_url: user_data["html_url"])
+        redirect_to user_path(current_user)
+      else
+        @user = User.new(first_name: user_data["name"].split[0], last_name: user_data["name"].split[1],role: "designer", dribbble_url: user_data["html_url"], img: user_data["avatar_url"],bio: user_data["bio"], dribbble: "dribbble", dribbble_uid: user_data["id"])
+        render 'choose_email_password'
       end
     end
   end
 
   def github
     user = request.env["omniauth.auth"]["info"]
-    @user = User.find_by(email: user["email"])
 
-    # needs to be stronger and handle things like changing emails
-    
-    if @user
-      session[:user_id] = @user.id
-      redirect_to root_path
-    else
-      @user = User.new(first_name: user["name"].split[0], last_name: user["name"].split[1], role: "developer",
-        email: user["email"], password: ENV["PASSWORD"],
-        provider: "github", uid: request.env["omniauth.auth"]["uid"],
-        projects_url: request.env["omniauth.auth"]["extra"]["raw_info"]["repos_url"],
-        bio: request.env["omniauth.auth"]["extra"]["bio"], img: user["image"])
+    @neither_user = User.find_by(id: request.env["omniauth.params"]["user_id"], github: nil, dribbble: nil)
+    @both_user = User.find_by(dribbble: "dribbble", github: "github", github_uid: request.env["omniauth.auth"]["uid"])
+    @github_user = User.find_by(github_uid: request.env["omniauth.auth"]["uid"])
+    @dribbble_user = User.find_by(first_name: user["name"].split[0], last_name: user["name"].split[1], dribbble: "dribbble")
 
-      if @user.save
-        session[:user_id] = @user.id
-        redirect_to root_path
+    binding.pry
+
+    if @both_user || @github_user
+      if @github_user
+        session[:user_id] = @github_user.id
       else
-        @errors.push("Your Github credentials didn't authenticate you.")
-        render 'new'
+        session[:user_id] = @both_user.id
       end
+      redirect_to user_path(current_user)
+
+    elsif @dribbble_user || @neither_user
+      if @dribbble_user
+        @dribbble_user.update_attributes(github_url: request.env["omniauth.auth"]["info"]["urls"]["GitHub"], github: "github", github_uid: request.env["omniauth.auth"]["uid"], img: user["image"])
+        session[:user_id] = @dribbble_user.id
+        redirect_to user_path(current_user)
+      else
+        @neither_user.update_attributes(github_url: request.env["omniauth.auth"]["info"]["urls"]["GitHub"], github: "github", github_uid: request.env["omniauth.auth"]["uid"], img: user["image"])
+        session[:user_id] = @neither_user.id
+        redirect_to user_path(current_user)
+      end
+
+    else
+      @user = User.new(first_name: user["name"].split[0], last_name: user["name"].split[1], role: "developer", email: user["email"], github: "github", github_uid: request.env["omniauth.auth"]["uid"],
+        github_url: request.env["omniauth.auth"]["info"]["urls"]["GitHub"],
+        bio: request.env["omniauth.auth"]["extra"]["bio"], img: user["image"])
+      render 'choose_email_password'
+    end
+  end
+
+  def password
+    @user = User.new(user_params)
+    @user.role = "developer" if @user.role != "designer" || @user.role != "developer"
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      render 'choose_email_password'
+    end
+  end
+
+  private
+
+  def user_params
+    new_params = params.require(:user).permit(:email, :password)
+    if params[:github]
+      new_params.merge(params.permit(:role, :github_uid, :github, :bio, :img, :last_name, :first_name, :github_url))
+    else
+      new_params.merge(params.permit(:role, :dribbble_uid, :dribbble, :bio, :img, :last_name, :first_name, :dribbble_url))
     end
   end
 end

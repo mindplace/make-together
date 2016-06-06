@@ -8,9 +8,11 @@ class User < ActiveRecord::Base
   has_many :reports
   has_many :conversations, foreign_key: :sender_id
   has_many :flagged_projects, class_name: "Project"
-  validates :email, :password, presence: true
-  validates :email, uniqueness: true
+  has_secure_password
+
   validate :is_valid_email, on: :create
+  validates :email, uniqueness: true
+  validates :email, :password, presence: true, on: :create
 
   def is_valid_email
     unless email.match(/\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i)

@@ -5,8 +5,10 @@
 <main class = "Site-content">
 
   <div class="container panel-body">
+
         <% @favorites.each do |favorite| %> 
         <%= render partial: "/projects/index_show", locals: { project: favorite.project } %>
+
         <% end %>
       </div>
    
