@@ -30,10 +30,3 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:body)
   end
 end
-
-
-        # <%= form_for @conversation, url: users_mail_conversations_path do |f| %>
-        # <%= f.hidden_field :sender_id, value: current_user.id %>
-        # <%= f.hidden_field :recipient_id, value: @user.id %>
-        #   %= f.submit "Send" %>
-        # <% end %>

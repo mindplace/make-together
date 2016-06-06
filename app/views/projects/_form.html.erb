@@ -1,38 +1,43 @@
 <main class = "site-content">
   <div class = "container">
-  <div class ="center-block">
-<%= form_for @project, :html =>{:class =>"form-horizontal center"} do |f| %>
-<%= render partial: 'shared/error_messages', locals: { object: @project } %>
+    <div id= "new-project-div" class ="center-block">
+      <h1 class = "title">Post a New Project</h1>
 
-<div class="form-group">
- <%= f.label :img %>
- <%= f.text_field :img, class: "form-control" %><br>
-</div>
+      <%= form_for @project, :html =>{:class =>"form-horizontal center"} do |f| %>
+      <%= render partial: 'shared/error_messages', locals: { object: @project } %>
 
-<div class="form-group">
- <%= f.text_field :title, autofocus: true, class: "form-control",  placeholder: "project title" %>
-</div>
+      <div class="form-group">
+       <%= f.text_field :img, class: "form-control", placeholder:
+       "image url" %>
+      </div>
 
-<div class="form-group">
- <%= f.text_field :tagline, class: "form-control",  placeholder: "add a tagline..." %>
-</div>
-<div class="form-group">
- <%=f.text_area :description, class: "form-control",  placeholder: "description of project" %>
-</div>
+      <div class="form-group">
+       <%= f.text_field :title, autofocus: true, class: "form-control",  placeholder: "project title" %>
+      </div>
 
-<div class="form-group">
- <%= f.label :expiration %>
- <%= f.date_field :expiration, class: "form-control" %><br>
-</div>
-<div class="form-group">
- <%= f.label :tags, "Enter tags as a comma separated list"%><br>
- <%= f.text_field :tags, autofocus: true, class: "form-control", value: format_tags(@project) %>
-</div>
+      <div class="form-group">
+       <%= f.text_field :tagline, class: "form-control",  placeholder: "add a tagline..." %>
+      </div>
 
-<div class="form-group">
- <%= f.hidden_field :user_id, value: current_user.id %>
- <%= f.submit "add project", class: 'btn btn-primary btn-lg'%>
-<%end%>
-</div>
-</div>
+      <div class="form-group">
+       <%=f.text_area :description, class: "form-control",  placeholder: "description of project" %>
+      </div>
+
+      <div class="form-group">
+       <%= f.label :expiration %>
+       <%= f.date_field :expiration, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+       <%= f.label :tags, "Enter tags as a comma separated list"%><br>
+       <%= f.text_field :tags, autofocus: true, class: "form-control", value: format_tags(@project) %>
+      </div>
+
+      <div class="form-group">
+       <%= f.hidden_field :user_id, value: current_user.id %>
+       <%= f.submit "add project", class: 'btn btn-primary btn-lg'%>
+      <%end%>
+      </div>
+    </div>
+  </div>
 </main>

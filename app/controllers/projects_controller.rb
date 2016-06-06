@@ -7,8 +7,11 @@ class ProjectsController < ApplicationController
   end
 
   def new
-     if logged_in?
+    if logged_in?
         @project = Project.new
+        if request.xhr?
+          render :_form, layout: false
+        end
      else
        redirect_to root_path
      end
@@ -20,10 +23,16 @@ class ProjectsController < ApplicationController
     Tag.build_from_string(params[:project][:tags]).each do |tag|
          @project.tags << tag unless @project.tags.include?(tag)
        end
-    if @project.save
+    if request.xhr?
+      if @project.save
+        render :_index_show, layout: false, locals: {project: @project}
+      else
+        render :_form, layout: false, locals: {project: @project, form: true}
+      end
+    elsif @project.save
       redirect_to projects_path
     else
-      render 'new'
+      render :_form, layout: false, locals: {project: @project}
     end
   end
 

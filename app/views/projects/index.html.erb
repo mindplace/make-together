@@ -6,6 +6,9 @@
         <div class="container col-md-3">
           <%= render partial: "tag_search" %>
           <div class="panel panel-default panel-body">
+            <% if logged_in? %>
+              <h3 id = "new-project-link" class ="#new"><%= link_to "New Project", new_project_path %></h3>
+            <% end %>
             <h3 class= "#recent"><a class = "project-sort-button" href= "#">Recent</a></h3>
             <h3 class ="#expiring"><a class = "project-sort-button" href= "#">Expiring</a></h3>
             <h3 class = "#developers"><a class = "project-sort-button developers" href= "#">Developers</a></h3>

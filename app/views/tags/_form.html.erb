@@ -1,7 +1,0 @@
-<%= form_for @tag do |f| %>
- <%= f.label :body, "Enter tags as a comma separated list"%><br>
- <%= f.text_field :body, autofocus: true %>
-
- <%= f.hidden_field :project_id, value: project.id %>
- <%= f.submit %>
-<%end%>
