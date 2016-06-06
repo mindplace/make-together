@@ -17,10 +17,6 @@
   <%= f.label :email %>
   <%=f.text_field :email, class: 'form-control' %>
 
-  <%= f.label :password %><br />
-  <%= f.password_field :password, class: 'form-control' %>
-
-
   <div class="field">
     <%= f.label 'I am a...' %>
     <%= radio_button_tag :role, 'developer', :checked => true %>
@@ -28,6 +24,13 @@
     <%= radio_button_tag :role, 'designer' %>
     <%= label_tag :role, 'Designer' %>
   </div>
+
+  <h2>If you want to change your password: </h2>
+  <%= f.label :old_password %><br />
+  <%= f.password_field :password, class: 'form-control' %>
+
+  <%= f.label :new_password %><br />
+  <%= f.password_field :new_password, class: 'form-control' %>
 
 
   <%= f.submit "update", class: 'btn btn-primary btn-lg'%>

@@ -117,9 +117,12 @@ ActiveRecord::Schema.define(version: 20160606161849) do
     t.string   "role"
     t.text     "bio"
     t.string   "img"
-    t.string   "projects_url"
-    t.string   "provider"
-    t.string   "uid"
+    t.string   "github"
+    t.string   "github_uid"
+    t.string   "github_url"
+    t.string   "dribbble"
+    t.string   "dribbble_uid"
+    t.string   "dribbble_url"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

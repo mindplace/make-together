@@ -44,25 +44,38 @@
 </div>
 
 <div class="row">
+
   <div class="panel panel-default col-md-3">
     <div class="panel-body">
       <div class="row">
-        <div class="col-md-8">
-          <h3>Skills</h3>
-        </div>
-        <div class="col-md-1 panel-body">
-          <% if logged_in? && @user == current_user %>
-            <h4><%= link_to "add", new_skill_path %></h4>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-            <% @user.skills.each do |skill| %>
-              <p><%= link_to skill.body, skill_path(skill)%></p>
+        <% if current_user && current_user == @user %>
+          <div class="col-md-12">
+            <% if @user.github %>
+              <h4>Github: <%= link_to "Projects", @user.github_url %></h4>
+            <% elsif @user.github.nil? %>
+              <h4>Github: <%= link_to "Connect", '/auth/github' %></h4>
             <% end %>
-        </div>
+          </div>
+          <div class="col-md-12">
+            <% if @user.dribbble %>
+              <h4>Dribbble: <%= link_to "Projects", @user.dribbble_url %></h4>
+            <% elsif @user.dribbble.nil? %>
+              <h4>Dribbble: <%= link_to "Connect", user_dribbble_oauth_request_path %></h4>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if (current_user && current_user != @user && @user.github) || (!logged_in? && @user.github)%>
+          <div class="col-md-12">
+              <h4>Github: <%= link_to "Projects", @user.github_url %></h4>
+          </div>
+        <% end %>
+
+        <% if (current_user && current_user != @user && @user.dribbble) || (!logged_in? && @user.dribbble)%>
+          <div class="col-md-12">
+            <h4>Dribbble: <%= link_to "Projects", @user.dribbble_url %></h4>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -104,6 +117,32 @@
     <% end %>
 </div>
 </div>
+
+<div class="row">
+  <div class="panel panel-default col-md-3">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>Skills</h3>
+        </div>
+        <div class="col-md-1 panel-body">
+          <% if logged_in? && @user == current_user %>
+            <h4><%= link_to "add", new_skill_path %></h4>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+            <% @user.skills.each do |skill| %>
+              <p><%= link_to skill.body, skill_path(skill)%></p>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
 
 </main>
