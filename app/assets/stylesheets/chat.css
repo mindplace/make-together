@@ -12,10 +12,11 @@
 }
 
 .chatboxhead {
-    background: #666;
+    background: #5084c4;
     color: white;
-    padding: 0.5rem;
-    overflow: hidden;
+    padding: 0.5em;
+    overflow: visible;
+    width:25%;
 
     border-right: 1px solid rgba(85, 85, 85, 0.87);
     border-left: 1px solid rgba(85, 85, 85, 0.87);
@@ -42,7 +43,7 @@
     border-left: 1px solid #cccccc;
     border-right: 1px solid #cccccc;
     border-bottom: 1px solid #eeeeee;
-    background: #e5e5e5;
+    background: #a7c7e8;
     line-height: 1.3em;
     list-style: none;
 }

@@ -15,4 +15,3 @@
 //= require chat
 //= require private_pub
 //= require_tree .
-//= require jquery-smooth-scroll
