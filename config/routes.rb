@@ -19,15 +19,20 @@ Rails.application.routes.draw do
   get '/users/mail_conversations', to: 'conversations#inbox', as: 'inbox'
   get '/users/inbox_conversations/:id', to: 'conversations#inbox_messages_show', as: 'inbox_messages_show'
   post '/users/inbox_conversations/:id', to: 'messages#create', as: 'inbox_message'
-  get "projects/flag" => "projects#flag", :as => "projects/flag"
+
+
 
   resources :conversations do
     resources :messages
   end
 
+<<<<<<< HEAD
   resources :reports, only: [:new, :create]
 
   get '/search', to: 'tags#show', as: "search"
+=======
+  post '/search', to: 'tags#show', as: "search"
+>>>>>>> master
 
   resources :users
   resources :projects
@@ -39,6 +44,12 @@ Rails.application.routes.draw do
   get 'favorite', to: "favorites#show", as: "favorite"
   get 'favorites/new', to: "favorites#create", as: "new_favorite"
 
+  get 'flagged/new', to: "flagged_projects#create", as: "new_flagged_project"
+  get 'flagged', to: "flagged_projects#show", as: "flagged"
+  get 'flagged/delete', to: "flagged_projects#destroy", as: "delete_flagged_project"
+
+  # admin
+  get '/admin', to: "users#admin", as: "admin"
 
   # static pages
   get '/contact', to: "application#contact", as: "contact"
