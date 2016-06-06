@@ -1,4 +1,4 @@
 <h1>INBOX</h1>
 <% @conversations.each do |conversation| %>
-  <%= link_to conversation.recipient.visible_name, inbox_show_path(conversation)  %>
+  <%= link_to conversation.recipient.visible_name, inbox_messages_show_path(conversation)  %>
   <% end %>

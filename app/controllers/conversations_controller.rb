@@ -45,12 +45,17 @@ class ConversationsController < ApplicationController
     @message = Message.new
   end
 
-  def inbox_show
+  def inbox_messages_show
     @conversation = Conversation.find_or_create_by(id: params[:id])
     @reciever = interlocutor(@conversation)
     @messages = @conversation.messages
     @message = Message.new
     render :inbox_show
+  end
+
+  def inbox
+    @conversations = current_user.conversations.where(conversation_type: 'inbox_message')
+    render :inbox
   end
 
   private

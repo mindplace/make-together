@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
       @messages = @conversation.messages
       @reciever = @conversation.recipient
       if @message.save!
-        redirect_to inbox_show_path(@conversation)
+        redirect_to inbox_messages_show_path(@conversation)
       else
         @errors = @message.errors
         render '/conversations/inbox_show'
