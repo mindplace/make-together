@@ -6,10 +6,10 @@ class TagsController < ApplicationController
     if request.xhr?
       @tag = Tag.find_by(body: params[:body])
       @searched = params[:body]
-      @projects = @tag.projects
         if !@tag
           render "/projects/_no_results", layout: false
         else
+          @projects = @tag.projects
           render :show, layout: false
         end
     else
