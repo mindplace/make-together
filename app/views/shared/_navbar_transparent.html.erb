@@ -6,7 +6,7 @@
     </div>
 
     <ul class="nav navbar-nav">
-      <% if current_user.admin? %>
+      <% if current_user && current_user.admin? %>
       <li><%= link_to "Administration", admin_path %></li>
       <% end %>
       <li><%= link_to "Projects", projects_path %></li>
