@@ -13,6 +13,10 @@ class Project < ActiveRecord::Base
     expiration.strftime("%D")
   end
 
+  def is_flagged
+    FlaggedProject.find_by(project_id: id)
+  end
+
   private
 
   def set_expiration
@@ -26,4 +30,6 @@ class Project < ActiveRecord::Base
       self.tagline = "Seeking collaborators"
     end
   end
+
+
 end
