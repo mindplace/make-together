@@ -65,8 +65,6 @@ class OmniauthController < ApplicationController
     @github_user = User.find_by(github_uid: request.env["omniauth.auth"]["uid"])
     @dribbble_user = User.find_by(first_name: user["name"].split[0], last_name: user["name"].split[1], dribbble: "dribbble")
 
-    binding.pry
-
     if @both_user || @github_user
       if @github_user
         session[:user_id] = @github_user.id
