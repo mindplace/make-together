@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   get 'favorite', to: "favorites#show", as: "favorite"
   get 'favorites/new', to: "favorites#create", as: "new_favorite"
 
+  # admin
+  get '/admin', to: "users#admin", as: "admin"
 
   # static pages
   get '/contact', to: "application#contact", as: "contact"
