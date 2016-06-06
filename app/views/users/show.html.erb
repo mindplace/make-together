@@ -1,28 +1,27 @@
 <%= render partial: 'shared/navbar_transparent' %>
 
 <main class="Site-content">
-<div class="container">
-
 <div class="container panel-body">
-<div class="row">
-  <div class="panel panel-default col-md-3">
-    <div class="panel-body">
+
+<div class="col-md-12 container-fluid row">
+  <div class="col-md-3">
+    <div class="panel panel-default panel-body">
       <img src=<%= @user.img %> width="100%">
     </div>
   </div>
 
   <div class="row container-fluid">
-    <div class="panel panel-default col-md-5">
-      <div class="panel-body">
-        <h1><%= @user.visible_name %></h1>
-        <% if @user.role == "admin" %>
-          <h3><%= link_to "Developer", users_path %></h3>
-        <% else  %>
-          <h3><%= link_to @user.role.capitalize, users_path %></h3>
-        <% end %>
-        <% if logged_in? && @user == current_user %>
-          <h3><%= link_to "Edit Profile", edit_user_path(@user) %></h3>
-        <% end %>
+    <div class="col-md-5">
+      <div class="panel panel-default panel-body">
+          <h1><%= @user.visible_name %></h1>
+          <% if @user.role == "admin" %>
+            <h3><%= link_to "Developer", users_path %></h3>
+          <% else  %>
+            <h3><%= link_to @user.role.capitalize, users_path %></h3>
+          <% end %>
+          <% if logged_in? && @user == current_user %>
+            <h3><%= link_to "Edit Profile", edit_user_path(@user) %></h3>
+          <% end %>
       </div>
     </div>
 
@@ -43,8 +42,10 @@
       </div>
     </div>
 
-    <div class="panel-body col-md-8">
-      <p><%= @user.bio %></p>
+    <div class="row">
+      <div class="panel-body col-md-8">
+        <p><%= @user.bio %></p>
+      </div>
     </div>
   </div>
 </div>
