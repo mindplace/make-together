@@ -1,9 +1,11 @@
 <main class= "Site-content"
-<div class= "container"
-  <h1>#<%=@tag.body%></h1>
-  <% @projects.each do |project| %>
-    <%= render "projects/index_show", project: project %>
-  <% end %>
-</div>
+  <div class= "container">
+    <div class="panel panel-default panel-body sorted-projects">
+        <h1>Projects with #<%=@tag.body%></h1>
+        <% @projects.each do |project| %>
+          <%= render "projects/index_show", project: project %>
+        <% end %>
+      </div>
+  </div>
 </main>
 

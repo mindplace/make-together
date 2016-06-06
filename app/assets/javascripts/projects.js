@@ -2,7 +2,7 @@ $(document).ready(function(){
   $('.sorted-projects').hide();
   $('#recent').show();
   $('.project-sort-button').on("click", function(e){
-    clicked = $(e.target).attr('href');
+    clicked = $(e.target.parentElement).attr('class')
     $('.sorted-projects').hide();
     $(clicked).show();
   })
