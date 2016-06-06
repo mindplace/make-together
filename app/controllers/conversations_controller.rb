@@ -1,13 +1,9 @@
 class ConversationsController < ApplicationController
 
-  # rackup private_pub.ru -s thin -E production
-
   def create
-
     if params[:conversation]
-      @conversations = current_user.conversations.where(conversation_type: "inbox_message")
+      @conversations = current_user.conversations.where(conversation_type: "inbox_message").concat(Conversation.where(recipient_id: current_user.id))
       @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:recipient_id])
-
       if @conversation.first && @conversation.where(conversation_type: "inbox_message").first
         @conversation = @conversation.where(conversation_type: "inbox_message").first
       else
@@ -24,7 +20,6 @@ class ConversationsController < ApplicationController
       else
         @conversation = Conversation.create!( conversation_params)
         render json: { conversation_id: @conversation.id }
-
       end
     end
   end
@@ -41,12 +36,12 @@ class ConversationsController < ApplicationController
     @reciever = interlocutor(@conversation)
     @messages = @conversation.messages
     @message = Message.new
-    @conversations = current_user.conversations.where(conversation_type: 'inbox_message')
+    @conversations = current_user.conversations.where(conversation_type: "inbox_message").concat(Conversation.where(recipient_id: current_user.id))
     render :inbox
   end
 
   def inbox
-    @conversations = current_user.conversations.where(conversation_type: 'inbox_message')
+    @conversations = current_user.conversations.where(conversation_type: "inbox_message").concat(Conversation.where(recipient_id: current_user.id))
     render :inbox
   end
 

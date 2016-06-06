@@ -15,6 +15,7 @@
 
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
+        <li><%=link_to "My Projects", posted_path %></li>
         <li><%=link_to "Favorited Projects", favorite_path %></li>
         <li id="user"><%= link_to current_user.first_name, user_path(current_user) %></li>
         <li><%= link_to "Inbox", inbox_path %></li>
