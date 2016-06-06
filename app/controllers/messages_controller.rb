@@ -1,13 +1,25 @@
 class MessagesController < ApplicationController
+  layout false
 
   def create
-    @conversation = Conversation.find(params[:conversation_id])
-    @message = @conversation.messages.build(message_params)
-    @message.user_id = current_user.id
-    @message.save!
-    if @conversation.inbox_message
-      render '/conversations/inbox_show'
+    if params[:id]
+      @conversation = Conversation.find_by(id: params[:id])
+      @message = @conversation.messages.build(message_params)
+      @message.user_id = current_user.id
+      @messages = @conversation.messages
+      @reciever = @conversation.recipient
+      if @message.save!
+        redirect_to inbox_messages_show_path(@conversation)
+      else
+        @errors = @message.errors
+        render '/conversations/inbox_show'
+      end
     else
+      @conversation = Conversation.find(params[:conversation_id])
+      @message = @conversation.messages.build(message_params  )
+      @message.user_id = current_user.id
+      @message.save!
+
       @path = conversation_path(@conversation)
     end
   end

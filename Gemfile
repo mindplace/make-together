@@ -39,6 +39,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'faker'
+  gem 'byebug'
 end
 
 group :development do
