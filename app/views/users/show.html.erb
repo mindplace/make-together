@@ -52,7 +52,7 @@
 
 <div class="row">
   <div class="col-md-3">
-  <% if @user.github || @user.dribbble %>
+  <% if @user.github || @user.dribbble || current_user == @user %>
     <div class="panel panel-default panel-body">
       <% if current_user && current_user == @user %>
         <div class="col-md-12">

@@ -7,11 +7,10 @@
   flex: 1;
 }
 body {
-background-image: image-url('white-devs-bg.jpg');
-background-size: cover;
-
-background-attachment: fixed;
-
+  background-image: image-url('white-devs-bg.jpg');
+  background-attachment: fixed;
+  background-size: cover !important;
+  background-position: center;
 }
 .navbar-default {
   margin-bottom: 0;
@@ -22,17 +21,17 @@ background-attachment: fixed;
   margin: 0;
 }
 footer {
-    color: #666;
-    padding: 19px 0 30px 0;
-    border-top: 1px solid #d3d3d3;
-    background-image: image-url('bg-footer.jpg')
+  color: #666;
+  padding: 19px 0 30px 0;
+  border-top: 1px solid #d3d3d3;
+  background-color: white;
 }
 footer a {
-    color: #999;
+  color: #999;
 }
 footer a:hover {
-    color: #BB4F22;
-    text-decoration: none;
+  color: #BB4F22;
+  text-decoration: none;
 }
 footer ul {
   list-style: none;

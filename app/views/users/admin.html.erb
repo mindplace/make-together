@@ -1,12 +1,13 @@
 <%= render partial: 'shared/navbar_opaque' %>
 <main class="Site-content">
-  <div class="container">
+  <div class="container panel panel-body panel-default">
     <h1>Admin Dashboard</h1>
     <p>Welcome, <%= current_user.first_name %></p>
 
-    <% @report.each do |report| %>
-      <p><%= report.body %></p>
-
+    <% @reports.each do |report| %>
+      <p>Date: <%= report.created_at.strftime("%D") %></p>
+      <p>User: <%= link_to report.user.visible_name, user_path(report.user) %></p>
+      <p>Message: <%= report.body %></p>
 
     <% end %>
   </div>
