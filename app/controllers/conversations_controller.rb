@@ -1,5 +1,7 @@
 class ConversationsController < ApplicationController
 
+  # rackup private_pub.ru -s thin -E production
+
   def create
     binding.pry
     if params[:conversation]
