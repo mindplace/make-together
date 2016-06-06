@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  resources :reports, only: [:new, :create]
+
   get '/search', to: 'tags#show', as: "search"
 
   resources :users
@@ -40,6 +42,7 @@ Rails.application.routes.draw do
 
   # static pages
   get '/contact', to: "application#contact", as: "contact"
+  post '/contact', to: "reports#create", as: 'new_contact'
   get '/report_abuse', to: "application#report_abuse", as: "report_abuse"
   get '/creators', to: "application#creators", as: "creators"
 end

@@ -18,9 +18,10 @@ class ConversationsController < ApplicationController
   # end
 
   def create
+    binding.pry
     if params[:conversation]
       @conversations = current_user.conversations.where(conversation_type: "inbox_message")
-        @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:recipient_id])
+      @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:recipient_id])
         if @conversation.first && @conversation.where(conversation_type: "inbox_message").first
           render :inbox
         else
