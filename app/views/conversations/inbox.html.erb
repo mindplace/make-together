@@ -1,10 +1,22 @@
-<h1>INBOX</h1>
-<ul>
+<%= render partial: 'shared/navbar_opaque' %>
+
+<main class ="site-content">
+  <div class= "container">
+<h1>Inbox</h1>
+<div class="col-xs-6 col-md-4">
+<ul class="list-group">
   <% @conversations.each do |conversation| %>
-  <li><%= link_to conversation.recipient.visible_name, inbox_messages_show_path(conversation)  %></li>
+  <li class="list-group-item"><%= link_to conversation.recipient.visible_name, inbox_messages_show_path(conversation)  %>
+    <span class="badge"><%=conversation.length%></span></li>
   <% end %>
 </ul>
+</div>
+
 
 <% if @conversation %>
+<div class="col-xs-12 col-md-8">
   <%= render partial: 'inbox_show' %>
+</div>
 <% end %>
+</div>
+</main>
