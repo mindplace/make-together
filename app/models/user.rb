@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
+  has_secure_password
   has_many :projects
   has_many :skill_users
   has_many :skills, through: :skill_users
   has_many :favorites
   has_many :reviews
+  has_many :reports
   has_many :conversations, foreign_key: :sender_id
   has_many :flagged_projects, class_name: "Project"
-  has_secure_password
   validates :email, :password, presence: true
   validates :email, uniqueness: true
   validate :is_valid_email, on: :create
@@ -33,10 +34,6 @@ class User < ActiveRecord::Base
 
   def has_favorited(project)
     favorites.any?{|fave| fave.project_id == project.id}
-  end
-
-  def has_flagged?(project)
-    flagged_projects.include?(project)
   end
 
   def admin?

@@ -31,18 +31,6 @@
              </h4>
            </div>
          </div>
-         <div class="col-xs-2 col-md-2">
-        <% if current_user %>
-         <div class="right">
-           <h4><% if (current_user == project.user && project.flagged) || current_user.has_flagged?(project)  %>
-               <%=link_to image_tag("flag-red.png"),projects_flag_path(project_id: project.id) %>
-               <% else %>
-               <%=link_to image_tag("flag-grey.png"),projects_flag_path(project_id: project.id) %>
-               <%end%>
-           </h4>
-         </div>
-        <% end %>
-     </div>
       </div>
    </div>
   </div>
