@@ -1,9 +1,46 @@
+<div class="panel panel-default">
+ 
+    <div class="panel-body row">
+      <div class="col-xs-12 col-md-12">
+        <h1>Feedback</h1>
+      </div>
+    </div>
+  </div>
+    <div class="panel panel-default">
+    <div class="panel-body row">
+      <div class="col-xs-12 col-md-12">
+        <%= form_for @report do |f| %>
+          <%= render partial: "/shared/error_messages", locals: {
+    object: @report } %>
+
+          <h4><%= f.label :body, "Enter feedback here..." %> </h4>
+
+          <%= f.text_area(:body, autofocus: true, class: 'form-control', cols:30, rows:10) %> <br>
+
+          <%= f.submit "Send", class: 'btn btn-primary btn-lg' %>
+        <%end%>
+      </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+ <!--  <div class="panel panel-default container">
 <div id= "report-form">
+   <h1>Contact us with your feedback</h1>
   <%= form_for @report do |f| %>
     <%= f.label :body, "Enter feedback here"%><br>
     <%= f.text_field :body, autofocus: true %>
 
   <%= f.submit "Send" %>
-  <%end%>
+  <%end%><br>
 </div>
+</div>
+ -->
     

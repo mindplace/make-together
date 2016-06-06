@@ -1,10 +1,16 @@
-<%= render partial: 'shared/navbar_opaque' %>
-<h1 class="text-center">Your Favorites</h1>
+<div class="projects-index">
+
+  <%= render partial: 'shared/navbar_transparent' %>
 
 <main class = "Site-content">
+
   <div class="container panel-body">
-        <% @favorites.each do |favorite| %>
-        <%= render "/projects/index_show", project: favorite.project %>
+
+        <% @favorites.each do |favorite| %> 
+        <%= render partial: "/projects/index_show", locals: { project: favorite.project } %>
+
         <% end %>
       </div>
+   
 </main>
+</div>
