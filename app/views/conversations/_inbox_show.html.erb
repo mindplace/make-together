@@ -1,5 +1,5 @@
 <div class="col-md-8">
-<h2>messages with <%= @reciever.visible_name %></h2>
+<h2>messages with <%=link_to @reciever.visible_name, user_path(@reciever) %></h2>
 </div>
 <ul>
   <% @messages.each do |message| %>
