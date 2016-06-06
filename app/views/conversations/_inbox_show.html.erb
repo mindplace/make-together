@@ -1,7 +1,9 @@
 <h1><%= @reciever.visible_name %></h1>
-<% @messages.each do |message| %>
-  <%= message.body %>
+<ul>
+  <% @messages.each do |message| %>
+  <li><%= message.body %> -- <%= message.user.visible_name %> </li>
 <% end %>
+</ul>
 
 <%= form_for(@message, url: inbox_message_path(@conversation)) do |f| %>
 <%= f.label :body %>
