@@ -56,6 +56,11 @@ class ProjectsController < ApplicationController
   def show
   end
 
+  def posted_show
+    @projects = current_user.projects
+    render :posted_projects
+  end
+
 
 
   private

@@ -1,0 +1,10 @@
+<%= render partial: 'shared/navbar_opaque' %>
+<h1 class="text-center">Your Projects</h1>
+
+<main class = "Site-content">
+  <div class="container panel-body">
+        <% @projects.each do |project| %>
+        <%= render partial: "index_show", locals: { project: project } %>
+        <% end %>
+      </div>
+</main>

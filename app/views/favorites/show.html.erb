@@ -3,24 +3,8 @@
 
 <main class = "Site-content">
   <div class="container panel-body">
-        <% @favorites.each do |favorite| %> 
-        <div class="row panel-body">
-          
-          <div class="col-sm-4 col-md-4 panel panel-default panel-body">
-            <div class="inner-content">
-            <div class="panel-body">
-              <h4> <%= link_to favorite.project.user.visible_name, user_path(favorite.project.user) %> </h4>
-              <p> <%= favorite.project.user.bio %> </p>
-            </div>
-          </div>
-          </div>
-          <div class="col-sm-8 col-md-8 panel panel-default panel-body">
-            <div class="panel-body">
-              <h4><%=link_to favorite.project.title, project_path(favorite.project)%></h4>
-              <%=favorite.project.description%>
-            </div>
-          </div>
-        </div>
+        <% @favorites.each do |favorite| %>
+        <%= render "/projects/index_show", project: favorite.project %>
         <% end %>
       </div>
 </main>
