@@ -85,7 +85,7 @@
           <%end%>
 
           <% @user.reviews.each do |review| %>
-            <p><%=review.rating%> stars | <%=review.body.capitalize%> |
+            <p><%review.rating.times do %> &#9734; <%end%> | <%=review.body.capitalize%> |
               <% if review.reviewer == current_user %>
                 <%= link_to 'edit', edit_review_path(params:{id: review.id})%>
               <% end %></p>
@@ -93,6 +93,9 @@
         </div>
       </div>
     <%end%>
+
+    <h3>Leave a review</h3>
+    <%= render partial: "/reviews/form" %>
 </div>
 </div>
 </div>
