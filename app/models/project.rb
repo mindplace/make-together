@@ -9,8 +9,12 @@ class Project < ActiveRecord::Base
   has_many :tag_projects
   has_many :tags, through: :tag_projects
 
+  def date
+    expiration.strftime("%D")
+  end
+
   private
-  
+
   def set_expiration
     if !self.expiration
       self.expiration = Date.today + 7.days
@@ -22,5 +26,4 @@ class Project < ActiveRecord::Base
       self.tagline = "Seeking collaborators"
     end
   end
-
 end

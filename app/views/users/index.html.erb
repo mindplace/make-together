@@ -1,33 +1,40 @@
+<%= render partial: 'shared/navbar_opaque' %>
 <main class="Site-content">
-  <div class="container">
+  <div class="container panel-body">
+    <div class="col-md-12 container-fluid row">
 
-    <h2>Developers</h2>
-    <div class="row">
-    <% @developers.each do |developer| %>
-     <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <img style= "width:200px; height: 200px" src= <%= developer.img %> class = "user-img"/>
-        <div class="caption">
-        <p><%= link_to developer.visible_name, user_path(developer) %></p>
+      <div class="container col-md-6"> 
+        <h1 class="text-center">Developers</h1>
+        <% @developers.each do |developer| %>
+        <div class="panel panel-default panel-body">
+          <div class="col-sm-4 col-md-4">
+            <img src= <%= developer.img %> class = "user-img"/>
+          </div>
+          <div class="col-sm-8 col-md-8">
+            <h3><%= link_to developer.visible_name, user_path(developer) %></h3>
+            <h4>Developer</h4>
+            <p><%= developer.bio %></p> 
+          </div>
+        </div>
+        <% end %> 
       </div>
-    </div>
-  </div>
 
-    <% end %>
-    </div>
-
-    <h2>Designers</h2>
-    <div class="row">
-    <% @designers.each do |designer| %>
-     <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <img style= "width:200px; height: 200px" src= <%= designer.img %> class = "user-img"/>
-        <%= link_to designer.visible_name, user_path(designer) %>
+      <div class="container col-md-6">
+        <h1 class="text-center">Designers</h1>
+        <% @designers.each do |designer| %>
+        <div class="panel panel-default panel-body">
+         <div class="col-sm-4 col-md-4">
+            <img src= <%= designer.img %> class = "user-img"/>
+          </div>
+          <div class="col-sm-8 col-md-8">
+            <h3><%= link_to designer.visible_name, user_path(designer) %></h3>
+           <h4>Designer</h4>
+           <p><%= designer.bio %></p>
+          </div>
+        </div>
+        <% end %>
       </div>
+
     </div>
-
-    <% end %>
-  </div>
-
   </div>
 </main>

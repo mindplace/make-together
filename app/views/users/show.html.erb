@@ -1,82 +1,89 @@
+<%= render partial: 'shared/navbar_opaque' %>
+
 <main class="Site-content">
 <div class="container-fluid">
-<div class="container">
-  <div class = "avg-rating">
-    <% if @user.avg_star_rating != 0 %>
-    <h4>Average Rating: <%= @user.avg_star_rating %> Stars</h4>
-    <% end %>
+
+<div class="container panel-body">
+<div class="row">
+  <div class="panel panel-default panel-body col-md-3">
+    <img src=<%= @user.img %> width="100%">
   </div>
 
-  <div class="col-md-4">
-    <div class="user-img">
-      <img src=<%= @user.img %> width="200x200">
+  <div class="row container-fluid">
+    <div class="panel-body col-md-5">
+      <h1><%= @user.visible_name %></h1>
+      <h3><%= link_to @user.role.capitalize, users_path %></h3>
+      <% if logged_in? && @user == current_user %>
+        <h4><%= link_to "Edit Profile", edit_user_path(@user) %></h4>
+      <% end %>
     </div>
 
-      <% if logged_in? && @user == current_user %>
-        <p><%= link_to "Edit Profile", edit_user_path(@user) %></p>
-        <p><%=link_to 'Favorited projects', favorites_path %></p>
-      <% elsif logged_in? && @user != current_user %>
-        <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id, "data-im" => "chat" %>
+    <div class="panel-body col-md-4">
+      <% if logged_in? && @user != current_user %>
+        <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id %>
 
         <%= link_to "Send Message", {action: 'create', controller: 'conversations', sender_id: current_user.id, recipient_id: @user.id, conversation_type: "inbox_message" }, method: :post, class: "btn btn-success btn-xs start-mail-conversation" %>
-
-
       <% end %>
-
-    <h3>Skills</h3>
-    <ul>
-      <% @user.skills.each do |skill| %>
-        <li><%= link_to skill.body, skill_path(skill)%></li>
-      <% end %>
-
-      <% if logged_in? && @user == current_user %>
-        <%= link_to "Add Skill", new_skill_path %>
-      <% end %>
-    </ul>
-  </div>
-
-
-  <div class="col-md-8">
-    <h1><%= @user.visible_name %></h1>
-    <h3><%= @user.email %></h3>
-    <p><%= @user.role.capitalize %></p>
-  </div>
-
-  <div class="col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h3>Bio: </h3>
-        <p><%= @user.bio %></p>
-      </div>
+      <h4><%= @user.projects.length %> Current Projects</h4>
+      <h4><%= @user.text_rating %></h4>
     </div>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h3>Seeking Collaborators on...</h3>
-        <ul><% @user.projects.each do |project| %>
-          <li><%= link_to project.title, project_path(project)%></li>
+    <div class="panel-body col-md-8">
+      <p><%= @user.bio %></p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="panel panel-default col-md-3">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>Skills</h3>
+        </div>
+        <div class="col-md-1 panel-body">
+          <% if logged_in? && @user == current_user %>
+            <h4><%= link_to "add", new_skill_path %></h4>
           <% end %>
-        </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+            <% @user.skills.each do |skill| %>
+              <p><%= link_to skill.body, skill_path(skill)%></p>
+            <% end %>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-      <h3>Reviews</h3>
-        <%if logged_in? && !(current_user.id == @user.id)%>
-          <%=link_to 'Leave a Review', new_review_path(params:{user_id: @user.id})  %>
-        <%end%>
+  <div class="col-md-9">
+    <% if @user.projects.length > 0 %>
+      <h2>Seeking Collaborators</h2>
 
-        <% if @user.reviews %>
+      <% @user.projects.each do |project| %>
+        <%= render partial: "/projects/index_show", locals: { project: project } %>
+      <% end %>
+    <% end %>
+
+    <% if @user.reviews.length > 0 %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+        <h2>Reviews</h2>
+          <%if logged_in? && current_user != @user %>
+            <%=link_to 'Leave a Review', new_review_path(params:{user_id: @user.id})  %>
+          <%end%>
+
           <% @user.reviews.each do |review| %>
             <p><%=review.rating%> stars | <%=review.body.capitalize%> |
               <% if review.reviewer == current_user %>
-              <%= link_to 'edit', edit_review_path(params:{id: review.id})%>
+                <%= link_to 'edit', edit_review_path(params:{id: review.id})%>
               <% end %></p>
           <% end %>
-        <%end%>
+        </div>
       </div>
-    </div>
+    <%end%>
 </div>
 </div>
 </div>

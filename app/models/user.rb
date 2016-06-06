@@ -26,4 +26,13 @@ class User < ActiveRecord::Base
     self.reviews.sum(:rating) / self.reviews.length :
     0
   end
+
+  def text_rating
+    avg_star_rating == 0 ? "Not yet rated" : "Rated #{avg_star_rating} Stars"
+  end
+
+
+  def has_favorited(project)
+    favorites.any?{|fave| fave.project_id == project.id}
+  end
 end
