@@ -7,10 +7,7 @@
   flex: 1;
 }
 body {
-  background-image: image-url('wood-planks.jpg');
-  background-size: cover !important;
-  background-position: center;
-  background-attachment: fixed;
+
 }
 .navbar-default {
   margin-bottom: 0;
@@ -42,4 +39,13 @@ footer ul {
 footer ul li {
   display: inline-block;
   padding: 0 3%;
+}
+
+.main{
+   background-image: image-url('bg-nav.jpg');
+   color: #fff;
+}
+
+.main a{
+  color: #fff;
 }
