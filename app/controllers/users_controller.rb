@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
   def show
     @conversation = Conversation.new
+    @review = Review.new
   end
 
   def edit
