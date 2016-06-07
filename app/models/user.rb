@@ -7,13 +7,15 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :reports
 
-  has_many :conversations, foreign_key: :sender_id
+  has_many :sent_conversations, class_name: "Conversation",foreign_key: :sender_id
+  has_many :received_conversations, class_name: "Conversation", foreign_key: :receiver_id
 
   has_many :flagged_projects, class_name: "Project"
 
-  has_many :followings, foreign_key: :followed_user_id
-  has_many :followed_users, through: :followings
-  has_many :followers, through: :followings
+  has_many :received_followings, class_name: "Following", foreign_key: :followed_user_id
+  has_many :sent_followings, class_name: "Following", foreign_key: :follower_id
+  has_many :followers, through: :received_followings
+  has_many :followed_users, through: :sent_followings
 
   validate :is_valid_email, on: :create
   validates :email, uniqueness: true

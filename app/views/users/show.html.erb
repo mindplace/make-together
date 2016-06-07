@@ -6,6 +6,7 @@
     <div class="panel panel-default panel-body">
       <img src=<%= @user.img %> width="100%" class="panel-body">
     </div>
+    <%= link_to "Follow", followings_path(id: @user.id), method: :post %>
 
     <% if @user.github || @user.dribbble || current_user == @user %>
       <div class="panel panel-default">
@@ -104,7 +105,7 @@
 
           <%= form_for(@conversation) do |f| %>
           <%= f.hidden_field :sender_id, value: current_user.id %>
-          <%= f.hidden_field :recipient_id, value: @user.id %>
+          <%= f.hidden_field :receiver_id, value: @user.id %>
           <%= f.hidden_field :conversation_type, value: "inbox_message" %>
           <%= f.submit "Send Message", class: "btn btn-success btn-xs  small-custom start-mail-conversation"%>
           <% end %>

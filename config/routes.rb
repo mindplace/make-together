@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   resources :skills, except: [:index]
   resources :tags, except: [:index]
   resources :reviews, except: [:index, :show]
+  resources :followings, only: [:create, :show, :destroy]
 
   get 'favorite/delete', to: "favorites#destroy", as: "delete_favorite"
   get 'favorite', to: "favorites#show", as: "favorite"

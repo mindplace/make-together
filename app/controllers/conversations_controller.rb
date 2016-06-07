@@ -2,21 +2,19 @@ class ConversationsController < ApplicationController
 
   def create
     if params[:conversation]
-      @conversations = Conversation.where(["sender_id = ? or recipient_id = ?", current_user.id, current_user.id]).where(conversation_type: "inbox_message")
-      @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:recipient_id])
-      if @conversation.first && @conversation.where(conversation_type: "inbox_message").first
-        @conversation = @conversation.where(conversation_type: "inbox_message").first
+      @conversations = all_conversations
+      @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:receiver_id])
+      if @conversation.first && any_inbox_messages_with_user?
+        @conversation = any_inbox_messages_with_user?
       else
         @conversation = Conversation.create!(inbox_message_params)
       end
-        @messages = @conversation.messages
-        @reciever = @conversation.recipient
-        @message = Message.new
+        set_messages_receiver_message
         render :inbox
     elsif params[:conversation_type] == "chat"
-      @conversation = Conversation.between(params[:sender_id],params[:recipient_id])
-      if @conversation.first && @conversation.where(conversation_type: "chat").first
-        render json: { conversation_id: @conversation.where(conversation_type: "chat").first.id }
+      @conversation = Conversation.between(params[:sender_id],params[:receiver_id])
+      if @conversation.first && any_chat_messages_with_user?
+        render json: { conversation_id: any_chat_messages_with_user?.id }
       else
         @conversation = Conversation.create!( conversation_params)
         render json: { conversation_id: @conversation.id }
@@ -26,36 +24,50 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
-    @reciever = interlocutor(@conversation)
-    @messages = @conversation.messages
-    @message = Message.new
+    set_messages_receiver_message
   end
 
   def inbox_messages_show
     @conversation = Conversation.find_or_create_by(id: params[:id])
-    @reciever = interlocutor(@conversation)
-    @messages = @conversation.messages
-    @message = Message.new
-    @conversations = Conversation.where(["sender_id = ? or recipient_id = ?", current_user.id, current_user.id]).where(conversation_type: "inbox_message")
+    set_messages_receiver_message
+    @conversations = all_conversations
     render :inbox
   end
 
   def inbox
-    @conversations = Conversation.where(["sender_id = ? or recipient_id = ?", current_user.id, current_user.id]).where(conversation_type: "inbox_message")
-    binding.pry
+    @conversations = all_conversations
     render :inbox
   end
 
   private
   def conversation_params
-    params.permit(:sender_id, :recipient_id, :conversation_type)
+    params.permit(:sender_id, :receiver_id, :conversation_type)
   end
 
   def inbox_message_params
-    params.require(:conversation).permit(:sender_id, :recipient_id, :conversation_type)
+    params.require(:conversation).permit(:sender_id, :receiver_id, :conversation_type)
   end
 
   def interlocutor(conversation)
-    current_user == conversation.recipient ? conversation.sender : conversation.recipient
+    current_user == conversation.receiver ? conversation.sender : conversation.receiver
   end
+
+  def all_conversations
+    @conversations = Conversation.where(["sender_id = ? or receiver_id = ?", current_user.id, current_user.id]).where(conversation_type: "inbox_message")
+  end
+
+  def any_inbox_messages_with_user?
+    @conversation.where(conversation_type: "inbox_message").first
+  end
+
+  def any_chat_messages_with_user?
+    @conversation.where(conversation_type: "chat").first
+  end
+
+  def set_messages_receiver_message
+    @messages = @conversation.messages
+    @receiver = interlocutor(@conversation)
+    @message = Message.new
+  end
+
 end
