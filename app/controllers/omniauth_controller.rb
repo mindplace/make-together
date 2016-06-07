@@ -47,8 +47,12 @@ class OmniauthController < ApplicationController
         end
         redirect_to root_path
 
-      elsif @github_user
-        @github_user.update_attributes(dribbble: "dribbble", dribbble_uid: user_data["id"], dribbble_url: user_data["html_url"])
+      elsif @github_user || @neither_user
+        if @github_user
+          @github_user.update_attributes(dribbble: "dribbble", dribbble_uid: user_data["id"], dribbble_url: user_data["html_url"])
+        else
+          @neither_user.update_attributes(dribbble: "dribbble", dribbble_uid: user_data["id"], dribbble_url: user_data["html_url"])
+        end
         redirect_to user_path(current_user)
       else
         @user = User.new(first_name: user_data["name"].split[0], last_name: user_data["name"].split[1],role: "designer", dribbble_url: user_data["html_url"], img: user_data["avatar_url"],bio: user_data["bio"], dribbble: "dribbble", dribbble_uid: user_data["id"])
