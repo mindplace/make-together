@@ -1,0 +1,19 @@
+<%= render partial: 'shared/navbar_opaque' %>
+
+<main class = "Site-container">
+  <div class = "container">
+    <h1 class="text-center">Welcome, <%= current_user.first_name.capitalize %>!</h1>
+
+    <h2>Some projects you may be interested in: </h2>
+
+    <% if current_user.role == "designer" %>
+      <% rand_dev_projects.each do |project| %>
+        <%= render '/projects/index_show', project: project  %>
+      <% end %>
+    <% else %>
+      <% rand_design_projects.each do |project| %>
+        <%= render '/projects/index_show', project: project  %>
+      <% end %>
+    <% end %>
+  </div>
+</main>

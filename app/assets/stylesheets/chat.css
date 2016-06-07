@@ -15,8 +15,8 @@
     background: #5084c4;
     color: white;
     padding: 0.5em;
-    overflow: visible;
-    width:25%;
+    overflow: hidden;
+    max-width:24.62%;
 
     border-right: 1px solid rgba(85, 85, 85, 0.87);
     border-left: 1px solid rgba(85, 85, 85, 0.87);
@@ -158,7 +158,6 @@
 .chatboxinfo {
     margin-left: -1em;
     color: #666666;
-
 }
 
 .chatboxoptions {

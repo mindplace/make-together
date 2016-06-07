@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def new
     if logged_in?
-      redirect_to root_path
+      render :welcome
     else
       @user = User.new
     end
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     set_image
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path
+      render :welcome
     else
       render 'new'
     end

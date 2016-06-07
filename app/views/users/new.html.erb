@@ -1,56 +1,57 @@
-<%= render partial: 'shared/navbar_opaque' %>
 <main class="Site-content">
 <div class="container">
 
-<h1>Authenticate Through Github or Dribbble</h1>
-<div class="container">
-  <div class: "btn btn-success">
-    <%= link_to "Register with Github", '/auth/github' %>
+<div class="row">
+  <div class="col-md-6 pull-right">
+    <div class="panel-body">
+      <h1>Sign Up</h1>
+    </div>
+    <%= render partial: 'shared/error_messages', locals: { object: @user } %>
+    <div class="username-box col-md-12">
+      <%= form_for :user, url: { action: "create" } do |f| %>
+
+        <div class="form_group row-xs-3">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, class: 'form-control' %>
+        </div>
+
+        <div class="form_group row-xs-3">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: 'form-control' %>
+        </div>
+
+        <div class="form_group row-xs-3">
+          <%= f.label :email %>
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="form_group row-xs-3">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control'  %>
+        </div>
+
+        <div class="field container panel-body">
+          <%= f.label :role, "I am a..." %>
+          <%= f.radio_button :role, "developer" %>
+          <%= f.label :role, "Developer", :value => "developer" %>
+          <%= f.radio_button :role, "designer" %>
+          <%= f.label :role, "Designer", :value => "designer" %>
+        </div>
+
+        <%= f.submit "Create account", class: "btn btn-success" %>
+
+      <% end %>
+      <br>
+
+    </div>
   </div>
-  <div class: "btn btn-success">
-    <%= link_to "Register with Dribbble", user_dribbble_oauth_request_path %>
+
+  <div class="col-md-6">
+    <div class="button-container">
+        <h1><%= link_to "Register with Github", '/auth/github', class: "btn btn-success custom-button" %></h1>
+        <h1><%= link_to "Register with Dribbble", user_dribbble_oauth_request_path, class: "btn btn-success custom-button" %></h1>
+
+    </div>
   </div>
-</div>
-
-<h1>Sign Up</h1>
-
-<%= render partial: 'shared/error_messages', locals: { object: @user } %>
-<div class="username-box">
-  <%= form_for :user, url: { action: "create" } do |f| %>
-
-    <div class="row-xs-3 form_group">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, class: 'form-control' %>
-    </div>
-
-    <div class="row-xs-3 form_group">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, class: 'form-control' %>
-    </div>
-
-    <div class="row-xs-3 form_group">
-      <%= f.label :email %>
-      <%= f.text_field :email, class: 'form-control' %>
-    </div>
-
-    <div class="row-xs-3 form_group">
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control'  %>
-    </div>
-
-    <div class="field">
-      <%= f.label :role, "I am a..." %>
-      <%= f.radio_button :role, "developer" %>
-      <%= f.label :role, "Developer", :value => "developer" %>
-      <%= f.radio_button :role, "designer" %>
-      <%= f.label :role, "Designer", :value => "designer" %>
-    </div>
-
-    <%= f.submit "Create account", class: "btn btn-success" %>
-
-  <% end %>
-  <br>
-
-</div>
 </div>
 </main>
