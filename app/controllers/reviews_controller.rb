@@ -28,20 +28,29 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find_by(user_id: params[:id])
+    @review = Review.find_by(id: params[:id])
+    @user = @review.user
     if is_poster?
-      @user = @review.user
+      if request.xhr?
+        render :_form, layout: false, locals: {review: @review}
+      else
+        redirect_to edit_review_path(@review)
+      end
     else
-      render "/_unauthorized"
+      redirect_to user_path(@review.user)
     end
   end
 
   def update
     if is_poster?
       @review.update_attributes(reviews_params)
-      redirect_to user_path(@review.user)
+      if request.xhr?
+        render :_individual_review, layout: false, locals: {review: @review}
+      else
+        redirect_to user_path(@review.user)
+      end
     else
-      render "/_unauthorized"
+      render :_form, layout: false, locals: {review: @review}
     end
   end
 

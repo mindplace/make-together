@@ -147,17 +147,17 @@
         <% end %>
           <div class="panel panel-default">
             <div class="panel-body">
-  <span id= "review-list">
+  <div id= "review-list">
         <% if @user.reviews.length > 0 %>
             <h2>Reviews</h2>
               <% @user.reviews.each do |review| %>
               <%= render "/reviews/individual_review", review: review %>
               <% end %>
           <%end%>
+                </div>
               <%if logged_in? && current_user != @user %>
-              <%end%>
-                </span>
                 <span id="new-review-link"><%=link_to 'Leave a Review', new_review_path(user_id: @user.id)  %></span>
+              <%end%>
             </div>
           </div>
       </div>

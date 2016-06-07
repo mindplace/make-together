@@ -1,4 +1,4 @@
-<p><%review.rating.times do %> &#9734; <%end%> | <%=review.body.capitalize%> |
+<p id= "review<%=review.id%>"><%review.rating.times do %> &#9734; <%end%> | <%=review.body.capitalize%> |
 <% if review.reviewer == current_user %>
-    <%= link_to 'edit', edit_review_path(review)%>
+    <span class="edit-review-link"><%= link_to 'edit', edit_review_path(review)%></span>
 <% end %></p>
