@@ -1,8 +1,10 @@
 <div id="designers" class="sorted-projects">
-  <div class="panel panel-default">
-    <h1 class = "title">Projects Posted By Designers</h1>
-  </div>
+
+
+
   <% posted_by_designers.each do |project| %>
     <%= render partial: "index_show", locals: { project: project } %>
+    <div class="divider">
+         </div>
   <% end %>
 </div>

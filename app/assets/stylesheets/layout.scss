@@ -77,10 +77,46 @@ footer ul li {
 }
 
 .project-category-1{
-  color: #E86810;
+margin: 0 auto;
+  background-color: #7A3EAB;
+  color:#fff;
   text-align:center;
-  border: 5px solid #E86810;
-  font-size: 1.5em;
-  width:auto;
-  padding:2%;
+  border: 3px solid;
+  border-radius:10px;
+
+  font-size: 2em;
+  font-weight:bold;
+  width:15em;
+  padding-top:3%;
+  padding-bottom:3%;
+
 }
+
+
+.project-category-2{
+
+margin: 0 auto;
+color: #AB0A0F;
+  text-align:center;
+ border: 3px solid #8E9C9A;
+  font-size: 1.5em;
+  width:8.5em;
+  padding:3%;
+}
+
+.project-category-3{
+margin-top:10%;
+margin: 0 auto;
+  color: #AB0A0F;
+  text-align:center;
+  border: 3px solid #8E9C9A;
+  font-size: 1.5em;
+  width:8.5em;
+  padding:3%;
+}
+
+.projects-container{
+  margin-top:5%;
+}
+
+

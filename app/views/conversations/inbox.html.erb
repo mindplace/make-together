@@ -1,8 +1,9 @@
 <main class="Site-content">
   <div class= "container">
-    <h1>Inbox</h1>
+
     <div class="col-xs-6 col-md-4">
-      <ul class="list-group">
+      <h1 class="message-category-1">INBOX</h1>
+      <ul class="list-group inbox">
         <% @conversations.each do |conversation| %>
         <li class="list-group-item">
           <% if conversation.recipient == current_user %>

@@ -1,6 +1,11 @@
+
+<%= render partial: 'shared/navbar_transparent' %>
+
+
 <main class = "Site-content">
-  <h1 class="text-center">Your Projects</h1>
+
   <div class="container panel-body">
+    <h1 class="project-category-3">YOUR PROJECTS</h1>
         <% @projects.each do |project| %>
         <%= render partial: "index_show", locals: { project: project } %>
         <% end %>
