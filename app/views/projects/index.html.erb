@@ -14,6 +14,7 @@
       </div>
 
       <div class="row container-fluid col-md-10 sorted-projects-list ">
+        <%= image_tag "LOGO.png", class:"img-reponsive logo"%>
         <%= render partial: "most_recent_projects", locals: { project: @project } %>
         <%= render partial: "developer_projects", locals: { project: @project } %>
         <%= render partial: "designer_projects", locals: { project: @project } %>
