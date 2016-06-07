@@ -32,7 +32,7 @@
 
         <div class="field container panel-body">
           <%= f.label :role, "I am a..." %>
-          <%= f.radio_button :role, "developer" %>
+          <%= f.radio_button :role, "developer", :checked => true %>
           <%= f.label :role, "Developer", :value => "developer" %>
           <%= f.radio_button :role, "designer" %>
           <%= f.label :role, "Designer", :value => "designer" %>
