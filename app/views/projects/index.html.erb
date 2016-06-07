@@ -1,8 +1,8 @@
 <main class="Site-content">
 
-    <div class="col-md-12 container-fluid row">
+    <div class="container-fluid row">
 
-      <div class="col-md-3">
+      <div class="col-md-2">
 
         <div class="panel panel-default panel-body categories">
           <% if logged_in? %>
@@ -17,7 +17,7 @@
       </div>
 
 
-      <div class="row container-fluid col-md-9 sorted-projects-list ">
+      <div class="row container-fluid col-md-10 sorted-projects-list ">
         <%= render partial: "most_recent_projects", locals: { project: @project } %>
         <%= render partial: "developer_projects", locals: { project: @project } %>
         <%= render partial: "designer_projects", locals: { project: @project } %>

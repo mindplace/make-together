@@ -11,6 +11,7 @@ body {
   background-attachment: fixed;
   background-size: cover !important;
   background-position: center;
+  font-family: 'Alegreya', serif;
 }
 main {
   background-color: white;
@@ -119,3 +120,31 @@ margin: 0 auto;
   margin-top:5%;
 }
 
+<<<<<<< 0ff301b9ee7d3635703651b04b52c96850795a3e
+=======
+.photo{
+  background-image: image-url('bg-nav.jpg');
+}
+
+.photo .container-fluid .navbar-header a{
+  color: #fff;
+  font-size:1.5em;
+}
+
+.photo.container-fluid.ul.nav.navbar-nav li a{
+color: red;
+    background-color: #000;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+ .photo .container-fluid > a:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+>>>>>>> break projects into two colums

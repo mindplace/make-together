@@ -2,23 +2,23 @@
   <div class="panel-body project">
     <div class="row">
 
-      <div class="col-xs-3 col-md-3">
-          <img src= <%= project.img %> class="img-thumbnail">
+      <div class="col-xs-2 col-md-2">
+        <img src= <%= project.img %> class="img-responsive project-img">
       </div>
 
-      <div class="col-xs-9 col-md-9">
+      <div class="col-xs-10 col-md-10">
        <h3><%=link_to project.title, project_path(project)%></h3>
        <p><%= project.tagline %></p>
 
        <div class="row">
-         <div class="col-xs-8 col-md-8">
+         <div class="col-xs-4 col-md-4">
            <% if current_user && project.user == current_user %>
              <%=link_to 'edit', edit_project_path(project) %>
            <%end%>
            <h4><%=link_to project.user.visible_name, user_path(project.user) %> <%= project.user.role %></h4>
          </div>
 
-         <div class="col-xs-2 col-md-2">
+         <div class="col-xs-8 col-md-8">
 
              <h4><%= project.favorites.length %>
                 <% if current_user && current_user.has_favorited(project) %>

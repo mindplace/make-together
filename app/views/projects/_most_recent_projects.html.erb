@@ -2,12 +2,17 @@
   <span id= "recent-projects">
 
    <% most_recent.each do |project| %>
-    <%= render partial: "index_show", locals: { project: project } %>
-     <div class="divider">
-         </div>
+
+      <div class="col-md-5">
+
+      <%= render partial: "index_test", locals: { project: project } %>
+
+      </div>
+
+
    <%end%>
 
- </span>
+  </span>
 </div>
 
 
