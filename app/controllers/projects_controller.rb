@@ -25,14 +25,12 @@ class ProjectsController < ApplicationController
     Tag.build_from_string(params[:project][:tags]).each do |tag|
          @project.tags << tag unless @project.tags.include?(tag)
        end
-    if request.xhr?
-      if @project.save
+    if @project.save
+      if request.xhr?
         render :_index_test, layout: false, locals: {project: @project}
       else
-        render :_form, layout: false, locals: {project: @project, form: true}
+        redirect_to projects_path
       end
-    elsif @project.save
-      redirect_to projects_path
     else
       render :_form, layout: false, locals: {project: @project}
     end
@@ -56,14 +54,13 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    binding.pry
   end
 
   def posted_show
     @projects = current_user.projects
     render :posted_projects
   end
-
-
 
   private
 

@@ -55,8 +55,14 @@ h2 > a:hover {
   transform: scaleX(1);
 }
 #intro{
-padding-top:8%;
+  padding-top:15%;
   text-align:center;
+  padding-bottom: 15%;
+}
+#intro-second{
+  padding-top:2%;
+  text-align:center;
+  padding-bottom: 8%;
 }
 #arrow a{
 left:45%;

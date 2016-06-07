@@ -13,7 +13,7 @@
     <%= link_to "#{@user.followed_users.length} following", followings_path(id: @user.id) %><br>
 
 
-    <% if logged_in? %>
+    <% if logged_in? && @user != current_user%>
         <% if !is_following?(@user) %>
           <%= link_to "Follow", followings_path(id: @user.id), method: :post %>
         <% else %>
@@ -112,7 +112,11 @@
     <div class="col-md-3">
       <div class="panel-body pull-right">
         <h4>Current Projects: <%= @user.projects.length %></h4>
-        <h4><%= @user.text_rating %></h4>
+        <% if @user.avg_star_rating == 0 %>
+            <h4><%= "Not yet rated" %></h4>
+        <% else %>
+            <h4><%@user.avg_star_rating.times do %> &#9734; <%end%></h4>
+        <% end %>
         <% if logged_in? && @user != current_user %>
           <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs small-custom start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id, "data-im" => "chat" %>
 
@@ -141,33 +145,21 @@
           <% end %>
         </div>
         <% end %>
-
+          <div class="panel panel-default">
+            <div class="panel-body">
+  <span id= "review-list">
         <% if @user.reviews.length > 0 %>
-          <div class="panel panel-default">
-            <div class="panel-body">
             <h2>Reviews</h2>
-              <%if logged_in? && current_user != @user %>
-                <%=link_to 'Leave a Review', new_review_path(params:{user_id: @user.id})  %>
-              <%end%>
-
               <% @user.reviews.each do |review| %>
-                <p><%review.rating.times do %> &#9734; <%end%> | <%=review.body.capitalize%> |
-                  <% if review.reviewer == current_user %>
-                    <%= link_to 'edit', edit_review_path(params:{id: review.id})%>
-                  <% end %></p>
+              <%= render "/reviews/individual_review", review: review %>
               <% end %>
+          <%end%>
+              <%if logged_in? && current_user != @user %>
+              <%end%>
+                </span>
+                <span id="new-review-link"><%=link_to 'Leave a Review', new_review_path(user_id: @user.id)  %></span>
             </div>
           </div>
-        <%end%>
-
-        <% if current_user && current_user != @user %>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <h3>Leave a review</h3>
-              <%= render partial: "/reviews/form", locals: { review: @review } %>
-            </div>
-          </div>
-        <% end %>
       </div>
     </div>
   </div>
