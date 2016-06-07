@@ -1,23 +1,24 @@
 <div class="col-md-5">
 
   <div class="panel panel-default  project-white-box strong-white projects-container">
-    <div class="panel-body project">
+    <div class="panel-body project proj">
       <div class="row">
-
         <div class="col-xs-2 col-md-2">
           <img src= <%= project.img %> class="img-responsive project-img">
         </div>
 
-        <div class="col-xs-10 col-md-10">
-         <h3><%=link_to project.title, project_path(project)%></h3>
-         <p><%= project.tagline %></p>
+
+        <div class="col-xs-10 col-md-10 ">
+
+         <h3 id="title"><%=link_to project.title, project_path(project)%></h3>
+         <h4><%= project.tagline %></h4>
 
          <div class="row">
            <div class="col-xs-4 col-md-4">
              <% if current_user && project.user == current_user %>
                <%=link_to 'edit', edit_project_path(project) %>
              <%end%>
-             <h4><%=link_to project.user.visible_name, user_path(project.user) %> <%= project.user.role %></h4>
+             <h5><%=link_to project.user.visible_name, user_path(project.user) %> <%= project.user.role %></h5>
            </div>
 
            <div class="col-xs-8 col-md-8">
@@ -28,7 +29,7 @@
                   <% elsif current_user %>
                     <%= link_to image_tag("heart-grey.png"), new_favorite_path(project_id: project.id, user_id: current_user.id) %>
                   <% else %>
-                    <%= image_tag("heart-grey.png") %>
+                    <%= link_to image_tag("heart-grey.png") %>
                   <% end %>
                </h4>
 

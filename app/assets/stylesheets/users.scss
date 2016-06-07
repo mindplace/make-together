@@ -10,13 +10,14 @@
 font-family: 'Lato', sans-serif;
 }
 .user-white-box {
-  border: 6px solid #333;
-  background-color: #fff;
+  border: 6px solid #FF9568;
+  background-color: #FFDCBB;
   padding-top: 4%;
   padding-bottom:4%;
+  color: #454340;
 }
 .user-white-box a {
-  color: #333;
+  color: #454340;
   transition: color 0.5s ease;
 }
 .user-white-box a:hover {
@@ -25,7 +26,7 @@ font-family: 'Lato', sans-serif;
 .user-white-box h3 {
   margin-top: 0;
 }
-.strong-white {
+.strong-user {
   background-color: #fff;
   color: #333;
 }
@@ -41,4 +42,10 @@ margin-top:5%;
   font-size: 1.5em;
   width:7.5em;
   padding:2%;
+}
+
+.user-projects{
+  border: 3px solid #80C4AE;
+  background-color: #D3F2DD;
+
 }
