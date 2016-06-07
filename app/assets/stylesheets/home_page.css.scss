@@ -1,7 +1,4 @@
 .custom-jumbotron {
-
-  // background: asset-data-url('water_photo.jpeg');
-  // background-image: image-url('computer_green.jpg');
   background-image: image-url('white-devs-dess.jpg');
   background-size: cover !important;
   background-position: center;
@@ -11,7 +8,6 @@
   padding-bottom: 60px;
 }
 .jumbotron-inner-container {
-  // background-color: rgba(255, 255, 255, 0.3);
   padding: 20% 3% 15% 3%;
   text-align: center;
 }
@@ -22,19 +18,14 @@
   width: 30%;
   margin: auto;
   color: white;
-  // background-color: rgba(255, 255, 255, 0.3);
   background-color: rgba(211, 211, 211, 0.2);
 }
 .custom-transparent {
 
 }
-.custom-transparent a {
+.custom-transparent a:visited, .custom-transparent a {
   color: white;
 }
-.custom-transparent a:visited {
-  color: white;
-}
-
 .custom-transparent a:hover {
   color: black;
 }
@@ -43,7 +34,6 @@
 padding-top:8%;
   text-align:center;
 }
-
 #arrow a{
 left:45%;
 position:absolute;
@@ -62,13 +52,11 @@ bottom:30px;
     margin-left: 30px;
     margin-top: 5px;
 }
-
 @-webkit-keyframes Floatingx{
     from {-webkit-transform:translate(0, 0px);}
     65% {-webkit-transform:translate(0, 15px);}
     to {-webkit-transform: translate(0, -0px);    }
 }
-
 @-moz-keyframes Floating{
     from {-moz-transform:translate(0, 0px);}
     65% {-moz-transform:translate(0, 15px);}
