@@ -7,7 +7,7 @@
   flex: 1;
 }
 body {
-  background-image: image-url('white-devs-bg.jpg');
+  background-image: image-url('white-devs-dess.jpg');
   background-attachment: fixed;
   background-size: cover !important;
   background-position: center;
@@ -120,19 +120,18 @@ margin: 0 auto;
   margin-top:5%;
 }
 
-<<<<<<< 0ff301b9ee7d3635703651b04b52c96850795a3e
-=======
-.photo{
-  background-image: image-url('bg-nav.jpg');
-}
-
-.photo .container-fluid .navbar-header a{
+.frontnav a{
   color: #fff;
   font-size:1.5em;
 }
 
-.photo.container-fluid.ul.nav.navbar-nav li a{
-color: red;
+.frontnav a{
+color: #fff;
+
+}
+
+
+.frontnav a:before{
     background-color: #000;
   visibility: hidden;
   -webkit-transform: scaleX(0);
@@ -141,10 +140,10 @@ color: red;
   transition: all 0.3s ease-in-out 0s;
 }
 
- .photo .container-fluid > a:hover:before {
+ .frontnav > a:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 
->>>>>>> break projects into two colums
+
