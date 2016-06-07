@@ -4,8 +4,8 @@ class ConversationsController < ApplicationController
     if params[:conversation]
       @conversations = all_conversations
       @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:receiver_id])
-      if @conversation.first && any_inbox_messages_with_user?
-        @conversation = any_inbox_messages_with_user?
+      if @conversation.first && any_inbox_conversation_with_user?
+        @conversation = any_inbox_conversation_with_user?
       else
         @conversation = Conversation.create!(inbox_message_params)
       end
@@ -13,8 +13,8 @@ class ConversationsController < ApplicationController
         render :inbox
     elsif params[:conversation_type] == "chat"
       @conversation = Conversation.between(params[:sender_id],params[:receiver_id])
-      if @conversation.first && any_chat_messages_with_user?
-        render json: { conversation_id: any_chat_messages_with_user?.id }
+      if @conversation.first && any_chat_conversation_with_user?
+        render json: { conversation_id: any_chat_conversation_with_user?.id }
       else
         @conversation = Conversation.create!( conversation_params)
         render json: { conversation_id: @conversation.id }
@@ -57,11 +57,11 @@ class ConversationsController < ApplicationController
     @conversations = Conversation.where(["sender_id = ? or receiver_id = ?", current_user.id, current_user.id]).where(conversation_type: "inbox_message")
   end
 
-  def any_inbox_messages_with_user?
+  def any_inbox_conversation_with_user?
     @conversation.where(conversation_type: "inbox_message").first
   end
 
-  def any_chat_messages_with_user?
+  def any_chat_conversation_with_user?
     @conversation.where(conversation_type: "chat").first
   end
 

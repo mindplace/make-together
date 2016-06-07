@@ -117,8 +117,11 @@
         <% else %>
             <h4><%@user.avg_star_rating.times do %> &#9734; <%end%></h4>
         <% end %>
+
         <% if logged_in? && @user != current_user %>
-          <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs small-custom start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id, "data-im" => "chat" %>
+          <% if any_inbox_messages_with?(@user) %>
+            <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs small-custom start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id, "data-im" => "chat" %>
+            <% end %>
 
           <%= form_for(@conversation) do |f| %>
           <%= f.hidden_field :sender_id, value: current_user.id %>
