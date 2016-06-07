@@ -1,5 +1,5 @@
 <main class = "Site-content">
-
+  <h1 class="text-center">Your Favorites</h1>
   <div class="container panel-body">
     <% @favorites.each do |favorite| %>
     <%= render partial: "/projects/index_show", locals: { project: favorite.project } %>

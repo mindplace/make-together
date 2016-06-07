@@ -1,6 +1,5 @@
-<h1 class="text-center">Your Projects</h1>
-
 <main class = "Site-content">
+  <h1 class="text-center">Your Projects</h1>
   <div class="container panel-body">
         <% @projects.each do |project| %>
         <%= render partial: "index_show", locals: { project: project } %>
