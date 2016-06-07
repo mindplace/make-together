@@ -15,17 +15,24 @@ font-family: 'Alegreya', serif;
 .project-white-box {
   border:0;
   box-shadow:none;
-  background-color: #BEFFF3;
+  background-color: #F3F9FC;
 }
-.project-white-box a {
-  color: #AB0A0F;
+.project-white-box #title a {
+  color: #393A3B;
   transition: color 0.5s ease;
+}
+
+.project-white-box h4{
+  color: #393A3B;
+}
+.project-white-box h5 a{
+  color: #303030;
 }
 .project-white-box a:hover {
   color: #0DFFCC;
 }
-.strong-white {
-  background-color: #BEFFF3;
+.strong-projects {
+  background-color: #F3F9FC;
   color: #333;
 }
 
@@ -40,13 +47,15 @@ font-family: 'Alegreya', serif;
   box-shadow:none;
    position:fixed;
    margin-top:10%;
-   font-family: 'Alegreya', serif;
+
+   background-color:transparent;
 
 }
 .categories a{
- color: #AB0A0F;
+ color: #5D86B5;
   margin-bottom:15%;
   font-size:1.5em;
+
 }
 
 .search{
@@ -58,6 +67,12 @@ font-family: 'Alegreya', serif;
 }
 #proj-form{
   width:50%;
+}
+
+.proj{
+  border: 5px solid #C5E9FF;
+  height:200px;
+
 }
 
 

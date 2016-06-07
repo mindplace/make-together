@@ -4,10 +4,13 @@
   flex-direction: column;
 }
 .Site-content {
+background-image:image-url("man.jpeg");
+background-position:center;
   flex: 1;
 }
 body {
-background-color: white;
+background-image:image-url("man.jpeg");
+background-position:center;
 
 }
 main {
@@ -107,7 +110,7 @@ margin-top:10%;
 margin: 0 auto;
   color: #AB0A0F;
   text-align:center;
-  border: 3px solid #8E9C9A;
+  border: 3px solid #C5E9FF;
   font-size: 1.5em;
   width:8.5em;
   padding:3%;
@@ -115,8 +118,12 @@ margin: 0 auto;
 
 .projects-container{
   margin-top:5%;
+  background-color: #F3F9FC;
 }
 
+.frontnav{
+  border-bottom: 3px solid #C5E9FF;
+}
 .frontnav a{
   color: #474747;
   font-size:1.5em;

@@ -1,0 +1,30 @@
+<nav class="navbar custom-transparent main">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">MakeTogether</a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <% if current_user && current_user.admin? %>
+      <li><%= link_to "Administration", admin_path %></li>
+      <% end %>
+      <li><%= link_to "Projects", projects_path %></li>
+      <li><%= link_to "Collaborators", users_path %></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+      <li><%=link_to "My Projects", posted_path %></li>
+        <li><%=link_to "Favorited Projects", favorite_path %></li>
+        <li id="user"><%= link_to current_user.first_name, user_path(current_user) %></li>
+        <li><%= link_to "Inbox", inbox_path %></li>
+        <li><%= link_to "Sign Out", logout_path %></li>
+
+      <% else %>
+        <li><%= link_to "Register", new_user_path %></li>
+        <li><%= link_to "Sign In", login_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

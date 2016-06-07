@@ -26,7 +26,9 @@
       </div>
 
       <ul class="nav navbar-nav frontnav">
+        <% if logged_in? %>
         <li id="user"><%= link_to current_user.first_name, user_path(current_user) %></li>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right frontnav">
