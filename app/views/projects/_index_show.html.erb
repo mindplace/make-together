@@ -7,6 +7,7 @@
       </div>
 
       <div class="col-xs-9 col-md-9">
+
        <h3><%=link_to project.title, project_path(project)%></h3>
        <p><%= project.tagline %></p>
 
@@ -18,8 +19,8 @@
            <h4><%=link_to project.user.visible_name, user_path(project.user) %> <%= project.user.role %></h4>
          </div>
 
-         <div class="col-xs-2 col-md-2 pull-right">
-           <div class="right">
+         <div class="col-xs-2 col-md-2">
+
              <h4><%= project.favorites.length %>
                 <% if current_user && current_user.has_favorited(project) %>
                   <%= link_to image_tag("heart-red.png"), delete_favorite_path(project_id: project.id, user_id: current_user.id) %>
@@ -29,7 +30,7 @@
                   <%= image_tag("heart-grey.png") %>
                 <% end %>
              </h4>
-           </div>
+
          </div>
 
       </div>

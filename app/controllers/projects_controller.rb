@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
        end
     if request.xhr?
       if @project.save
-        render :_index_show, layout: false, locals: {project: @project}
+        render :_index_test, layout: false, locals: {project: @project}
       else
         render :_form, layout: false, locals: {project: @project, form: true}
       end
