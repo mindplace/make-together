@@ -1,0 +1,4 @@
+<p><%review.rating.times do %> &#9734; <%end%> | <%=review.body.capitalize%> |
+<% if review.reviewer == current_user %>
+    <%= link_to 'edit', edit_review_path(review)%>
+<% end %></p>
