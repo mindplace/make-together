@@ -2,42 +2,30 @@
   <div class="container panel-body">
     <div class="col-md-12 container-fluid row">
 
-      <div class="container col-md-6">
+      <div class="container col-md-5">
 
-          <h1 class="user-category-1">Followers</h1>
-
-        <% @user.followers.each do |follower| %>
-        <div class="panel panel-default panel-body user-white-box">
-          <div class="col-sm-4 col-md-4">
-            <img src= <%= follower.img %> class = "user-img"/>
-          </div>
-
-            <h3><%= link_to follower.visible_name, user_path(follower) %></h3>
-            <h4><%=follower.role %></h4>
-            <p><%= follower.bio %></p>
-
+        <div class="panel panel-default panel-body categories">
+          <h3 class= "#followers"><a class = "following-sort-button" href= "#">FOLLOWERS</a></h3>
+          <h3 class ="#followed_users"><a class = "following-sort-button" href= "#">FOLLOWING</a></h3>
         </div>
-        <% end %>
       </div>
 
-      <div class="container col-md-6">
 
-          <h1 class="user-category-1">People I Follow</h1>
+      <div class="row container-fluid col-md-6 sorted-following-list">
 
+        <div id="followers" class= "sorted-following active">
+          <% @user.followers.each do |follower| %>
+            <%= render '/users/index_show', user: follower %>
+          <% end %>
+        </div>
+
+      <div id="followed_users" class= "sorted-following hidden">
         <% @user.followed_users.each do |user| %>
-        <div class="panel panel-default panel-body user-white-box">
-         <div class="col-sm-4 col-md-4">
-            <img src= <%= user.img %> class = "user-img"/>
-          </div>
-
-            <h3><%= link_to user.visible_name, user_path(user) %></h3>
-           <h4><%= user.role %></h4>
-           <p><%= user.bio %></p>
-
-        </div>
+        <%= render '/users/index_show', user: user %>
         <% end %>
       </div>
-
     </div>
+  </div>
+
   </div>
 </main>
