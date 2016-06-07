@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
       @message = @conversation.messages.build(message_params)
       @message.user_id = current_user.id
       @messages = @conversation.messages
-      @reciever = @conversation.recipient
+      @receiver = @conversation.receiver
       if @message.save!
         redirect_to inbox_messages_show_path(@conversation)
       else

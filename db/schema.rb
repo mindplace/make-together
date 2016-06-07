@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 20160607135253) do
   create_table "conversations", force: :cascade do |t|
     t.string   "conversation_type"
     t.integer  "sender_id"
-    t.integer  "recipient_id"
+    t.integer  "receiver_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
 
-  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
+  add_index "conversations", ["receiver_id"], name: "index_conversations_on_receiver_id", using: :btree
   add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
   create_table "favorites", force: :cascade do |t|

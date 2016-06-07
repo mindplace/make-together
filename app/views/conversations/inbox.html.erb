@@ -6,10 +6,10 @@
       <ul class="list-group inbox">
         <% @conversations.each do |conversation| %>
         <li class="list-group-item">
-          <% if conversation.recipient == current_user %>
+          <% if conversation.receiver == current_user %>
             <%= link_to conversation.sender.visible_name, inbox_messages_show_path(conversation)  %>
           <% else %>
-            <%= link_to conversation.recipient.visible_name, inbox_messages_show_path(conversation)  %>
+            <%= link_to conversation.receiver.visible_name, inbox_messages_show_path(conversation)  %>
           <% end %>
         <span class="badge"><%=conversation.messages.length%></span></li>
 
