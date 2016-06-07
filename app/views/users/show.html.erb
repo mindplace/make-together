@@ -85,12 +85,12 @@
           </div>
           <div class="col-md-1 panel-body">
             <% if logged_in? && @user == current_user %>
-              <h4><%= link_to "add", new_skill_path %></h4>
+              <h4 id= "new-skill"><%= link_to "add", new_skill_path %></h4>
             <% end %>
           </div>
         </div>
 
-        <div class="row">
+        <div class="row" id = "skill-list">
           <% @user.skills.each do |skill| %>
             <p><%= render "/skills/individual_skill", skill: skill %></p>
           <% end %>
@@ -127,7 +127,9 @@
           <%= f.submit "Send Message", class: "btn btn-success btn-xs  small-custom start-mail-conversation"%>
           <% end %>
         <% end %>
-        <p><%= link_to "Edit Profile", edit_user_path(@user) %></p>
+        <% if logged_in? && @user == current_user %>
+          <p><%= link_to "Edit Profile", edit_user_path(@user) %></p>
+          <% end %>
       </div>
     </div>
 

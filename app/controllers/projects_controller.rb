@@ -54,7 +54,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    binding.pry
   end
 
   def posted_show
