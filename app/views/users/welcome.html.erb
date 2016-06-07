@@ -1,8 +1,8 @@
-<main class = "Site-container">
+
   <div class = "container">
     <h1 class="text-center">Welcome, <%= current_user.first_name.capitalize %>!</h1>
 
-    <h2>Some projects you may be interested in: </h2>
+    <h2 id="welcome">Some projects you may be interested in: </h2>
 
     <% if current_user.role == "designer" %>
       <% rand_dev_projects.each do |project| %>
@@ -14,4 +14,3 @@
       <% end %>
     <% end %>
   </div>
-</main>

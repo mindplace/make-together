@@ -9,6 +9,7 @@
       </div>
     </div>
 
+
     <%= link_to "#{@user.followers.length} followers", followings_path(id: @user.id) %><br>
     <%= link_to "#{@user.followed_users.length} following", followings_path(id: @user.id) %><br>
 
@@ -141,7 +142,7 @@
       <div class="col-md-8">
         <% if @user.projects.length > 0 %>
         <div class="panel-body panel panel-default">
-          <h2>Seeking Collaborators</h2>
+          <h2>Seeking collaborators on...</h2>
           <% @user.projects.each do |project| %>
             <%= render partial: "/projects/index_show", locals: { project: project } %>
           <% end %>
