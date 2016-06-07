@@ -1,11 +1,11 @@
 <div class="col-md-8">
-  <h2>messages with <%=link_to @reciever.visible_name, user_path(@reciever) %></h2>
+  <h2 class="message-category-2">MESSAGES with <%=link_to @reciever.visible_name, user_path(@reciever) %></h2>
 </div>
-<ul>
+
   <% @messages.each do |message| %>
   <div class="col-md-8">
   <div class="panel panel-default">
-    <div class="panel body">
+    <div class="panel body messages">
       <div class="message-body">
         <%= message.body %> -- <%= message.user.visible_name %>
       </div>
@@ -15,15 +15,16 @@
   <% end %>
 <%= form_for(@message, url: inbox_message_path(@conversation)) do |f| %>
 
-  <div class="col-md-8">
-    <div class="panel panel-default">
+  <div class="col-md-8 message-field">
+    <div class="panel panel-default ">
       <%= f.text_area :body, autofocus: true, class: "form-control", style: "min-width: 100%", placeholder: "type your message here"
        %>
     </div>
   <%= f.submit "Send", class: 'btn btn-primary btn-lg' %>
-  </div>
+ </div>
   <% end %>
-</ul>
+
+
 
 
 
