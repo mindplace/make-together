@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     if logged_in?
-      redirect_to root_path
+      render :welcome
     else
       @user = User.new
     end
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(login_email)
     if @user && @user.authenticate(login_password[:password])
       session[:user_id] = @user.id
-      redirect_to root_path
+      render '/users/welcome'
     else
       if @user
         @user.errors[:password].push("incorrect")

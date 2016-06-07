@@ -23,5 +23,13 @@ module ProjectsHelper
     tags.join(", ")
   end
 
+  def rand_dev_projects
+    posted_by_developers.sample(3)
+  end
+
+  def rand_design_projects
+    posted_by_designers.sample(3)
+  end
+
 end
 

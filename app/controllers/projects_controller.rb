@@ -19,7 +19,9 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    set_image
+    if !@project.img
+      set_image
+    end
     Tag.build_from_string(params[:project][:tags]).each do |tag|
          @project.tags << tag unless @project.tags.include?(tag)
        end
