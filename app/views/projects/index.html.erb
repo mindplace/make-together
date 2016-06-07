@@ -1,8 +1,8 @@
 <main class="Site-content">
-  <div class="container panel-body">
+
     <div class="col-md-12 container-fluid row">
 
-      <div class="container col-md-3">
+      <div class="col-md-3">
 
         <div class="panel panel-default panel-body categories">
           <% if logged_in? %>
@@ -24,5 +24,5 @@
         <%= render partial: "expiring_projects", locals: { project: @project } %>
       </div>
     </div>
-  </div>
+
 </main>
