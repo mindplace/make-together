@@ -7,11 +7,8 @@
   flex: 1;
 }
 body {
-  background-image: image-url('white-devs-dess.jpg');
-  background-attachment: fixed;
-  background-size: cover !important;
-  background-position: center;
-  font-family: 'Alegreya', serif;
+background-color: white;
+
 }
 main {
   background-color: white;
@@ -46,7 +43,7 @@ footer {
   color: #666;
   padding: 19px 0 30px 0;
   border-top: 1px solid #d3d3d3;
-  background-color: #330000;
+  background-color: #51FFC2;
 }
 footer a {
   color: white;
@@ -121,13 +118,13 @@ margin: 0 auto;
 }
 
 .frontnav a{
-  color: #fff;
+  color: #474747;
   font-size:1.5em;
 }
 
 
 .frontnav a:before{
-    background-color: #000;
+    background-color: #474747;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
