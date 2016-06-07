@@ -18,20 +18,20 @@
 </head>
 
 <body class="Site">
-  <nav class="navbar custom-transparent frontnav ">
+  <nav class="navbar custom-transparent frontnav">
     <div class="container-fluid">
 
       <div class="navbar-header">
         <a class="navbar-brand" href="/">MakeTogether</a>
       </div>
 
-      <ul class="nav navbar-nav frontnav">
+      <ul class="nav navbar-nav">
         <% if logged_in? %>
         <li id="user"><%= link_to current_user.first_name, user_path(current_user) %></li>
         <% end %>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right frontnav">
+      <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Projects", projects_path %></li>
         <li><%= link_to "Collaborators", users_path %></li>
         <% if logged_in? %>
