@@ -2,14 +2,29 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :update, :destroy]
 
   def new
-    @user = User.find_by(id: params[:user_id])
-    @review = Review.new
+    if logged_in?
+      @user = User.find_by(id: params[:user_id])
+      @review = Review.new
+      if request.xhr?
+        render :_form, layout: false
+      end
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   def create
     @user = User.find_by(id: params[:review][:user_id])
-    @review = Review.create(reviews_params.merge(user_id: @user.id, reviewer_id: current_user.id))
-    redirect_to user_path(@user)
+    @review = Review.new(reviews_params.merge(user_id: @user.id, reviewer_id: current_user.id))
+    if @review.save
+      if request.xhr?
+        render :_individual_review, layout: false, locals: {review: @review}
+      else
+        redirect_to user_path(@user)
+      end
+    else
+      render :_form, layout: false, locals: {review: @review}
+    end
   end
 
   def edit

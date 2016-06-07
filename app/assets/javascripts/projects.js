@@ -24,13 +24,12 @@ $(document).ready(function(){
       method: 'POST',
       data: $(e.target).serialize()
     }).done(function(response){
+      $('#new-project-div').remove();
       if (!response.includes("form")){
-        $('#new-project-div').remove();
         $('#new-project-link').show();
         $('#recent-projects').prepend(response);
         $('.sorted-projects').show();
       } else {
-        $('#new-project-div').remove();
         $('.sorted-projects-list').prepend(response);
         $('.sorted-projects').hide();
       }
