@@ -49,10 +49,9 @@ footer {
   color: #666;
   padding: 19px 0 30px 0;
   border-top: 1px solid #d3d3d3;
-  background-color: #51FFC2;
+  background-color: white;
 }
 footer a {
-  color: white;
   font-style: bold;
   font-size: medium;
 }
@@ -70,18 +69,13 @@ footer ul li {
   display: inline-block;
   padding: 0 3%;
 }
-
 .main{
    background-image: image-url('bg-nav.jpg');
    color: #fff;
 }
-
 .main a{
   color: #fff;
 }
-
-
-
 .projects-container{
   margin-top:5%;
   background-color: #F3F9FC;
@@ -94,18 +88,15 @@ footer ul li {
   color: #474747;
   font-size:1.5em;
 }
-
-
 .frontnav a:before{
-    background-color: #474747;
+  background-color: #474747;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
   -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
-
- .frontnav > a:hover:before {
+.frontnav > a:hover:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
