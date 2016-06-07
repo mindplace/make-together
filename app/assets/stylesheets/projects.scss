@@ -40,18 +40,13 @@ font-family: 'Lato', sans-serif;
   box-shadow:none;
    position:fixed;
    margin-top:10%;
-
-
+   font-family: 'Alegreya', serif;
 
 }
 .categories a{
  color: #AB0A0F;
-
   margin-bottom:15%;
-  font-size:2em;
-
-
-
+  font-size:1.5em;
 }
 
 .search{
@@ -61,3 +56,7 @@ font-family: 'Lato', sans-serif;
   margin-top: 2%;
 
 }
+#proj-form{
+  width:50%;
+}
+

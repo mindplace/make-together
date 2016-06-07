@@ -6,12 +6,12 @@
 
         <div class="panel panel-default panel-body categories">
           <% if logged_in? %>
-            <h3 id = "new-project-link" class ="#new"><%= link_to "NEW PROJECT", new_project_path %></h3>
+            <h3 id = "new-project-link" class ="#new"><%= link_to "new project", new_project_path %></h3>
           <% end %>
-          <h3 class= "#recent"><a class = "project-sort-button" href= "#">RECENT</a></h3>
-          <h3 class ="#expiring"><a class = "project-sort-button" href= "#">EXPIRING</a></h3>
-          <h3 class = "#developers"><a class = "project-sort-button developers" href= "#">DEVELOPERS</a></h3>
-          <h3 class ="#designers"><a class = "project-sort-button" href= "#">DESIGNERS</a></h3>
+          <h3 class= "#recent"><a class = "project-sort-button" href= "#">recent</a></h3>
+          <h3 class ="#expiring"><a class = "project-sort-button" href= "#">expiring</a></h3>
+          <h3 class = "#developers"><a class = "project-sort-button developers" href= "#">developers</a></h3>
+          <h3 class ="#designers"><a class = "project-sort-button" href= "#">designers</a></h3>
           <%= render partial: "tag_search" %>
         </div>
       </div>
