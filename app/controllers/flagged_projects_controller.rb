@@ -13,7 +13,6 @@ class FlaggedProjectsController < ApplicationController
     @project = Project.find_by(id: params[:project_id])
     @flagged_project = FlaggedProject.find_by(project_id: params[:project_id])
     @flagged_project.destroy
-    # binding.pry
     redirect_to project_path(@project)
 
   end

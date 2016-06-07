@@ -48,4 +48,13 @@ class User < ActiveRecord::Base
   def admin?
     role == "admin"
   end
+
+  def num_of_followers
+    @user.followers.length
+  end
+
+  def num_of_followed_users
+    @user.followed_users.length
+  end
+
 end
