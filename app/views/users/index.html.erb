@@ -7,16 +7,16 @@
           <h1 class="user-category-1">DEVELOPERS</h1>
 
         <% @developers.each do |developer| %>
-        <div class="panel panel-default panel-body user-white-box">
-          <div class="col-sm-4 col-md-4">
-            <img src= <%= developer.img %> class = "user-img"/>
+          <div class="panel panel-default panel-body user-white-box">
+            <div class="col-sm-4 col-md-4">
+                <img src= <%= developer.img %> class="img-thumbnail img-responsive"/>
+            </div>
+            <div class="col-sm-8 col-md-8">
+              <h3><%= link_to developer.visible_name, user_path(developer) %></h3>
+              <h4>Developer</h4>
+              <p><%= developer.bio %></p>
+            </div>
           </div>
-
-            <h3><%= link_to developer.visible_name, user_path(developer) %></h3>
-            <h4>Developer</h4>
-            <p><%= developer.bio %></p>
-
-        </div>
         <% end %>
       </div>
 
@@ -26,14 +26,14 @@
 
         <% @designers.each do |designer| %>
         <div class="panel panel-default panel-body user-white-box">
-         <div class="col-sm-4 col-md-4">
-            <img src= <%= designer.img %> class = "user-img"/>
-          </div>
-
-            <h3><%= link_to designer.visible_name, user_path(designer) %></h3>
-           <h4>Designer</h4>
-           <p><%= designer.bio %></p>
-
+           <div class="col-sm-4 col-md-4">
+               <img src= <%= designer.img %> class="img-thumbnail img-responsive"/>
+           </div>
+           <div class="col-sm-8 col-md-8">
+             <h3><%= link_to designer.visible_name, user_path(designer) %></h3>
+             <h4>Designer</h4>
+             <p><%= designer.bio %></p>
+           </div>
         </div>
         <% end %>
       </div>

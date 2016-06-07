@@ -3,19 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user-img {
-  width: 100px;
-  height:auto;
+  width: 200px;
+  height: auto;
 }
-
 .user-index {
 font-family: 'Lato', sans-serif;
-
 }
 .user-white-box {
   border: 6px solid #333;
   background-color: #fff;
-  padding-top: 2%;
-  padding-bottom:2%;
+  padding-top: 4%;
+  padding-bottom:4%;
 }
 .user-white-box a {
   color: #333;
@@ -23,6 +21,9 @@ font-family: 'Lato', sans-serif;
 }
 .user-white-box a:hover {
   color: #0DFFCC;
+}
+.user-white-box h3 {
+  margin-top: 0;
 }
 .strong-white {
   background-color: #fff;

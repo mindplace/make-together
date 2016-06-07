@@ -4,7 +4,9 @@
 <div class="col-md-12 container row">
   <div class="col-md-3">
     <div class="panel panel-default panel-body">
-      <img src=<%= @user.img %> width="100%" class="panel-body">
+      <div class="img-container">
+        <img src=<%= @user.img %> />
+      </div>
     </div>
 
     <%= link_to "#{@user.followers.length} followers", followings_path(id: @user.id) %><br>

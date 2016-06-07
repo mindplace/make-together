@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def visible_name
-    "#{first_name.capitalize} #{last_name[0].upcase}."
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
   def avg_star_rating
