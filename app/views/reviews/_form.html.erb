@@ -1,4 +1,6 @@
-<span id="new-review-form">
+<% if !@review.body %>
+    <div id="new-review-form">
+<% end %>
 
 <%= form_for @review do |f| %>
 
@@ -12,11 +14,13 @@
 
 <%= f.hidden_field :user_id, value: @user.id, class: "form-control" %>
 <%= f.submit "Submit", class: "btn btn-success" %>
-<%end%>
 
 <span id= "cancel"><%= link_to "Cancel", "#" %></span>
 
 <% if logged_in? && @review.reviewer == current_user && @review.body && @review.rating %>
   <p><%= link_to "Delete Review", review_path(Review.find_by(user_id: @user.id)), method: :delete %> </p>
 <% end %>
-</span>
+
+<%end%>
+
+</div>

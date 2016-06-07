@@ -6,8 +6,30 @@ $(document).ready(function(){
     }).done(function(response){
       $('#new-review-link').hide();
       $('#review-list').append(response)
-    })
-    $('#review-list').unbind().on("submit", "form", function(e){
+    });
+  });
+
+  $('.edit-review-link').on('click', function(e){
+    e.preventDefault();
+    $.ajax({
+      url: $(e.target).attr('href')
+    }).done(function(response){
+      $('#new-review-link').hide();
+      $('#'+ this.parentElement.id).replaceWith(response)
+    }.bind(this))
+  });
+  $('#review-list').on("submit", "form.edit_review", function(e){
+    e.preventDefault();
+    $.ajax({
+      url: e.target.action,
+      method: "PUT",
+      data: $(e.target).serialize()
+    }).done(function(response){
+      $('.edit_review').remove();
+      $('#review-list').append(response);
+    }.bind(this))
+  });
+    $('#review-list').on("submit", "#new-review-form", function(e){
       e.preventDefault();
       $.ajax({
         url: '/reviews',
@@ -29,4 +51,3 @@ $(document).ready(function(){
       $('#new-review-link').show();
     })
   })
-})
