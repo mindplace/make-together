@@ -11,6 +11,7 @@ background-position:center;
 body {
 background-image:image-url("man.jpeg");
 background-position:center;
+font-family: 'Muli', sans-serif;
 }
 main {
   background-color: white;
@@ -89,7 +90,7 @@ footer ul li {
 }
 
 .frontnav{
-
+font-family: 'Dosis', sans-serif;
 
 }
 .frontnav a{
@@ -108,4 +109,8 @@ footer ul li {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
+}
+.navbar-brand{
+font-family: 'Averia Serif Libre', cursive;
+font-size:2em;
 }
