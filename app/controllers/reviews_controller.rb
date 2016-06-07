@@ -58,9 +58,11 @@ class ReviewsController < ApplicationController
     if is_poster?
       @user = @review.user
       @review.destroy
-      redirect_to user_path(@user)
-    else
-      render "/_unauthorized"
+      if request.xhr?
+        ""
+      else
+        redirect_to user_path(@user)
+      end
     end
   end
 

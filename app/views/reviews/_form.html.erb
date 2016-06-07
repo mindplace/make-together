@@ -15,10 +15,10 @@
 <%= f.hidden_field :user_id, value: @user.id, class: "form-control" %>
 <%= f.submit "Submit", class: "btn btn-success" %>
 
-<span id= "cancel"><%= link_to "Cancel", "#" %></span>
+<span class= "cancel"><%= link_to "Cancel", "#" %></span>
 
 <% if logged_in? && @review.reviewer == current_user && @review.body && @review.rating %>
-  <p><%= link_to "Delete Review", review_path(Review.find_by(user_id: @user.id)), method: :delete %> </p>
+  <p class ="delete"><%= link_to "Delete Review", review_path(Review.find_by(user_id: @user.id)), method: :delete, class: "delete" %> </p>
 <% end %>
 
 <%end%>

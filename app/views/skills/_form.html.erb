@@ -1,7 +1,6 @@
 <div id = "new-skill-form">
 <%= form_for @skill do |f| %>
- <%= f.label :body, "Enter skills as a comma separated list"%><br>
- <%= f.text_field :body, autofocus: true %>
+ <%= f.text_field :body, autofocus: true, placeholder: "new skill" %>
 
  <%= f.hidden_field :user_id, value: current_user.id %>
  <%= f.submit %>

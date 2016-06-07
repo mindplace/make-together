@@ -1,10 +1,10 @@
 $(document).ready(function(){
-  $('#new-skill').on("click", function(e){
+  $('#new-skill').on("click", 'a', function(e){
     e.preventDefault();
     $.ajax({
       url: $(e.target).attr('href')
     }).done(function(response){
-      $('new-skill').hide();
+      $('#new-skill').hide();
       $('#skill-list').prepend(response);
     })
   })
@@ -17,6 +17,7 @@ $(document).ready(function(){
     }).done(function(response){
       $('#new-skill-form').remove();
       $('#skill-list').prepend(response);
+      $('#new-skill').show();
     })
   })
 })

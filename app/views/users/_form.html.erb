@@ -1,12 +1,14 @@
 <%= form_for @user do |f| %>
   <%= render partial: 'shared/error_messages', locals: { object: @user } %>
 
+  <div id = "name">
   <%= f.label :first_name %>
   <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
 
   <%= f.label :last_name %>
   <%= f.text_field :last_name, class: 'form-control' %>
 
+</div>
   <%= f.label :img %>
   <%= f.text_field :img, class: 'form-control' %>
 

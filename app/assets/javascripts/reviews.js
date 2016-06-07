@@ -45,9 +45,20 @@ $(document).ready(function(){
         }
       })
     })
-    $('#review-list').on("click", "#cancel", function(e){
+    $('#review-list').on("click", ".cancel", function(e){
       e.preventDefault();
       $('#new-review-form').remove();
+      $('.edit_review').remove();
       $('#new-review-link').show();
     })
+    // $('#review-list').on("click", ".delete", function(e){
+    //   e.preventDefault();
+    //   $.ajax({
+    //     url '/reviews'
+    //     method: 'DELETE'
+    //   }).done(function(reponse){
+    //     $('.edit_review').remove();
+    //     $('#new-review-link').show();
+    //   })
+    // })
   })
