@@ -25,6 +25,7 @@ class ConversationsController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
     set_messages_receiver_message
+    render :show, layout: false
   end
 
   def inbox_messages_show
