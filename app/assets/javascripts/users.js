@@ -69,3 +69,13 @@ var ready = function () {
 
 $(document).ready(ready);
 $(document).on("page:load", ready);
+
+$(document).ready(function(){
+  $('.user-sort-button').on("click", function(e){
+    $('.active').addClass('hidden');
+    $('.active').removeClass('active')
+    clicked = $(e.target.parentElement).attr('class')
+    $(clicked).removeClass('hidden');
+    $(clicked).addClass('active');
+  })
+})

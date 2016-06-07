@@ -1,0 +1,9 @@
+<div class="panel panel-default panel-body user-white-box">
+    <div class="col-sm-4 col-md-4">
+      <img src= <%= user.img %> class = "user-img"/>
+    </div>
+
+    <h3><%= link_to user.visible_name, user_path(user) %></h3>
+    <h4><%=user.role %></h4>
+    <p><%= user.bio %></p>
+</div>

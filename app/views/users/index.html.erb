@@ -2,42 +2,30 @@
   <div class="container panel-body">
     <div class="col-md-12 container-fluid row">
 
-      <div class="container col-md-6">
+      <div class="container col-md-5">
 
-          <h1 class="user-category-1">DEVELOPERS</h1>
-
-        <% @developers.each do |developer| %>
-          <div class="panel panel-default panel-body user-white-box">
-            <div class="col-sm-4 col-md-4">
-                <img src= <%= developer.img %> class="img-thumbnail img-responsive"/>
-            </div>
-            <div class="col-sm-8 col-md-8">
-              <h3><%= link_to developer.visible_name, user_path(developer) %></h3>
-              <h4>Developer</h4>
-              <p><%= developer.bio %></p>
-            </div>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="container col-md-6">
-
-          <h1 class="user-category-1">DESIGNERS</h1>
-
-        <% @designers.each do |designer| %>
-        <div class="panel panel-default panel-body user-white-box">
-           <div class="col-sm-4 col-md-4">
-               <img src= <%= designer.img %> class="img-thumbnail img-responsive"/>
-           </div>
-           <div class="col-sm-8 col-md-8">
-             <h3><%= link_to designer.visible_name, user_path(designer) %></h3>
-             <h4>Designer</h4>
-             <p><%= designer.bio %></p>
-           </div>
+        <div class="panel panel-default panel-body categories">
+          <h3 class= "#developers"><a class = "user-sort-button" href= "#">DEVELOPERS</a></h3>
+          <h3 class ="#designers"><a class = "user-sort-button" href= "#">DESIGNERS</a></h3>
         </div>
-        <% end %>
       </div>
 
+
+      <div class="row container-fluid col-md-6 sorted-users-list">
+
+        <div id="developers" class= "sorted-users active">
+          <% @developers.each do |developer| %>
+            <%= render '/users/index_show', user: developer %>
+          <% end %>
+        </div>
+
+      <div id="designers" class= "sorted-users hidden">
+        <% @designers.each do |designer| %>
+        <%= render '/users/index_show', user: designer %>
+        <% end %>
+      </div>
     </div>
+  </div>
+
   </div>
 </main>
