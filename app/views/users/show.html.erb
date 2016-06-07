@@ -6,7 +6,18 @@
     <div class="panel panel-default panel-body">
       <img src=<%= @user.img %> width="100%" class="panel-body">
     </div>
-    <%= link_to "Follow", followings_path(id: @user.id), method: :post %>
+
+    <%= link_to "#{@user.followers.length} followers", followings_path(id: @user.id) %><br>
+    <%= link_to "#{@user.followed_users.length} following", followings_path(id: @user.id) %><br>
+
+
+    <% if logged_in? %>
+        <% if !is_following?(@user) %>
+          <%= link_to "Follow", followings_path(id: @user.id), method: :post %>
+        <% else %>
+          <%= link_to "Unfollow", following_path(Following.find_or_create_by(followed_user_id: @user.id, follower_id: current_user.id), id: @user.id), method: :delete %>
+        <% end %>
+    <% end %>
 
     <% if @user.github || @user.dribbble || current_user == @user %>
       <div class="panel panel-default">
