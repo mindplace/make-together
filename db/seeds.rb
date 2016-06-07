@@ -1,7 +1,7 @@
 User.create(
-  first_name: "Caitlin", last_name: "Hoffman", email: "choff999@gmail.com", password: "password", role: "developer", img: "http://www.thelabradorsite.com/wp-content/uploads/2015/08/when-can-puppy-go-out.jpg",
-  bio:
+  first_name: "Caitlin", last_name: "Hoffman", email: "choff999@gmail.com", password: "password", role: "developer", img: "http://www.thelabradorsite.com/wp-content/uploads/2015/08/when-can-puppy-go-out.jpg"
 )
+
 User.create(first_name: "Esther", last_name: "Leytush", email: "eleytush@gmail.com", password: "password", role: "developer",  img:"https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAgtAAAAJDZlYzAxN2E3LTVlMjEtNDUyYy04NWExLWQ5M2I5ZjdmNTU3NA.jpg"
 )
 User.create(

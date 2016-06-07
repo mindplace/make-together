@@ -6,9 +6,14 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :reviews
   has_many :reports
+
   has_many :conversations, foreign_key: :sender_id
+
   has_many :flagged_projects, class_name: "Project"
-  has_secure_password
+
+  has_many :followings, foreign_key: :followed_user_id
+  has_many :followed_users, through: :followings
+  has_many :followers, through: :followings
 
   validate :is_valid_email, on: :create
   validates :email, uniqueness: true
