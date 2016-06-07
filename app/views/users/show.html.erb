@@ -87,20 +87,20 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
-      <div class="row">
+      <div class="row" id="skill-div">
         <div class="col-md-8">
           <h3>Skills</h3>
         </div>
         <div class="col-md-1 panel-body">
           <% if logged_in? && @user == current_user %>
-            <h4><%= link_to "add", new_skill_path %></h4>
+            <h4 id= "new-skill"><%= link_to "add", new_skill_path %></h4>
           <% end %>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" id= "skill-list">
         <% @user.skills.each do |skill| %>
-          <p><%= link_to skill.body, skill_path(skill)%></p>
+          <%= render "/skills/individual_skill", skill: skill %>
         <% end %>
       </div>
     </div>

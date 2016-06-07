@@ -2,7 +2,7 @@ class ConversationsController < ApplicationController
 
   def create
     if params[:conversation]
-      @conversations = current_user.conversations.where(conversation_type: "inbox_message").concat(Conversation.where(recipient_id: current_user.id))
+      @conversations = Conversation.where(["sender_id = ? or recipient_id = ?", current_user.id, current_user.id]).where(conversation_type: "inbox_message")
       @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:recipient_id])
       if @conversation.first && @conversation.where(conversation_type: "inbox_message").first
         @conversation = @conversation.where(conversation_type: "inbox_message").first
@@ -36,12 +36,13 @@ class ConversationsController < ApplicationController
     @reciever = interlocutor(@conversation)
     @messages = @conversation.messages
     @message = Message.new
-    @conversations = current_user.conversations.where(conversation_type: "inbox_message").concat(Conversation.where(recipient_id: current_user.id))
+    @conversations = Conversation.where(["sender_id = ? or recipient_id = ?", current_user.id, current_user.id]).where(conversation_type: "inbox_message")
     render :inbox
   end
 
   def inbox
-    @conversations = current_user.conversations.where(conversation_type: "inbox_message").concat(Conversation.where(recipient_id: current_user.id))
+    @conversations = Conversation.where(["sender_id = ? or recipient_id = ?", current_user.id, current_user.id]).where(conversation_type: "inbox_message")
+    binding.pry
     render :inbox
   end
 
