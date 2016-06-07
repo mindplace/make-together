@@ -1,7 +1,7 @@
 <main class="Site-content">
 <div class="container panel-body">
 
-<div class="col-md-12 container row">
+<div class="container row">
   <div class="col-md-3">
     <div class="panel panel-default panel-body">
       <div class="img-container">
@@ -10,107 +10,85 @@
     </div>
 
 
-    <%= link_to "#{@user.followers.length} followers", followings_path(id: @user.id) %><br>
-    <%= link_to "#{@user.followed_users.length} following", followings_path(id: @user.id) %><br>
+    <div class="panel panel-default panel-body">
+      <div class="col-md-12">
+        <h4><%= @user.followers.length %><%= link_to " followers", followings_path(id: @user.id) %></h4>
+        <h4><%= @user.followed_users.length %><%= link_to " following", followings_path(id: @user.id) %><h4>
 
-
-    <% if logged_in? && @user != current_user%>
-        <% if !is_following?(@user) %>
-          <%= link_to "Follow", followings_path(id: @user.id), method: :post %>
-        <% else %>
-          <%= link_to "Unfollow", following_path(Following.find_or_create_by(followed_user_id: @user.id, follower_id: current_user.id), id: @user.id), method: :delete %>
+        <% if logged_in? && @user != current_user%>
+          <% if !is_following?(@user) %>
+            <%= link_to "Follow", followings_path(id: @user.id), method: :post %>
+          <% else %>
+            <%= link_to "Unfollow", following_path(Following.find_or_create_by(followed_user_id: @user.id, follower_id: current_user.id), id: @user.id), method: :delete %>
+          <% end %>
         <% end %>
-    <% end %>
+      </div>
+    </div>
 
     <% if @user.github || @user.dribbble || current_user == @user %>
-      <div class="panel panel-default">
-      <div class="panel-body">
+    <div class="panel panel-default panel-body">
       <% if current_user && current_user == @user %>
-        <div class="row">
+        <div class="col-md-7"><h3>Github</h3></div>
+        <div class="col-md-2 panel-body">
           <% if @user.github %>
-          <div class="col-md-6">
-            <h3>Github</h3>
-          </div>
-          <div class="col-md-2 panel-body">
-            <h4><%= link_to "Projects", @user.github_url %></h4>
-          </div>
-        </div>
-        <div class="row">
-          <% elsif @user.github.nil? %>
-          <div class="col-md-6">
-            <h3>Github</h3>
-          </div>
-          <div class="col-md-2 panel-body">
-            <h4><%= link_to "Connect", "/auth/github?user_id=#{@user.id}" %></h4>
-          </div>
+            <h4><%= link_to "projects", @user.github_url %></h4>
+          <% else %>
+            <h4><%= link_to "connect", "/auth/github?user_id=#{@user.id}" %></h4>
           <% end %>
+        </div>
 
+        <div class="col-md-6"><h3>Dribbble</h3></div>
+        <div class="col-md-2 panel-body">
           <% if @user.dribbble %>
-          <div class="col-md-6">
-            <h3>Dribbble</h3>
-          </div>
-          <div class="col-md-2 panel-body">
-            <h4><%= link_to "Projects", @user.dribbble_url %></h4>
-          </div>
-          <% elsif @user.dribbble.nil? %>
-          <div class="col-md-6">
-            <h3>Dribbble</h3>
-          </div>
-          <div class="col-md-2 panel-body">
-            <h4><%= link_to "Connect", user_dribbble_oauth_request_path(user_id: @user.id) %></h4>
-          </div>
+            <h4><%= link_to "projects", @user.dribbble_url %></h4>
+          <% else %>
+            <h4><%= link_to "connect", user_dribbble_oauth_request_path(user_id: @user.id) %></h4>
           <% end %>
-        </div>
         </div>
       <% end %>
 
-        <% if (current_user && current_user != @user && @user.github) || (!logged_in? && @user.github)%>
-          <div class="col-md-12">
-              <h4>Github: <%= link_to "Projects", @user.github_url %></h4>
-          </div>
-        <% end %>
+      <% if (current_user && current_user != @user && @user.github) || (!logged_in? && @user.github)%>
+        <div class="col-md-12">
+            <h4>Github <%= link_to "projects", @user.github_url %></h4>
+        </div>
+      <% end %>
 
-        <% if (current_user && current_user != @user && @user.dribbble) || (!logged_in? && @user.dribbble)%>
-          <div class="col-md-12">
-            <h4>Dribbble: <%= link_to "Projects", @user.dribbble_url %></h4>
-          </div>
-        <% end %>
-      </div>
+      <% if (current_user && current_user != @user && @user.dribbble) || (!logged_in? && @user.dribbble)%>
+        <div class="col-md-12">
+          <h4>Dribbble <%= link_to "projects", @user.dribbble_url %></h4>
+        </div>
+      <% end %>
+    </div>
     <% end %>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-8">
-            <h3>Skills</h3>
-          </div>
-          <div class="col-md-1 panel-body">
-            <% if logged_in? && @user == current_user %>
-              <h4 id= "new-skill"><%= link_to "add", new_skill_path %></h4>
-            <% end %>
-          </div>
-        </div>
-
-        <div class="row" id = "skill-list">
-          <% @user.skills.each do |skill| %>
-            <p><%= render "/skills/individual_skill", skill: skill %></p>
-          <% end %>
-        </div>
+    <div class="panel panel-default panel-body">
+      <div class="col-md-8">
+        <h4>Skills</h4>
       </div>
+      <div class="col-md-1 panel-body">
+        <% if logged_in? && @user == current_user %>
+          <h4><%= link_to "add", new_skill_path %></h4>
+        <% end %>
+      </div>
+
+
+      <% @user.skills.each do |skill| %>
+        <p><%= render "/skills/individual_skill", skill: skill %></p>
+      <% end %>
     </div>
   </div>
 
-  <div class="row container-fluid">
-    <div class="col-md-5">
-      <div class="">
-          <h1><%= @user.visible_name %></h1>
-            <h4><%= link_to @user.role.capitalize, users_path %></h4>
-          <% if logged_in? && @user == current_user %>
-          <% end %>
-      </div>
+  <div class="col-md-9">
+    <div class="col-md-7 panel-body">
+      <h1><%= @user.visible_name %></h1>
+      <h4><%= link_to @user.role.capitalize, users_path %></h4>
+      <% if logged_in? && @user == current_user %>
+        <p><%= link_to "Edit Profile", edit_user_path(@user) %></p>
+      <% end %>
+        <p><%= @user.bio %></p>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4 panel-body">
       <div class="panel-body pull-right">
         <h4>Current Projects: <%= @user.projects.length %></h4>
         <% if @user.avg_star_rating == 0 %>
@@ -131,47 +109,39 @@
           <%= f.submit "Send Message", class: "btn btn-success btn-xs  small-custom start-mail-conversation"%>
           <% end %>
         <% end %>
-        <% if logged_in? && @user == current_user %>
-          <p><%= link_to "Edit Profile", edit_user_path(@user) %></p>
-          <% end %>
       </div>
     </div>
 
-    <div class="row">
-      <div class="panel-body col-md-8">
-        <p><%= @user.bio %></p>
-      </div>
-
-      <div class="col-md-8">
-        <% if @user.projects.length > 0 %>
+    <div class="row col-md-12">
+      <% if @user.projects.length > 0 %>
         <div class="panel-body panel panel-default">
-          <h2>Seeking collaborators on...</h2>
-          <% @user.projects.each do |project| %>
-            <%= render partial: "/projects/index_show", locals: { project: project } %>
-          <% end %>
+          <h2>Seeking Collaborators On:</h2>
         </div>
+        <% @user.projects.each do |project| %>
+          <%= render partial: "/projects/index_show", locals: { project: project } %>
         <% end %>
-          <div class="panel panel-default">
-            <div class="panel-body">
-  <div id= "review-list">
-        <% if @user.reviews.length > 0 %>
+      <% end %>
+
+      <% if @user.reviews.length > 0 %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div id= "review-list">
+          <% if @user.reviews.length > 0 %>
             <h2>Reviews</h2>
-              <% @user.reviews.each do |review| %>
+            <% @user.reviews.each do |review| %>
               <%= render "/reviews/individual_review", review: review %>
-              <% end %>
+            <% end %>
           <%end%>
-                </div>
-              <%if logged_in? && current_user != @user %>
-                <span id="new-review-link"><%=link_to 'Leave a Review', new_review_path(user_id: @user.id)  %></span>
-              <%end%>
-            </div>
           </div>
+          <%if logged_in? && current_user != @user %>
+            <span id="new-review-link"><%=link_to 'Leave a Review', new_review_path(user_id: @user.id)  %></span>
+          <%end%>
+        </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
 
-
 </div>
-
 </main>
