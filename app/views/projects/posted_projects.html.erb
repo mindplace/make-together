@@ -2,7 +2,7 @@
 <main class = "Site-content">
 
   <div class="container panel-body">
-    <h1 class="project-category-3">YOUR PROJECTS</h1>
+
         <% @projects.each do |project| %>
         <%= render partial: "index_show", locals: { project: project } %>
         <% end %>
