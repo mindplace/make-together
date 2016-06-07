@@ -47,13 +47,18 @@ main {
 }
 footer {
   color: #666;
-  padding: 19px 0 30px 0;
   border-top: 1px solid #d3d3d3;
   background-color: white;
 }
 footer a {
   font-style: bold;
   font-size: medium;
+  background-color: #45CF9F;
+}
+footer a {
+  color: white;
+  font-size: 1.2em;
+
 }
 footer a:hover {
   color: #BB4F22;
@@ -68,6 +73,7 @@ footer ul {
 footer ul li {
   display: inline-block;
   padding: 0 3%;
+  padding-top: 20px;
 }
 .main{
    background-image: image-url('bg-nav.jpg');
@@ -76,17 +82,19 @@ footer ul li {
 .main a{
   color: #fff;
 }
+
 .projects-container{
   margin-top:5%;
   background-color: #F3F9FC;
 }
 
 .frontnav{
-  border-bottom: 3px solid #C5E9FF;
+
+
 }
 .frontnav a{
-  color: #474747;
-  font-size:1.5em;
+  color: #7D7D7D;
+  font-size:1.2em;
 }
 .frontnav a:before{
   background-color: #474747;

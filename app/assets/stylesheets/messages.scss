@@ -1,5 +1,6 @@
 .message-body{
   padding:1em;
+
 }
 
 .form-control-inline{
@@ -14,9 +15,10 @@ ul{
 margin-left:-10%;
 margin-bottom: 5%;
 margin-top:5%;
-  color: #333;
+  color: #7DC7F2;
   text-align:center;
-  border: 5px solid #333;
+  background-color: #fff;
+  border: 5px solid #7DC7F2;
   font-size: 1.2em;
   width:7.5em;
   padding:2%;
@@ -26,12 +28,15 @@ margin-top:5%;
 margin: 0 auto;
 margin-bottom: 5%;
 margin-top:5%;
-  color: #333;
+  color: #7DC7F2;
   text-align:center;
-  border: 5px solid #333;
   font-size: 1.8em;
   width:10em;
   padding:2%;
+}
+
+.message-category-2 a{
+  color: #7DC7F2;
 }
 .inbox{
   margin-left:-30%;
@@ -45,3 +50,6 @@ margin-top:5%;
 .message-body{
   font-size:1.2em;
 }
+
+
+
