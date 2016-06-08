@@ -24,9 +24,6 @@
 - following and followed should have a number on them (how many per)
 - follower/following should be rendered in two columns like the user index page
 
-## Project partial
-- should not have margin-left on it directly, that should be on the column it gets rendered in.
-
 ## Inbox
 - should be boxed in a way that makes it understandable which part of the page serves which function
 - messages should not have that odd line on the bottom
@@ -45,7 +42,7 @@
 
 ## Auxiliary pages
 - review Readme as a group to brainstorm any additions
-- community.md, hire.md: check your personal entry and update it 
+- community.md, hire.md: check your personal entry and update it
 
 # After presentation, upcoming features:
 - test out all aspects of the app with RSpec, Capybara, etc
