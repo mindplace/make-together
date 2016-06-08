@@ -17,6 +17,9 @@ class Project < ActiveRecord::Base
     FlaggedProject.find_by(project_id: id)
   end
 
+  def blurb
+    description.split[0..20].join(" ") + "..."
+  end
   private
 
   def set_expiration

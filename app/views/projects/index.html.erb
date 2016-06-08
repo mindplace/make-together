@@ -2,6 +2,7 @@
     <div class="container-fluid row">
       <div class="col-md-2">
         <div class="panel panel-default panel-body categories">
+          <%= image_tag "LOGO.png", class:"img-reponsive logo"%>
           <% if logged_in? %>
             <h3 id = "new-project-link" class ="#new"><%= link_to "new project", new_project_path %></h3>
           <% end %>
@@ -13,8 +14,7 @@
         </div>
       </div>
 
-      <div class="row container-fluid col-md-10 sorted-projects-list ">
-        <%= image_tag "LOGO.png", class:"img-reponsive logo"%>
+      <div class="row container-fluid col-md-9 sorted-projects-list ">
         <%= render partial: "most_recent_projects", locals: { project: @project } %>
         <%= render partial: "developer_projects", locals: { project: @project } %>
         <%= render partial: "designer_projects", locals: { project: @project } %>

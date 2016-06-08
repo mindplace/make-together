@@ -1,7 +1,13 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+.sorted-projects-list {
+  margin-left: 4%;
+  margin-top: 3%;
+}
+.custom-project-header {
+  margin-top: 0;
+}
 .project-img {
   width: 500px;
   height:auto;
@@ -28,10 +34,14 @@
   color: #0DFFCC;
 }
 .strong-projects {
-  border: 3px solid #80C4AE;
+  // border: 3px solid #80C4AE;
+  border: 1px solid #d3d3d3;
   background-color: #D3F2DD;
   color: #3C3B3D;
+  margin-bottom: 9%;
+  margin-left: 2%;
 }
+
 .project-category-1{
   margin: 0 auto;
   // background-color: #7A3EAB;
@@ -69,7 +79,7 @@
   border:0;
   box-shadow:none;
   position:fixed;
-  margin-top:10%;
+  margin-top:2%;
   background-color:transparent;
 }
 .categories a{
