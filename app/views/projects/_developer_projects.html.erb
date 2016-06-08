@@ -1,7 +1,13 @@
 <div id="developers" class= "sorted-projects">
-  <% posted_by_developers.each do |project| %>
-    <%= render partial: "index_show", locals: { project: project } %>
-    <div class="divider">
-         </div>
-  <% end %>
+  <div class="col-md-6">
+    <% posted_by_developers[0..posted_by_developers.length/2].each do |project| %>
+      <%= render partial: "index_show", locals: { project: project } %>
+    <% end %>
+  </div>
+  
+  <div class="col-md-6">
+    <% posted_by_developers[posted_by_developers.length/2..-1].each do |project| %>
+      <%= render partial: "index_show", locals: { project: project } %>
+    <% end %>
+  </div>
 </div>

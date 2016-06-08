@@ -1,7 +1,13 @@
 <div id="recent" class="sorted-projects">
-  <span id= "recent-projects">
-   <% most_recent.each do |project| %>
-      <%= render partial: "index_show", locals: { project: project } %>
-   <%end%>
-  </span>
+  <div class="col-md-6">
+     <% most_recent[0..most_recent.length/2].each do |project| %>
+        <%= render partial: "index_show", locals: { project: project } %>
+     <%end%>
+  </div>
+
+  <div class="col-md-6">
+    <% most_recent[most_recent.length/2..-1].each do |project| %>
+        <%= render partial: "index_show", locals: { project: project } %>
+    <%end%>
+  </div>
 </div>

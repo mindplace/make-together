@@ -1,4 +1,4 @@
-<div class="panel panel-default col-md-6 strong-projects">
+<div class="panel panel-default strong-projects">
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-3 col-md-3">
@@ -29,7 +29,7 @@
          </h4>
       </div>
       <div class="col-md-6">
-        <p>posted <%= project.created_at.strftime("%m/%d/%Y") %></p>
+        <h4>posted <%= project.created_at.strftime("%m/%d/%Y") %></h4>
       </div>
       <% if current_user && project.user == current_user %>
         <div class="col-md-3">

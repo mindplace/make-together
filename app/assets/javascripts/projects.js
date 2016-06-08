@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $('.sorted-projects').hide();
   $('#recent').show();
   $('.project-sort-button').on("click", function(e){
     clicked = $(e.target.parentElement).attr('class')
