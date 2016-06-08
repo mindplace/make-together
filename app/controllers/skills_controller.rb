@@ -31,6 +31,12 @@ class SkillsController < ApplicationController
   end
 
   def destroy
+    @skill.destroy
+    if request.xhr?
+      status 200
+    else
+      redirect_to 'users/show'
+    end
   end
 
   private

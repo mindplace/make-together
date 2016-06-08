@@ -20,4 +20,8 @@ $(document).ready(function(){
       $('#new-skill').show();
     })
   })
+  $('#skill-list').on("click", ".delete-skill a", function(e){
+    e.preventDefault();
+    console.log("hi")
+  })
 })
