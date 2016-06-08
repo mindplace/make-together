@@ -10,12 +10,9 @@
 - navbar not colored with image--can we get the images under the navbar as before?
 
 ## User profile
-- name needs to move up to be in-line with image
-- right sidebar info needs to move up to be in-line with image
 - new skill form should be bootstrapped
 - new skill does not append
 - reviews should be boxed up with one box per review
-- Skills should not show if current user != @user and @user.skills.nil?
 
 ## Followers/Following
 - followers/following page should have the user in question's name on top

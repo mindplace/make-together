@@ -1,4 +1,8 @@
-<p id="review<%=review.id%>"><%review.rating.times do %> &#9734; <%end%> | <%=link_to  review.reviewer.visible_name, user_path(review.reviewer), class: "link-color" %> <% if review.reviewer == current_user %>
-    <span class="edit-review-link">| <%= link_to 'edit', edit_review_path(review), class: "link-color"%></span>
-<% end %></p>
-<p><%=review.body.capitalize%> </p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p id="review<%=review.id%>"><%review.rating.times do %> &#9734; <%end%> | <%=link_to  review.reviewer.visible_name, user_path(review.reviewer), class: "link-color" %> <% if review.reviewer == current_user %>
+        <span class="edit-review-link">| <%= link_to 'edit', edit_review_path(review), class: "link-color"%></span>
+    <% end %></p>
+    <p><%=review.body.capitalize%> </p>
+  </div>
+</div>
