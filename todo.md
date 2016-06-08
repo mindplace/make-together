@@ -1,5 +1,9 @@
 # Todos
 
+
+## user index page
+- ajaxed follow button
+
 ## Layout
 - footer should be longer
 - more data in the footer (copyright, 1 sentence why we made it, something like that)
