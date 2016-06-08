@@ -19,7 +19,20 @@ module UsersHelper
     @conversations.each do |conversation|
       @new_messages << conversation.messages.last
     end
-    @new_messages.delete_if {|message| message.user_id== current_user.id}
-    return @new_messages
+    if @new_messages.compact.length > 0
+      return @new_messages.compact.delete_if {|message| message.user_id == current_user.id}.length
+    else
+      return 0
+    end
+  end
+
+  def current_projects(user)
+    if user.projects.length > 1
+      "#{user.projects.length} Current Projects"
+    elsif user.projects.length == 1
+      "1 Current Project"
+    else
+      ""
+    end
   end
 end

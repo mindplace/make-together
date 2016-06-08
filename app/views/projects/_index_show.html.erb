@@ -4,7 +4,7 @@
   </div>
 
   <div class="col-md-10 no-margin">
-    <h3><%=link_to project.title, project_path(project)%></h3>
+    <h3><%=link_to project.title, project_path(project), class: "link-color"%></h3>
   </div>
 
   <div class="col-md-2 no-margin top-padded">
@@ -23,7 +23,7 @@
   </div>
 
   <div class="col-md-6 no-margin">
-    <p><%= link_to project.user.visible_name, user_path(project.user) %></p>
+    <p><%= link_to project.user.visible_name, user_path(project.user), class: "link-color" %></p>
   </div>
 
   <div class="col-md-2">
