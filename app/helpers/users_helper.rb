@@ -22,4 +22,14 @@ module UsersHelper
     @new_messages.delete_if {|message| message.user_id== current_user.id}
     return @new_messages
   end
+
+  def current_projects(user)
+    if user.projects.length > 1
+      "#{user.projects.length} Current Projects"
+    elsif user.projects.length == 1
+      "1 Current Project"
+    else
+      ""
+    end
+  end
 end

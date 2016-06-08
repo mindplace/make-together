@@ -3,18 +3,18 @@
     <img src= <%= user.img %> class = img-thumbnail img-responsive" width="100%">
   </div>
 
-  <div class="col-md-8 no-margin">
+  <div class="col-md-7 no-margin">
     <h3><%= link_to user.visible_name, user_path(user), class: "link-color" %></h3>
     <h4><%=user.role %></h4>
   </div>
 
-  <div class="col-md-4 no-margin text-right top-padded">
+  <div class="col-md-5 no-margin text-right top-padded">
     <% if user.avg_star_rating == 0 %>
         <h5 class="top-padded"><%= "Not yet rated" %></h5>
     <% else %>
         <h5 class="top-padded"><%user.avg_star_rating.times do %> &#9734; <%end%></h5>
     <% end %>
-    <h5>Projects: <%= user.projects.length %></h5 >
+    <h5><%= current_projects(user) %></h5 >
   </div>
 
   <div class="col-xs-12 col-md-12 no-margin">
