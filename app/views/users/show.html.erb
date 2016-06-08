@@ -67,13 +67,14 @@
       </div>
       <div class="col-md-1">
         <% if logged_in? && @user == current_user %>
-          <h4><%= link_to "add", new_skill_path %></h4>
+          <h4 id= "new-skill"><%= link_to "add", new_skill_path %></h4>
         <% end %>
       </div>
 
-
       <% @user.skills.each do |skill| %>
+      <div id = "skill-list" class= "col-md-12">
         <p><%= render "/skills/individual_skill", skill: skill %></p>
+    </div>
       <% end %>
     </div>
   </div>
