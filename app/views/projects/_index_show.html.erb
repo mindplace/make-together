@@ -8,14 +8,13 @@
   </div>
 
   <div class="col-md-2 no-margin top-padded">
-      <% if current_user && current_user.has_favorited(project) %>
-        <%= render "/favorites/red_heart", layout: false, project: project %>
-      <% elsif current_user %>
-        <%= render "/favorites/grey_heart", layout: false, project: project %>
-      <% else %>
-        <%= image_tag("heart-grey.png", class: 'heart') %>
-      <% end %>
-     </h4>
+    <% if current_user && current_user.has_favorited(project) %>
+      <%= render "/favorites/red_heart", layout: false, project: project %>
+    <% elsif current_user %>
+      <%= render "/favorites/grey_heart", layout: false, project: project %>
+    <% else %>
+      <%= image_tag("heart-grey.png", class: 'heart') %>
+    <% end %>
   </div>
 
   <div class="col-xs-12 col-md-12 no-margin">
