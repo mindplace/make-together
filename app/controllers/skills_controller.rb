@@ -31,9 +31,9 @@ class SkillsController < ApplicationController
   end
 
   def destroy
-    @skill.destroy
+    SkillUser.find_by(skill_id: @skill.id, user_id: current_user.id).destroy
     if request.xhr?
-      status 200
+      render :response, layout: false
     else
       redirect_to 'users/show'
     end

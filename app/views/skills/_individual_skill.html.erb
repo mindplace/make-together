@@ -1,1 +1,1 @@
-<p><span class = "delete-skill"><%= link_to "x", skill_path(skill), class: "link-color", method: :delete%> </span><%= link_to skill.body, skill_path(skill), class: "link-color"%></p>
+<p><span class = "delete-skill" id="<%=skill.id%>"><%= link_to "x", skill_path(skill), class: "link-color"%> </span><%= link_to skill.body, skill_path(skill), class: "link-color"%></p>
