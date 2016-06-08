@@ -52,12 +52,14 @@
 
 
  <footer>
-   <ul>
-     <li><%= link_to "Meet the Creators", creators_path %></li>
-     <% if logged_in? %>
-     <li><%= link_to "Contact Us", new_report_path %></li>
-     <% end %>
-   </ul>
+   <div class="col-md-4">
+     <ul>
+       <li><%= link_to "Meet the Creators", creators_path %></li>
+       <% if logged_in? %>
+       <li><%= link_to "Contact Us", new_report_path %></li>
+       <% end %>
+     </ul>
+   </div>
  </footer>
 </body>
 </html>

@@ -8,11 +8,10 @@
 ## Site Index
 - arrow to scroll down is in the wrong location
 - navbar not colored with image--can we get the images under the navbar as before?
-- when user first signs in, the rest of the welcome page beneath the images doesn't render 
+- when user first signs in, the rest of the welcome page beneath the images doesn't render
 
 ## User profile
 - new skill form should be bootstrapped
-- new skill does not append
 
 ## Followers/Following
 - followers/following page should have the user's name on top
