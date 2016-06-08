@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jquery.infinite-pages
 //= require chat
 //= require private_pub
 //= require_tree .
