@@ -49,6 +49,25 @@ $(document).ready(function(){
       $('.sorted-projects-list').append(response);
     })
   })
-  $('')
+  $('.project-box').on("click", ".favorite-button a", function(e){
+    e.preventDefault();
+    clicked = e.target.parentElement.parentElement
+    $.ajax({
+      url: $(e.target.parentElement).attr('href'),
+      method: "POST"
+    }).done(function(response){
+      $(clicked).replaceWith(response);
+    })
+  })
+  $('.project-box').on("click", ".unfavorite-button a", function(e){
+    e.preventDefault();
+    clicked = e.target.parentElement.parentElement
+    $.ajax({
+      url: $(e.target.parentElement).attr('href'),
+      method: "DELETE"
+    }).done(function(response){
+      $(clicked).replaceWith(response);
+    })
+  })
 
 })

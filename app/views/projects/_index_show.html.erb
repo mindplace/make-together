@@ -1,5 +1,5 @@
 <div class="panel panel-default strong-projects">
-  <div class="panel-body">
+  <div class="panel-body project-box">
     <div class="row">
       <div class="col-xs-3 col-md-3">
         <img src= <%= project.img %> class="img-thumbnail">
@@ -18,15 +18,13 @@
     </div>
     <div class="row">
       <div class="col-xs-3 col-md-3">
-         <h4><%= project.favorites.length %>
           <% if current_user && current_user.has_favorited(project) %>
-            <%= link_to image_tag("heart-red.png"), delete_favorite_path(project_id: project.id, user_id: current_user.id) %>
+            <%= render "/favorites/red_heart", layout: false, project: project %>
           <% elsif current_user %>
-            <%= link_to image_tag("heart-grey.png"), new_favorite_path(project_id: project.id, user_id: current_user.id) %>
+            <%= render "/favorites/grey_heart", layout: false, project: project %>
           <% else %>
             <%= image_tag("heart-grey.png") %>
           <% end %>
-         </h4>
       </div>
       <div class="col-md-6">
         <h4>posted <%= project.created_at.strftime("%m/%d/%Y") %></h4>

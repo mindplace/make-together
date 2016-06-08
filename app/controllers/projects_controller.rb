@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
        end
     if @project.save
       if request.xhr?
-        render :_index_test, layout: false, locals: {project: @project}
+        render :_index_show, layout: false, locals: {project: @project}
       else
         redirect_to projects_path
       end
