@@ -3,15 +3,15 @@
   <div class="container panel-body">
     <% if @favorites.length > 0 %>
       <% @favorites[0..@favorites.length/2].each do |favorite| %>
-      <div class="col-md-6">
-        <%= render partial: "/projects/index_show", locals: { project: favorite.project } %>
-      </div>
+        <div class="col-md-6">
+          <%= render partial: "/projects/index_show", locals: { project: favorite.project } %>
+        </div>
       <% end %>
 
       <% @favorites[@favorites.length/2..-1].each do |favorite| %>
-      <div class="col-md-6">
-        <%= render partial: "/projects/index_show", locals: { project: favorite.project } %>
-      </div>
+        <div class="col-md-6">
+          <%= render partial: "/projects/index_show", locals: { project: favorite.project } %>
+        </div>
       <% end %>
     <% else %>
     <div class="col-md-4">
