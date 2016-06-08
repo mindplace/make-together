@@ -42,10 +42,12 @@ Rails.application.routes.draw do
   resources :tags, except: [:index]
   resources :reviews, except: [:index, :show]
   resources :followings, only: [:create, :index, :destroy]
+  resources :favorites, only: [:create, :index, :destroy]
 
-  get 'favorite/delete', to: "favorites#destroy", as: "delete_favorite"
-  get 'favorite', to: "favorites#show", as: "favorite"
-  get 'favorites/new', to: "favorites#create", as: "new_favorite"
+
+  # get 'favorite/delete', to: "favorites#destroy", as: "delete_favorite"
+  # get 'favorite', to: "favorites#show", as: "favorite"
+  # get 'favorites/new', to: "favorites#create", as: "new_favorite"
 
   get 'flagged/new', to: "flagged_projects#create", as: "new_flagged_project"
   get 'flagged', to: "flagged_projects#show", as: "flagged"
