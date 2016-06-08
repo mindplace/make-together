@@ -2,7 +2,7 @@
   <h1 class="text-center container panel-body">Your Favorites</h1>
   <div class="container panel-body">
     <% if @favorites.length > 0 %>
-      <% @favorites[0..@favorites.length/2].each do |favorite| %>
+      <% @favorites[0...@favorites.length/2].each do |favorite| %>
         <div class="col-md-6">
           <%= render partial: "/projects/index_show", locals: { project: favorite.project } %>
         </div>

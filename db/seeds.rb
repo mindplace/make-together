@@ -43,7 +43,7 @@ User.create(
 )
 User.create(
   first_name: "Sam", last_name: "Blackman", email: "tsam@gmail.com", password: "password", role: "designer",
-  img: "https://avatars0.githubusercontent.com/u/15351103?v=3&s=460"
+  img: "http://www.odt.co.nz/files/imagecache/200x200_scaled_cropped/story/2013/12/samuel_blackman_arrived_from_london_on_thursday_mo_52a9313554.jpg"
 )
 User.create(
   first_name: "Pan", last_name: "Wangperawong", email: "panisawesome@sauce.com" , password: "password", role: "developer", img: "https://i.ytimg.com/vi/OGtWJZcFqQ8/maxresdefault.jpg"

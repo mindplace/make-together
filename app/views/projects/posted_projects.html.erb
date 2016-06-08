@@ -2,16 +2,16 @@
   <h1 class="text-center container panel-body">Your Posted Projects</h1>
   <div class="container panel-body">
     <% if @projects.length > 0 %>
-      <% @projects[0..@projects.length/2].each do |project| %>
-      <div class="col-md-6">
-        <%= render partial: "index_show", locals: { project: project } %>
-      </div>
+      <% @projects[0...@projects.length/2].each do |project| %>
+        <div class="col-md-6">
+          <%= render partial: "index_show", locals: { project: project } %>
+        </div>
       <% end %>
 
       <% @projects[@projects.length/2..-1].each do |project| %>
-      <div class="col-md-6">
-        <%= render partial: "index_show", locals: { project: project } %>
-      </div>
+        <div class="col-md-6">
+          <%= render partial: "index_show", locals: { project: project } %>
+        </div>
       <% end %>
     <% else %>
       <div class="col-md-4">
