@@ -1,37 +1,34 @@
 <main class="Site-content">
 
-<div class="container-fluid">
+<div class="container-fluid project-box">
 
-  <%if current_user && @project.user.id === current_user.id %>
+  <%if current_user && @project.user.id == current_user.id %>
     <%=link_to 'edit | ', edit_project_path(@project) %>
   <%end%>
   <%= link_to 'back to projects', projects_path %>
 
 
-<div class="container panel-body"
+<div class="container panel-body">
 <div class="row">
   <div class="panel panel-default panel-body col-md-3">
   <img src= <%=@project.img%> class="img-responsive project-img">
 </div>
 
 <div class="row container-fluid">
-  <%if current_user && @project.user.id === current_user.id %>
+  <%if current_user && @project.user.id == current_user.id %>
     <%=link_to 'edit | ', edit_project_path(@project) %>
   <%end%>
     <div class="panel-body col-md-8">
   <h1><%= @project.title.capitalize %></h1>
 
   <h3><%= @project.tagline%></h3>
-<!-- </div>
-</div>
-<div class="panel-body col-md-7"> -->
+
  <h4>Created by: <%= link_to @project.user.visible_name, user_path(@project.user) %></h4>
  <p>Expires: <%=@project.date%></p>
- <h4> <%=@project.favorites.length%>
  <% if current_user && current_user.has_favorited(@project) %>
-                  <%= link_to image_tag("heart-red.png"), delete_favorite_path(project_id: @project.id, user_id: current_user.id) %>
+                  <%= render "/favorites/red_heart", layout: false, project: @project %>
                 <% elsif current_user %>
-                  <%= link_to image_tag("heart-grey.png"), new_favorite_path(project_id: @project.id, user_id: current_user.id) %>
+                  <%= render "/favorites/grey_heart", layout: false, project: @project %>
                 <% end %>
               </h4>
 </div>
@@ -39,19 +36,18 @@
 
 
          <h4><% if current_user %>
-              <% if (current_user == @project.user) && @project.is_flagged %>
-              reported
-              <%elsif @project.is_flagged %>
-                <%if current_user.id == @project.is_flagged.user_id %>
-                 <%=link_to 'reported, click to remove flag', delete_flagged_project_path(project_id: @project.id) %>
-                <%else%>
-                   <%=link_to 'report', new_flagged_project_path(project_id: @project.id) %>
+                <% if (current_user == @project.user) && @project.is_flagged %>
+                  Reported
+                <%elsif @project.is_flagged %>
+                  <%if current_user.id == @project.is_flagged.user_id %>
+                    <%= render "unreport", layout: false, project: @project %>
+                  <%else%>
+                   <%= render "report", layout: false, project: @project %>
+                  <%end%>
+                <% elsif current_user != @project.user %>
+                  <%= render "report", layout: false, project: @project %>
                 <%end%>
-               <% elsif current_user != @project.user %>
-
-               <%=link_to 'report', new_flagged_project_path(project_id: @project.id) %>
-               <%end%>
-               <%end%>
+              <%end%>
          </h4>
 
 
