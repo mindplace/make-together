@@ -1,6 +1,6 @@
 <div id="designers" class="sorted-projects">
   <div class="col-md-6">
-    <% posted_by_designers[0..posted_by_designers.length/2].each do |project| %>
+    <% posted_by_designers[0...posted_by_designers.length/2].each do |project| %>
       <%= render partial: "index_show", locals: { project: project } %>
     <% end %>
   </div>
