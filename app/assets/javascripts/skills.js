@@ -5,10 +5,10 @@ $(document).ready(function(){
       url: $(e.target).attr('href')
     }).done(function(response){
       $('#new-skill').hide();
-      $('#skill-list').prepend(response);
+      $('#skill-div').prepend(response);
     })
   })
-  $('#skill-list').on("submit", "form", function(e){
+  $('#skill-div').on("submit", "form", function(e){
     e.preventDefault();
     $.ajax({
       url: '/skills',
