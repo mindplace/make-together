@@ -1,10 +1,43 @@
-<div class="Site-content">
-<div class="custom-jumbotron">
-  <div class="jumbotron-inner-container">
-    <h1>MAKE TOGETHER</h1>
-    <h3 id="arrow"><a href="intro">   &#8711;</a> </h3>
-  </div>
-</div>
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <%= image_tag "man.jpeg" %>
+               <div class="carousel-content">
+                <h1>MAKE TOGETHER</h1>
+                <h3 id="arrow"><a href="intro">   &#8711;</a> </h3>
+              </div>
+          </div>
+          <div class="item">
+            <%= image_tag "carousel-2.jpg" %>
+                  <div class="carousel-content-2">
+                    <%= image_tag "LOGO.png" %>
+                <h3 id="arrow"><a href="intro">   &#8711;</a> </h3>
+              </div>
+          </div>
+           <div class="item">
+            <%= image_tag "carousel-3.jpg" %>
+                  <div class="carousel-content-3">
+                  <h1>connecting collaborators</h1>
+                <h2><i>since 2016</i></h2>
+
+                <h3 id="arrow"><a href="intro">   &#8711;</a> </h3>
+              </div>
+              <div class="carousel-caption">
+
+              </div>
+          </div>
+        </div>
+
+
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
 
 <%= render partial: 'creators' %>
 </div>

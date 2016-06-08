@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require chat
 //= require private_pub
 //= require_tree .
+

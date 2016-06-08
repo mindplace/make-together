@@ -1,26 +1,52 @@
-.custom-jumbotron {
-  background-image: image-url('man.jpeg');
-  background-size: cover !important;
-  background-position: center;
-  background-attachment: fixed;
-  height: auto;
-  margin-top: -60px;
-  padding-bottom: 60px;
+.carousel-content{
+  position:absolute;
+  bottom: 50%;
+  left: 38%;
+  z-index: 20;
+  color:white;
+   text-align:center;
 }
-.jumbotron-inner-container {
-  padding: 20% 3% 15% 3%;
-  text-align: center;
-}
-.jumbotron-inner-container h1 {
-  font-size: 2em;
+.carousel-content h1{
   border: 6px solid #FF8A7A;
-  padding: 5%;
-  width: 30%;
-  margin: auto;
-  color: #FF8A7A;
-  background-color: rgba(211, 211, 211, 0.2);
+  background-color: rgba(211,211,211, 0.2);
+  font-size:2.2em;
+  color: #FF8062;
+  width:220px;
+  margin: 0 auto;
+  padding: 10%;
+}
+.carousel-content h3{
+ color: #FF8062;
 }
 
+.carousel-content-2{
+  position:absolute;
+  bottom: 50%;
+  left: 45%;
+  z-index: 20;
+  color:white;
+  text-align:center;
+}
+
+.carousel-content-3{
+  position:absolute;
+  bottom: 50%;
+  left: 25%;
+  z-index: 20;
+  color:white;
+  text-align:center;
+  font-family: 'Droid Serif', serif;
+
+}
+.carousel-content-3 h1{
+  color: #2DB29F;
+  font-size:3.5em;
+  font-weight:bold;
+}
+.carousel-content-3 h2{
+  color:#2DB29F;
+  font-size:2.5em;
+}
 .frontnav > a {
   position: relative;
   color: #fff;

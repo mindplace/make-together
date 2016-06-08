@@ -8,6 +8,9 @@
 .custom-project-header {
   margin-top: 0;
 }
+.custom-project-header a {
+  color: #FF675A;
+}
 .project-img {
   width: 500px;
   height:auto;
@@ -34,9 +37,8 @@
   color: #0DFFCC;
 }
 .strong-projects {
-  // border: 3px solid #80C4AE;
-  border: 1px solid #d3d3d3;
-  background-color: #D3F2DD;
+  border: 2px solid #FF8A7A;
+  background-color: #fff;
   color: #3C3B3D;
   margin-bottom: 9%;
   margin-left: 2%;
@@ -83,7 +85,7 @@
   background-color:transparent;
 }
 .categories a{
-  color: #5D86B5;
+  color: #6E6F70;
   margin-bottom:15%;
   font-size:1.2em;
 
@@ -102,3 +104,4 @@
   border: 5px solid #C5E9FF;
   height:200px;
 }
+
