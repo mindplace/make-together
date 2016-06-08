@@ -1,8 +1,9 @@
 class ConversationsController < ApplicationController
+  include UsersHelper
 
   def create
     if params[:conversation]
-      @conversations = all_conversations
+      @conversations = all_inbox_conversations
       @conversation = Conversation.between(params[:conversation][:sender_id], params[:conversation][:receiver_id])
       if @conversation.first && any_inbox_conversation_with_user?
         @conversation = any_inbox_conversation_with_user?
@@ -31,7 +32,7 @@ class ConversationsController < ApplicationController
   def inbox_messages_show
     @conversation = Conversation.find_or_create_by(id: params[:id])
     set_messages_receiver_message
-    @conversations = all_conversations
+    @conversations = all_inbox_conversations
     if request.xhr?
       render :_inbox_show, layout: false, locals: {conversation: @conversation, receiver: @receiver, messages: @messages}
     else
@@ -40,7 +41,7 @@ class ConversationsController < ApplicationController
   end
 
   def inbox
-    @conversations = all_conversations
+    @conversations = all_inbox_conversations
     render :inbox
   end
 
@@ -55,10 +56,6 @@ class ConversationsController < ApplicationController
 
   def interlocutor(conversation)
     current_user == conversation.receiver ? conversation.sender : conversation.receiver
-  end
-
-  def all_conversations
-    @conversations = Conversation.where(["sender_id = ? or receiver_id = ?", current_user.id, current_user.id]).where(conversation_type: "inbox_message")
   end
 
   def any_inbox_conversation_with_user?
