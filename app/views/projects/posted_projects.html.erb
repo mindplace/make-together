@@ -1,9 +1,25 @@
-
 <main class = "Site-content">
+  <h1 class="text-center container panel-body">Your Posted Projects</h1>
   <div class="container panel-body">
-
-        <% @projects.each do |project| %>
+    <% if @projects.length > 0 %>
+      <% @projects[0..@projects.length/2].each do |project| %>
+      <div class="col-md-6">
         <%= render partial: "index_show", locals: { project: project } %>
-        <% end %>
       </div>
+      <% end %>
+
+      <% @projects[@projects.length/2..-1].each do |project| %>
+      <div class="col-md-6">
+        <%= render partial: "index_show", locals: { project: project } %>
+      </div>
+      <% end %>
+    <% else %>
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+        <h3 class="text-center"><i>No projects posted!</i></h3>
+        <h3 class="text-center"><i></i></h3>
+      </div>
+    <% end %>
+  </div>
 </main>

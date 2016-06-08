@@ -1,39 +1,39 @@
-<div class="panel panel-default strong-projects project-box">
-  <div class="panel-body project-box">
-    <div class="row">
-      <div class="col-xs-3 col-md-3">
-        <img src= <%= project.img %> class="img-thumbnail">
-      </div>
-
-      <div class="col-xs-9 col-md-9">
-       <h2 class="custom-project-header"><%=link_to project.title, project_path(project)%></h2>
-       <p><b><%= project.tagline %></b></p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-md-12">
-        <p><%= project.blurb %></p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3 col-md-3">
-          <% if current_user && current_user.has_favorited(project) %>
-            <%= render "/favorites/red_heart", layout: false, project: project %>
-          <% elsif current_user %>
-            <%= render "/favorites/grey_heart", layout: false, project: project %>
-          <% else %>
-            <%= image_tag("heart-grey.png") %>
-          <% end %>
-      </div>
-      <div class="col-md-6">
-        <h4>posted <%= project.created_at.strftime("%m/%d/%Y") %></h4>
-      </div>
-      <% if current_user && project.user == current_user %>
-        <div class="col-md-3">
-          <%=link_to 'edit', edit_project_path(project) %>
-        </div>
-      <%end%>
-    </div>
-   </div>
+<div class="panel panel-default panel-body strong-projects project-box">
+  <div>
+    <img src= <%= project.img %> class="img-thumbnail img-responsive" width="100%">
   </div>
+
+  <div class="col-md-10 no-margin">
+    <h3><%=link_to project.title, project_path(project)%></h3>
+  </div>
+
+  <div class="col-md-2 no-margin top-padded">
+    <% if current_user && current_user.has_favorited(project) %>
+      <%= render "/favorites/red_heart", layout: false, project: project %>
+    <% elsif current_user %>
+      <%= render "/favorites/grey_heart", layout: false, project: project %>
+    <% else %>
+      <%= image_tag("heart-grey.png", class: 'heart') %>
+    <% end %>
+  </div>
+
+  <div class="col-xs-12 col-md-12 no-margin">
+   <p><b><%= project.tagline %></b></p>
+   <p class="text-justify"><%= project.blurb %></p>
+  </div>
+
+  <div class="col-md-6 no-margin">
+    <p><%= link_to project.user.visible_name, user_path(project.user) %></p>
+  </div>
+
+  <div class="col-md-2">
+    <% if current_user && project.user == current_user %>
+     <%=link_to 'edit', edit_project_path(project) %>
+    <%end%>
+  </div>
+
+  <div class="col-md-4 no-margin">
+    <p class="text-right"><i>posted <%= project.created_at.strftime("%m/%d/%Y") %></i></p>
+  </div>
+
+</div>
