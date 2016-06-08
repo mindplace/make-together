@@ -8,11 +8,10 @@
   </div>
 
   <div class="col-md-2 no-margin top-padded">
-     <h4><%= project.favorites.length %>
       <% if current_user && current_user.has_favorited(project) %>
-        <%= link_to image_tag("heart-red.png", class: 'heart'), delete_favorite_path(project_id: project.id, user_id: current_user.id) %>
+        <%= render "/favorites/red_heart", layout: false, project: project %>
       <% elsif current_user %>
-        <%= link_to image_tag("heart-grey.png", class: 'heart'), new_favorite_path(project_id: project.id, user_id: current_user.id) %>
+        <%= render "/favorites/grey_heart", layout: false, project: project %>
       <% else %>
         <%= image_tag("heart-grey.png", class: 'heart') %>
       <% end %>
