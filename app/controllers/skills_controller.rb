@@ -12,7 +12,7 @@ class SkillsController < ApplicationController
   end
 
   def create
-    @skill = Skill.create(skill_params)
+    @skill = Skill.find_or_create_by(skill_params)
     current_user.skills << @skill
     if request.xhr?
       render :_individual_skill, layout: false, locals: {skill: @skill}

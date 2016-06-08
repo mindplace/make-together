@@ -71,9 +71,11 @@
         <% end %>
       </div>
 
+      <span id = "skill-div">
       <% @user.skills.each do |skill| %>
-      <div id = "skill-list" class= "col-md-12">
+      <div class= "col-md-12" id= "skill-list">
         <p><%= render "/skills/individual_skill", skill: skill %></p>
+      </span>
     </div>
       <% end %>
     </div>
