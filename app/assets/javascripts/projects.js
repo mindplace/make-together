@@ -70,10 +70,10 @@ $(document).ready(function(){
     })
   })
   $('.categories').on("click", "a", function(e){
+    debugger;
     selected = $(e.target);
     $('.highlight').css("color", "#8E8F91").removeClass('highlight');
     selected.css("color", "#FF8A7A").addClass('highlight');
-
   })
   $(window).scroll(function () {
     // distance from top of footer to top of document
@@ -83,7 +83,6 @@ $(document).ready(function(){
     scrolltop = $(document).scrollTop()+570;
     // difference between the two
     difference = scrolltop-footertotop;
-    debugger;
     // if user has scrolled further than footer,
     // pull sidebar up using a negative margin
 
