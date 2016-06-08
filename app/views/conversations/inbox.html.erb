@@ -1,6 +1,6 @@
 <main class="Site-content">
   <div class= "container">
-
+<div id = "whole-inbox-page">
     <div class="col-xs-6 col-md-4">
       <h1 class="message-category-1">inbox</h1>
       <ul class="list-group inbox">
@@ -17,10 +17,8 @@
       </ul>
     </div>
 
-    <% if @conversation %>
-    <div class="col-xs-12 col-md-8">
-      <%= render partial: 'inbox_show' %>
+    <div class="col-xs-12 col-md-8" id= "inbox-div">
     </div>
-    <% end %>
+</div>
   </div>
 </main>
