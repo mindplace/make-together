@@ -92,8 +92,6 @@ color: #8E8F91;
   font-size:1.2em;
 }
 
-
-
 .search{
   border:0;
   box-shadow:none;
@@ -107,5 +105,13 @@ color: #8E8F91;
 .proj{
   border: 5px solid #C5E9FF;
   height:200px;
+}
+
+.logo{
+  animation: fadeIn 2s;
+}
+
+.logo.load{
+  opacity: 1;
 }
 
