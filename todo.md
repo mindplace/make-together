@@ -6,13 +6,10 @@
 
 ## Layout
 - footer should be longer
-- more data in the footer (copyright, 1 sentence why we made it, something like that)
-- take away colors from footer text
+- unstick sidebar when footer comes into view
 
 ## Site Index
-- arrow to scroll down is in the wrong location
 - navbar not colored with image--can we get the images under the navbar as before?
-- when user first signs in, the rest of the welcome page beneath the images doesn't render
 
 ## User profile
 - new skill form should be bootstrapped

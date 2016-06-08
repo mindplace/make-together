@@ -70,11 +70,29 @@ $(document).ready(function(){
     })
   })
   $('.categories').on("click", "a", function(e){
+    debugger;
     selected = $(e.target);
     $('.highlight').css("color", "#8E8F91").removeClass('highlight');
     selected.css("color", "#FF8A7A").addClass('highlight');
-
   })
+  $(window).scroll(function () {
+    // distance from top of footer to top of document
+    footertotop = ($('footer').position().top);
+
+    // distance user has scrolled from top, adjusted to take in height of sidebar (570 pixels inc. padding)
+    scrolltop = $(document).scrollTop()+570;
+    // difference between the two
+    difference = scrolltop-footertotop;
+    // if user has scrolled further than footer,
+    // pull sidebar up using a negative margin
+
+    if (scrolltop > footertotop) {
+      $('.categories').css('margin-top',  0-difference);
+    } else  {
+      $('.categories').css('margin-top', 0);
+    }
+  });
+
 })
   $('.project-box').on("click", "#report-button a", function(e){
     e.preventDefault();
@@ -96,4 +114,3 @@ $(document).ready(function(){
       $(clicked).replaceWith(response);
     })
   })
-
