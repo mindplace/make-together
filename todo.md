@@ -8,15 +8,16 @@
 ## Site Index
 - arrow to scroll down is in the wrong location
 - navbar not colored with image--can we get the images under the navbar as before?
+- when user first signs in, the rest of the welcome page beneath the images doesn't render 
 
 ## User profile
 - new skill form should be bootstrapped
 - new skill does not append
 
 ## Followers/Following
-- followers/following page should have the user in question's name on top
+- followers/following page should have the user's name on top
 - if no followers or no following, should have a message with that
-- if current user == @user, should suggest 2 people to follow (that would involve adding a helper method)
+- if current user == @user AND current user isn't following anyone, should suggest 2 people to follow (that would involve adding a helper method)
 - following and followed should have a number on them (how many per)
 - follower/following should be rendered in two columns like the user index page
 
