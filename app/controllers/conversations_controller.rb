@@ -32,7 +32,11 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find_or_create_by(id: params[:id])
     set_messages_receiver_message
     @conversations = all_conversations
-    render :inbox
+    if request.xhr?
+      render :_inbox_show, layout: false, locals: {conversation: @conversation, receiver: @receiver, messages: @messages}
+    else
+      render :inbox
+    end
   end
 
   def inbox

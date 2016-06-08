@@ -9,7 +9,11 @@ class MessagesController < ApplicationController
       @messages = @conversation.messages
       @receiver = @conversation.receiver
       if @message.save!
-        redirect_to inbox_messages_show_path(@conversation)
+        if request.xhr?
+          render '/conversations/_individual_message', layout: false, locals: {message: @message}
+        else
+          redirect_to inbox_messages_show_path(@conversation)
+        end
       else
         @errors = @message.errors
         render '/conversations/inbox_show'
