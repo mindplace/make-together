@@ -75,7 +75,7 @@
       <span id = "skill-div">
       <% @user.skills.each do |skill| %>
       <div class= "col-md-12" id= "skill-list">
-        <p class="link-color"><%= render "/skills/individual_skill", skill: skill, class: "link-color" %></p>
+        <p class="link-color"><%= render "/skills/individual_skill", skill: skill %></p>
       </span>
     </div>
       <% end %>
@@ -95,7 +95,7 @@
 
     <div class="col-md-5">
       <div class="text-right">
-        <h4>Current Projects: <%= @user.projects.length %></h4>
+        <h4><%= current_projects(@user) %></h4>
         <% if @user.avg_star_rating == 0 %>
             <h4><%@user.avg_star_rating.times do %> &#9734; <%end%></h4>
         <% end %>
