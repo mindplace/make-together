@@ -5,8 +5,9 @@
       <div class="container col-md-5">
 
         <div class="panel panel-default panel-body categories">
-          <h3 class= "#followers"><a class = "following-sort-button" href= "#">FOLLOWERS</a></h3>
-          <h3 class ="#followed_users"><a class = "following-sort-button" href= "#">FOLLOWING</a></h3>
+          <h3><%= @user.first_name%> <%=@user.last_name %></h3>
+          <h3 class= "#followers"><a class = "following-sort-button" href= "#"><%=@user.followers.length%> FOLLOWERS</a></h3>
+          <h3 class ="#followed_users"><a class = "following-sort-button" href= "#"><%=@user.followed_users.length%> FOLLOWING</a></h3>
         </div>
       </div>
 
@@ -14,15 +15,29 @@
       <div class="row container-fluid col-md-6 sorted-following-list">
 
         <div id="followers" class= "sorted-following active">
-          <% @user.followers.each do |follower| %>
-            <%= render '/users/index_show', user: follower %>
+
+          <% if @user.followers.length == 0 %>
+            <% if logged_in? && @user == current_user %>
+              <h3>You have no followers.</h3>
+            <% else %>
+              <h3><%= @user.visible_name %> has no followers.</h3>
+            <%end%>
+          <% else %>
+            <% @user.followers.each do |follower| %>
+              <%= render '/users/index_show', user: follower %>
+            <% end %>
           <% end %>
         </div>
 
       <div id="followed_users" class= "sorted-following hidden">
+         <% if @user.followed_users.length == 0 %>
+            <h3><%=@user.visible_name%> is not following anyone</h3>
+            <% else %>
         <% @user.followed_users.each do |user| %>
         <%= render '/users/index_show', user: user %>
         <% end %>
+        <% end %>
+
       </div>
     </div>
   </div>
