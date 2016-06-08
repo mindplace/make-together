@@ -69,5 +69,25 @@ $(document).ready(function(){
       $(clicked).replaceWith(response);
     })
   })
+  $('.project-box').on("click", "#report-button a", function(e){
+    e.preventDefault();
+    clicked = e.target
+    $.ajax({
+      url: $(e.target).attr('href'),
+      method: "POST"
+    }).done(function(response){
+      $(clicked).replaceWith(response);
+    })
+  })
+  $('.project-box').on("click", "#unreport-button a", function(e){
+    e.preventDefault();
+    clicked = e.target
+    $.ajax({
+      url: $(e.target).attr('href'),
+      method: "DELETE"
+    }).done(function(response){
+      $(clicked).replaceWith(response);
+    })
+  })
 
 })
