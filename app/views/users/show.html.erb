@@ -95,8 +95,6 @@
       <div class="panel-body pull-right">
         <h4>Current Projects: <%= @user.projects.length %></h4>
         <% if @user.avg_star_rating == 0 %>
-            <h4><%= "Not yet rated" %></h4>
-        <% else %>
             <h4><%@user.avg_star_rating.times do %> &#9734; <%end%></h4>
         <% end %>
 
