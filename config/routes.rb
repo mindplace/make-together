@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :projects
-  resources :skills, except: [:index]
+  resources :skills, except: [:edit, :update, :index]
   resources :tags, except: [:index]
   resources :reviews, except: [:index, :show]
   resources :followings, only: [:create, :index, :destroy]

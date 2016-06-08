@@ -20,4 +20,14 @@ $(document).ready(function(){
       $('#new-skill').show();
     })
   })
+  $('#skill-list').on("click", ".delete-skill a", function(e){
+    e.preventDefault();
+    var id = this.parentElement.id
+    $.ajax({
+      url: "/skills/" + id,
+      method: 'DELETE'
+    }).done(function(response){
+      $(this.parentElement.parentElement).remove();
+    }.bind(this))
+  })
 })
