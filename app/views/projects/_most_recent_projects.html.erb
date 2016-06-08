@@ -1,5 +1,5 @@
 <div id="recent" class="sorted-projects">
-  <div class="col-md-6">
+  <div class="col-md-6" id= "recent-projects">
      <% most_recent[0..most_recent.length/2].each do |project| %>
         <%= render partial: "index_show", locals: { project: project } %>
      <%end%>
