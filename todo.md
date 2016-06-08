@@ -12,7 +12,6 @@
 ## User profile
 - new skill form should be bootstrapped
 - new skill does not append
-- reviews should be boxed up with one box per review
 
 ## Followers/Following
 - followers/following page should have the user in question's name on top
