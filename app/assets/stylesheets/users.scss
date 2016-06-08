@@ -7,47 +7,17 @@
   height: auto;
 }
 .user-index {
-font-family: 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
-.user-white-box {
-  border: 2px solid #FF8A7A;
-  background-color: #fff;
-  color: #3C3B3D;
-  padding-top: 4%;
-  padding-bottom:4%;
-  color: #454340;
+.custom-user-header {
+  padding-top: 0;
 }
-.user-white-box a {
-  color: #454340;
-  transition: color 0.5s ease;
+.no-left {
+  padding-left: 0;
 }
-.user-white-box a:hover {
-  color: #0DFFCC;
+.link-color {
+  color: #FF675A;
 }
-.user-white-box h3 {
-  margin-top: 0;
-}
-.strong-user {
-   border: 2px solid #FF8A7A;
-  background-color: #fff;
-  color: #3C3B3D;
-}
-
-.user-category-1{
-
-margin: 0 auto;
-margin-bottom: 5%;
-margin-top:5%;
-  color: #333;
-  text-align:center;
-  border: 5px solid #333;
-  font-size: 1.5em;
-  width:7.5em;
-  padding:2%;
-}
-
-.user-projects{
-  border: 3px solid #80C4AE;
-  background-color: #D3F2DD;
-
+.padding-bottom {
+  padding-bottom: 3%;
 }
