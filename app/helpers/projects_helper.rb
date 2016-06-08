@@ -24,12 +24,11 @@ module ProjectsHelper
   end
 
   def rand_dev_projects
-    posted_by_developers.sample(3)
+    Project.joins(:user).where("projects.user_id !=? AND users.role = 'developer'", current_user).limit(2)
   end
 
   def rand_design_projects
-    posted_by_designers.sample(3)
+    Project.joins(:user).where("projects.user_id !=? AND users.role = 'designer'", current_user).limit(2)
   end
 
 end
-

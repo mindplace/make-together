@@ -55,7 +55,7 @@ User.create(
 )
 
 # Project.create(title: , description: , tagline: , img: , user_id: )
-Project.create(title: "Grocery app that learns your preferences", tagline: "Seeking designer and front-end developer", img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQuoh55MquxPt6VO7ONbGSboNpMcasFEOS3cAcYw8yxdRXDvz1PDA", user_id: 2, description: "This is a grocery app that will present users with lists that become shorter and more on-point the more they are used, based on which items the user checks off when they go shopping.")
+Project.create(title: "Grocery app that learns your preferences", tagline: "Seeking designer and front-end developer", img: "http://dingo.care2.com/pictures/causes/2984/2983383.large.jpg", user_id: 2, description: "This is a grocery app that will present users with lists that become shorter and more on-point the more they are used, based on which items the user checks off when they go shopping.")
 
 Project.create(title: "Chair rating app", tagline: "Seeking developer and collaborators", img: "http://ep.yimg.com/ay/monticellostore/campeachy-chair-258.jpg", user_id: 4, description: "Ever watch Big Bang Theory? Sheldon got one thing right: your seat matters. Want to build an app that lets you rate chairs.")
 
@@ -75,4 +75,4 @@ Project.create(title: "Google trends API", tagline: "Seeking collaborative devel
 
 Project.create(title: "StackForYourself", tagline: "Seeking developer", description: "Coding bootcamps are creatively disrupting the technical community and allowing tons of people to enter programming. But they're expensive in time and dedication. As an alternative, people suggest you self-teach from books...or sign up for Free Code Camp, take Coursera and Codecademy, and go through the Odin Project. These are awesome but do not fully meet the need for diverse technical offerings that provide high quality and low or no cost. I want to build Stack For Yourself, which is a complete curriculum to take you to a junior fullstack developer level at your own pace, allowing you to track your progress and connect to a community that is working side-by-side with you.", user_id: 12, img: "https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/08/1409261668002.png")
 
-Project.create(title: "Ruby Talks", tagline: "Seeking designer", description: "I want to build a suggestion box for Ruby talks, a place to share talks, and a place to make comments on talks or ideas.", user_id: 15, img: "http://onebyte.biz/wp-content/uploads/2016/04/rubylang.png")
+Project.create(title: "Ruby Talks", tagline: "Seeking designer", description: "I want to build a suggestion box for Ruby talks, a place to share talks, and a place to make comments on talks or ideas.", user_id: 15, img: "https://udemy-images.udemy.com/course/750x422/10681_968c_6.jpg")
