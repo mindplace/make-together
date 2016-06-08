@@ -1,2 +1,0 @@
-module FlaggedProjectsHelper
-end

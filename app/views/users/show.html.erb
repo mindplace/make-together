@@ -125,7 +125,7 @@
         <% end %>
       <% end %>
 
-      <% if @user.reviews.length > 0 %>
+      <% if @user.reviews.length > 0 || logged_in? %>
       <div class="panel panel-default">
         <div class="panel-body">
           <div id= "review-list">

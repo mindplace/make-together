@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    if !@project.img
+    if @project.img == ""
       set_image
     end
     Tag.build_from_string(params[:project][:tags]).each do |tag|
@@ -76,8 +76,7 @@ class ProjectsController < ApplicationController
   end
 
   def set_image
-    images = ["http://image005.flaticon.com/1/svg/14/14427.svg", "http://image005.flaticon.com/1/svg/29/29104.svg", "http://image005.flaticon.com/17/svg/56/56361.svg", "http://image005.flaticon.com/11/svg/9/9299.svg", "http://image005.flaticon.com/1/svg/29/29594.svg", "http://image005.flaticon.com/1/svg/71/71724.svg", "http://image005.flaticon.com/1/svg/35/35446.svg", "http://image005.flaticon.com/1/svg/68/68792.svg"]
-    @project.img = images.sample
+    @project.img = "http://s33.postimg.org/5knvgprjj/shutterstock_194620346.jpg"
   end
 
 end

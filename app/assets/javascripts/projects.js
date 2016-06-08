@@ -71,9 +71,31 @@ $(document).ready(function(){
   })
   $('.categories').on("click", "a", function(e){
     selected = $(e.target);
-
     $('.highlight').css("color", "#8E8F91").removeClass('highlight');
     selected.css("color", "#FF8A7A").addClass('highlight');
 
   })
 })
+  $('.project-box').on("click", "#report-button a", function(e){
+    e.preventDefault();
+    clicked = e.target
+    $.ajax({
+      url: $(e.target).attr('href'),
+      method: "POST"
+    }).done(function(response){
+      $(clicked).replaceWith(response);
+    })
+  })
+  $('.project-box').on("click", "#unreport-button a", function(e){
+    e.preventDefault();
+    clicked = e.target
+    $.ajax({
+      url: $(e.target).attr('href'),
+      method: "DELETE"
+    }).done(function(response){
+      $(clicked).replaceWith(response);
+    })
+  })
+
+
+

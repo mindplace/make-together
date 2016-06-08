@@ -2,7 +2,11 @@ class FlaggedProjectsController < ApplicationController
 
   def create
     @flagged_project = FlaggedProject.create(project_id: params[:project_id], user_id: current_user.id)
-    redirect_to project_path(@flagged_project.project)
+    if request.xhr?
+      render "/projects/_unreport", layout: false, locals: {project: @flagged_project.project}
+    else
+      redirect_to project_path(@flagged_project.project)
+    end
   end
 
   def show
@@ -10,10 +14,13 @@ class FlaggedProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find_by(id: params[:project_id])
-    @flagged_project = FlaggedProject.find_by(project_id: params[:project_id])
+    @flagged_project = FlaggedProject.find_by(id: params[:id])
     @flagged_project.destroy
-    redirect_to project_path(@project)
+    if request.xhr?
+      render "/projects/_report", layout: false, locals: {project: @flagged_project.project}
+    else
+      redirect_to project_path(@flagged_project.project)
+    end
 
   end
 end

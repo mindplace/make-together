@@ -1,31 +1,47 @@
 <main class="Site-content">
   <div class="container panel-body">
-    <div class="col-md-12 container-fluid row">
-
-      <div class="container col-md-5">
-
+    <div class="container-fluid row">
+      <div class="container col-md-2">
         <div class="panel panel-default panel-body categories">
+<<<<<<< HEAD
           <h3 class= "#developers"><a class = "user-sort-button" href= "#">developers</a></h3>
           <h3 class ="#designers"><a class = "user-sort-button" href= "#">designers</a></h3>
+=======
+          <h3 class="#developers"><a class="user-sort-button" href="#">DEVELOPERS</a></h3>
+          <h3 class="#designers"><a class="user-sort-button" href="#">DESIGNERS</a></h3>
+>>>>>>> master
         </div>
       </div>
 
+      <div class="row container-fluid col-md-9 sorted-projects-list">
+        <div id="developers" class="sorted-users active">
+          <div class="col-md-6">
+            <% @developers[0...@developers.length/2].each do |developer| %>
+                <%= render '/users/index_show', user: developer %>
+            <% end %>
+          </div>
 
-      <div class="row container-fluid col-md-6 sorted-users-list">
-
-        <div id="developers" class= "sorted-users active">
-          <% @developers.each do |developer| %>
-            <%= render '/users/index_show', user: developer %>
-          <% end %>
+          <div class="col-md-6">
+            <% @developers[@developers.length/2..-1].each do |developer| %>
+                <%= render '/users/index_show', user: developer %>
+            <% end %>
+          </div>
         </div>
 
-      <div id="designers" class= "sorted-users hidden">
-        <% @designers.each do |designer| %>
-        <%= render '/users/index_show', user: designer %>
-        <% end %>
+        <div id="designers" class="sorted-users hidden">
+
+          <div class="col-md-6">
+            <% @designers[0...@designers.length/2].each do |designer| %>
+              <%= render '/users/index_show', user: designer %>
+            <% end %>
+          </div>
+          <div class="col-md-6">
+            <% @designers[@designers.length/2..-1].each do |designer| %>
+              <%= render '/users/index_show', user: designer %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
   </div>
 </main>
