@@ -74,6 +74,7 @@ $(document).ready(function(){
     selected = $(e.target);
     $('.highlight').css("color", "#8E8F91").removeClass('highlight');
     selected.css("color", "#FF8A7A").addClass('highlight');
+    $("html, body").animate({ scrollTop: 0 }, "slow");
   })
   $(window).scroll(function () {
     // distance from top of footer to top of document
