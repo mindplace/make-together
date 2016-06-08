@@ -1,25 +1,33 @@
-<main class="Site-content">
-  <div class = "container">
-    <div class="panel-body">
-      <h1 class="text-center">Welcome, <%= current_user.first_name.capitalize %>!</h1>
-    </div>
-
-    <div class="panel-body">
-      <h2 id="welcome">Some projects you may be interested in: </h2>
-    </div>
-
-    <% if current_user.role == "designer" %>
-        <% rand_dev_projects.each do |project| %>
-          <div class="col-md-6">
-            <%= render '/projects/index_show', project: project  %>
+<%=render partial: "modal" %>
+ <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <%= image_tag "man.jpeg" %>
+               <div class="carousel-content">
+                <h1>MAKE TOGETHER</h1>
+                <h3 id="arrow"><a href="intro">   &#8711;</a> </h3>
+              </div>
           </div>
-        <% end %>
-    <% else %>
-        <% rand_design_projects.each do |project| %>
-          <div class="col-md-6">
-            <%= render '/projects/index_show', project: project  %>
+          <div class="item">
+            <%= image_tag "carousel-2.jpg" %>
+                  <div class="carousel-content-2">
+                    <%= image_tag "LOGO.png" %>
+                <h3 id="arrow"><a href="intro">   &#8711;</a> </h3>
+              </div>
           </div>
-        <% end %>
-    <% end %>
-  </div>
-</main>
+           <div class="item">
+            <%= image_tag "carousel-3.jpg" %>
+                  <div class="carousel-content-3">
+                  <h1>connecting collaborators</h1>
+                <h2><i>since 2016</i></h2>
+
+                <h3 id="arrow"><a href="intro">   &#8711;</a> </h3>
+              </div>
+              <div class="carousel-caption">
+
+              </div>
+          </div>
+        </div>
+
+
+</div>
