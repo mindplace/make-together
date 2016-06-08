@@ -69,6 +69,13 @@ $(document).ready(function(){
       $(clicked).replaceWith(response);
     })
   })
+  $('.categories').on("click", "a", function(e){
+    selected = $(e.target);
+    $('.highlight').css("color", "#8E8F91").removeClass('highlight');
+    selected.css("color", "#FF8A7A").addClass('highlight');
+
+  })
+})
   $('.project-box').on("click", "#report-button a", function(e){
     e.preventDefault();
     clicked = e.target
@@ -90,4 +97,5 @@ $(document).ready(function(){
     })
   })
 
-})
+
+
