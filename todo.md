@@ -1,6 +1,5 @@
 # Todos
 
-
 ## Inbox
 - should be boxed in a way that makes it understandable which part of the page serves which function
 - messages should not have that odd line on the bottom
