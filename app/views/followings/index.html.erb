@@ -20,6 +20,10 @@
           <% if @user.followers.length == 0 %>
             <% if logged_in? && @user == current_user %>
               <h3>You have no followers.</h3>
+              <h3> Suggested following: </h3>
+              <% suggested_following.each do |user| %>
+                <%= render '/users/index_show', user: user %>
+                <% end %>
             <% else %>
               <h3><%= @user.visible_name %> has no followers.</h3>
             <%end%>

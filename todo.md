@@ -1,11 +1,5 @@
 # Todos
 
-## user index page
-- ajaxed follow button
-
-## User profile
-- new skill form should be bootstrapped
-
 ## Followers/Following
 - if current user == @user AND current user isn't following anyone, should suggest 2 people to follow (that would involve adding a helper method)
 - follower/following should be rendered in two columns like the user index page
