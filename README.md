@@ -7,6 +7,6 @@ Please reach out directly to one of us via our contact information below if you 
 
 ## About
 
-**Make Together** is maintained by [Esther Leytush](), [Lisa Buch](), [Samantha Holmes](), and [Caitlin Hoffman]().
+**Make Together** is maintained by [Esther Leytush](https://github.com/mindplace), [Lisa Buch](https://github.com/LisaBee224), [Samantha Holmes](https://github.com/samanthavholmes), and [Caitlin Hoffman](https://github.com/choff999).
 
 See [our other projects](community) or [hire us](hire) to help build your product.
