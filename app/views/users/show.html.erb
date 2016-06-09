@@ -103,7 +103,7 @@
 
         <% if logged_in? && @user != current_user %>
           <% if any_inbox_messages_with?(@user) %>
-            <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs small-custom start-conversation", "data-sid" => current_user.id, "data-rip" => @user.id, "data-im" => "chat" %>
+            <%= link_to "Send Chat", "#", class: "btn btn-success btn-xs small-custom chat-button", "data-sid" => current_user.id, "data-rip" => @user.id, "data-im" => "chat" %>
             <% end %>
 
           <%= form_for(@conversation) do |f| %>

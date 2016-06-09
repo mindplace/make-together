@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(login_email)
     if @user && @user.authenticate(login_password[:password])
       session[:user_id] = @user.id
-      render '/users/welcome'
+      render '/application/_modal'
     else
       if @user
         @user.errors[:password].push("incorrect")

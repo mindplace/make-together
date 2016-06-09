@@ -7,8 +7,12 @@
 .chatbox {
     position: fixed;
     position: expression("absolute");
-    width: 280px;
+    width: 265px;
     display: none;
+}
+
+.chat {
+    padding-left: 0;
 }
 
 .chatboxhead {
@@ -16,8 +20,7 @@
     color: white;
     padding: 0.5em;
     overflow: hidden;
-    max-width:24.62%;
-
+    max-width:24.27%;
     border-right: 1px solid rgba(85, 85, 85, 0.87);
     border-left: 1px solid rgba(85, 85, 85, 0.87);
 }
@@ -39,7 +42,7 @@
     height: 280px;
     width: 280px;
     overflow-y: auto;
-    padding: 7px;
+   /* padding: 7px;*/
     border-left: 1px solid #cccccc;
     border-right: 1px solid #cccccc;
     border-bottom: 1px solid #eeeeee;
@@ -49,7 +52,7 @@
 }
 
 .chatboxcontent li {
-    padding: 0.5rem;
+   /* padding: 0.5rem;*/
     overflow: hidden;
     display: flex;
 }
