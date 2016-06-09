@@ -1,15 +1,8 @@
-
-  
-    <div class="panel-body">
-   
-      <div id = "new-skill-form">
-       
-          <%= form_for @skill do |f| %>
-  
-          <%= f.text_field :body, autofocus: true, placeholder: "new skill" %>
-
-         <%= f.hidden_field :user_id, value: current_user.id %>
-         <%= f.submit %>
-        <%end%>
-      </div>
-   
+<div class="panel-body">
+<div id = "new-skill-form">
+  <%= form_for @skill do |f| %>
+    <%= f.text_field :body, autofocus: true, placeholder: "new skill", class: 'form-control' %>
+    <%= f.hidden_field :user_id, value: current_user.id, class: 'form-control'%><br>
+    <%= f.submit "Add Skill", class: "btn btn-primary"%>
+  <%end%>
+</div>
