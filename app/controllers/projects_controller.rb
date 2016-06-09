@@ -6,6 +6,9 @@ class ProjectsController < ApplicationController
     @favorite = Favorite.new
   end
 
+
+
+
   def new
     if logged_in?
         @project = Project.new

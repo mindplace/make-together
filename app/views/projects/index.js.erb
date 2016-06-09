@@ -1,0 +1,2 @@
+$('.projects-box').append('<%= escape_javascript render(@projects) %>');
+$('.pagination').replaceWith('<%= escape_javascript will_paginate(@posts) %>');
