@@ -15,14 +15,25 @@
         <div id="followers" class= "sorted-following active">
           <% if @user.followers.length == 0 %>
             <% if logged_in? && @user == current_user %>
-              <br><br>
-              <h3>You have no followers.</h3>
-              <h3> Suggested following: </h3>
-              <% suggested_following.each do |user| %>
-                <%= render '/users/index_show', user: user %>
+              <div class="container">
+                <h3>You have no followers. Check out these users!</h3>
+              </div>
+
+              <div class="col-md-6">
+                <% suggested_following[0...suggested_following.length/2].each do |user| %>
+                  <%= render '/users/index_show', user: user %>
                 <% end %>
+              </div>
+
+              <div class="col-md-6">
+                <% suggested_following[suggested_following.length/2..-1].each do |user| %>
+                  <%= render '/users/index_show', user: user %>
+                <% end %>
+              </div>
             <% else %>
-              <h3><%= @user.visible_name %> has no followers.</h3>
+              <div class="container">
+                <h3><%= @user.visible_name %> has no followers.</h3>
+              </div>
             <%end%>
           <% else %>
             <div class="col-md-6">
@@ -39,8 +50,10 @@
         </div>
 
       <div id="followed_users" class= "sorted-following hidden">
-         <% if @user.followed_users.length == 0 %>
-            <h3><%=@user.visible_name%> is not following anyone</h3>
+        <% if @user.followed_users.length == 0 %>
+            <div class="container">
+              <h3><%=@user.visible_name%> is not following anyone.</h3>
+            </div>
         <% else %>
         <div class="col-md-6">
           <% @user.followed_users[0...@user.followed_users.length/2].each do |user| %>

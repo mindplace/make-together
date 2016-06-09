@@ -39,7 +39,7 @@ module UsersHelper
   def suggested_following
     if current_user.followers.length == 0
       suggested = []
-      suggested << User.all.sample(3)
+      suggested << User.all.sample(2)
       suggested.flatten.delete_if {|user| user.id == current_user.id}
     end
     return suggested.flatten
