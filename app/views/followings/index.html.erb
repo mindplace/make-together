@@ -1,24 +1,21 @@
 <main class="Site-content">
-  <div class="container panel-body">
-    <h1 class="first-name-color"><%=current_user.visible_name %></h1>
-    <div class="col-md-12 container-fluid row">
+  <div class="container">
+    <div class="container-fluid row">
 
-      <div class="container col-md-5">
-
-        <div class="panel panel-default panel-body categories">
-          <h3><%= @user.first_name%> <%=@user.last_name %></h3>
+      <div class="col-md-4">
+        <div class="panel panel-default categories text-right">
+          <h2><%= link_to @user.visible_name, user_path(@user) %></h2>
           <h3 class= "#followers"><a class = "following-sort-button" href= "#"><%=@user.followers.length%> followers</a></h3>
           <h3 class ="#followed_users"><a class = "following-sort-button" href= "#"><%=@user.followed_users.length%> following</a></h3>
         </div>
       </div>
 
 
-      <div class="row container-fluid col-md-6 sorted-following-list">
-
+      <div class="row container-fluid col-md-8 sorted-following-list">
         <div id="followers" class= "sorted-following active">
-
           <% if @user.followers.length == 0 %>
             <% if logged_in? && @user == current_user %>
+              <br><br>
               <h3>You have no followers.</h3>
               <h3> Suggested following: </h3>
               <% suggested_following.each do |user| %>
@@ -28,21 +25,34 @@
               <h3><%= @user.visible_name %> has no followers.</h3>
             <%end%>
           <% else %>
-            <% @user.followers.each do |follower| %>
-              <%= render '/users/index_show', user: follower %>
-            <% end %>
+            <div class="col-md-6">
+              <% @user.followers[0...@user.followers.length/2].each do |follower| %>
+                <%= render '/users/index_show', user: follower %>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <% @user.followers[@user.followers.length/2..-1].each do |follower| %>
+                <%= render '/users/index_show', user: follower %>
+              <% end %>
+            </div>
           <% end %>
         </div>
 
       <div id="followed_users" class= "sorted-following hidden">
          <% if @user.followed_users.length == 0 %>
             <h3><%=@user.visible_name%> is not following anyone</h3>
-            <% else %>
-        <% @user.followed_users.each do |user| %>
-        <%= render '/users/index_show', user: user %>
+        <% else %>
+        <div class="col-md-6">
+          <% @user.followed_users[0...@user.followed_users.length/2].each do |user| %>
+            <%= render '/users/index_show', user: user %>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <% @user.followed_users[@user.followed_users.length/2..-1].each do |user| %>
+            <%= render '/users/index_show', user: user %>
+          <% end %>
+        </div>
         <% end %>
-        <% end %>
-
       </div>
     </div>
   </div>

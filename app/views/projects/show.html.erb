@@ -10,7 +10,6 @@
 
     <div class="panel panel-default panel-body strong-projects  ">
       <div class="col-md-12">
-
         <h4><%= link_to @project.user.visible_name, user_path(@project.user), class: "link-color" %></h4>
         <% if logged_in? && @project.user != current_user%>
           <% if !is_following?(@user) %>
