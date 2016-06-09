@@ -46,7 +46,7 @@ $(document).ready(function(){
       $('#new-project-link').show();
       $('#new-project-div').remove();
       $('.sorted-projects').hide();
-      $('.sorted-projects-list').append(response);
+      $('.sorted-projects-list').prepend(response);
     })
   })
   $('.project-box').on("click", ".favorite-button a", function(e){
