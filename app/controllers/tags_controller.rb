@@ -13,7 +13,7 @@ class TagsController < ApplicationController
           render :show, layout: false
         end
     else
-      @tag = Tag.find_by(id: params[:id])
+      set_tag
       @projects = @tag.projects
       @not_ajax = true
     end
