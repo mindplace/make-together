@@ -17,6 +17,15 @@ class ProjectsController < ApplicationController
      end
   end
 
+  def next
+    self.class.where("id > ?", id).first
+  end
+
+  def previous
+    self.class.where("id < ?", id).last
+  end
+
+
   def create
     @project = Project.new(project_params)
     if @project.img == ""
