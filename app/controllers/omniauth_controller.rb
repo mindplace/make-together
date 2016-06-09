@@ -89,9 +89,16 @@ class OmniauthController < ApplicationController
       end
 
     else
-      @user = User.new(first_name: user["name"].split[0], last_name: user["name"].split[1], role: "developer", email: user["email"], github: "github", github_uid: request.env["omniauth.auth"]["uid"],
-        github_url: request.env["omniauth.auth"]["info"]["urls"]["GitHub"],
-        bio: request.env["omniauth.auth"]["extra"]["bio"], img: user["image"])
+      @user = User.find_by(email: user["email"])
+      if @user.nil?
+        @user = User.new(first_name: user["name"].split[0], last_name: user["name"].split[1], role: "developer", email: user["email"], github: "github", github_uid: request.env["omniauth.auth"]["uid"],
+          github_url: request.env["omniauth.auth"]["info"]["urls"]["GitHub"],
+          bio: request.env["omniauth.auth"]["extra"]["bio"], img: user["image"])
+      else
+        @user.update_attributes(first_name: user["name"].split[0], last_name: user["name"].split[1], github: "github", github_uid: request.env["omniauth.auth"]["uid"],
+          github_url: request.env["omniauth.auth"]["info"]["urls"]["GitHub"],
+          bio: request.env["omniauth.auth"]["extra"]["bio"], img: user["image"])
+      end
       render 'choose_email_password'
     end
   end
