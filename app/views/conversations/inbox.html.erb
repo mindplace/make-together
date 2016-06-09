@@ -2,7 +2,7 @@
   <div class= "container">
 <div id = "whole-inbox-page">
     <div class="col-xs-6 col-md-4">
-      <h1 class="message-category-1">inbox</h1>
+      <h1 class="message-category-1 inbox">inbox</h1>
       <ul class="list-group inbox">
         <% @conversations.each do |conversation| %>
         <li class="list-group-item">
@@ -18,6 +18,9 @@
     </div>
 
     <div class="col-xs-12 col-md-8" id= "inbox-div">
+      <% if all_inbox_conversations.length == 0 %>
+      <%= you have no messages %>
+      <%end%>
     </div>
 </div>
   </div>

@@ -1,5 +1,5 @@
 <div class="col-md-8">
-  <h2 class="message-category-2">MESSAGES with <%=link_to receiver.visible_name, user_path(receiver) %></h2>
+  <h2 class="message-category-2">Messages with <%=link_to receiver.visible_name, user_path(receiver) %></h2>
 </div>
 <span id= "messages-box">
   <% messages.each do |message| %>
@@ -13,7 +13,7 @@
       <%= f.text_area :body, autofocus: true, class: "form-control body-input", style: "min-width: 100%", placeholder: "type your message here"
        %>
     </div>
-  <%= f.submit "Send", class: 'btn btn-primary btn-lg' %>
+    <%= f.submit "Send", class: 'btn btn-primary btn-lg' %>
   <% end %>
   </div>
 

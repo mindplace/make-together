@@ -15,10 +15,10 @@ ul{
 margin-left:-10%;
 margin-bottom: 5%;
 margin-top:5%;
-  color: #7DC7F2;
+  color: #FF8A7A;
   text-align:center;
   background-color: #fff;
-  border: 5px solid #7DC7F2;
+  border: 2px solid #FF8A7A;
   font-size: 1.2em;
   width:7.5em;
   padding:2%;
@@ -51,5 +51,13 @@ margin-top:5%;
   font-size:1.2em;
 }
 
+.messages{
+  border: 2px solid #7DC7F2;
+}
+.sender {
+  background-color:rgba(212,233, 255, 0.2);
+}
 
-
+.receiver{
+  background-color:rgba(235,235,235, 0.2);
+}
