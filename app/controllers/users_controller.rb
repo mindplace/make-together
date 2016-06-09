@@ -26,8 +26,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.new
-    @review = Review.new
+    if @user.nil?
+      redirect_to root_path
+    else
+      @conversation = Conversation.new
+      @review = Review.new
+    end
   end
 
   def admin

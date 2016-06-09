@@ -1,24 +1,13 @@
 # Todos
 
-
 ## user index page
 - ajaxed follow button
-
-## Layout
-- footer should be longer
-- unstick sidebar when footer comes into view
-
-## Site Index
-- navbar not colored with image--can we get the images under the navbar as before?
 
 ## User profile
 - new skill form should be bootstrapped
 
 ## Followers/Following
-- followers/following page should have the user's name on top
-- if no followers or no following, should have a message with that
 - if current user == @user AND current user isn't following anyone, should suggest 2 people to follow (that would involve adding a helper method)
-- following and followed should have a number on them (how many per)
 - follower/following should be rendered in two columns like the user index page
 
 ## Inbox
