@@ -8,7 +8,7 @@ $(document).ready(function(){
       $('#inbox-div').append(response);
     })
   })
-  $('#whole-inbox-page').on("submit", "form", function(e){
+  $('.whole-inbox-page').on("submit", "#message-form", function(e){
     e.preventDefault();
     $.ajax({
       url: e.target.action,

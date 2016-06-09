@@ -6,6 +6,7 @@
     <%= render 'individual_message', layout:false, message: message %>
   <% end %>
 </span>
+<div id= "message-form">
 <%= form_for(@message, url: inbox_message_path(conversation)) do |f| %>
 
   <div class="col-md-8 message-field">
@@ -15,6 +16,7 @@
     </div>
     <%= f.submit "Send", class: 'btn btn-primary btn-lg' %>
   <% end %>
+</div>
   </div>
 
 

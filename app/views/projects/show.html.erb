@@ -27,9 +27,6 @@
         <h4>Tags</h4>
       </div>
       <div class="col-md-1">
-        <% if logged_in? && @project.user == current_user %>
-          <h4 class="link-color" id="new-tag"><%= link_to "add", new_skill_path, class: "link-color" %></h4>
-        <% end %>
       </div>
 
       <span id="tag-div">
