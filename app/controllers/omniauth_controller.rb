@@ -75,17 +75,17 @@ class OmniauthController < ApplicationController
       else
         session[:user_id] = @both_user.id
       end
-      redirect_to user_path(current_user)
+      render '/application/_modal'
 
     elsif @dribbble_user || @neither_user
       if @dribbble_user
         @dribbble_user.update_attributes(github_url: request.env["omniauth.auth"]["info"]["urls"]["GitHub"], github: "github", github_uid: request.env["omniauth.auth"]["uid"], img: user["image"])
         session[:user_id] = @dribbble_user.id
-        redirect_to user_path(current_user)
+        render '/application/_modal'
       else
         @neither_user.update_attributes(github_url: request.env["omniauth.auth"]["info"]["urls"]["GitHub"], github: "github", github_uid: request.env["omniauth.auth"]["uid"], img: user["image"])
         session[:user_id] = @neither_user.id
-        redirect_to user_path(current_user)
+        render '/application/_modal'
       end
 
     else
@@ -108,7 +108,7 @@ class OmniauthController < ApplicationController
     @user.role = "developer" if @user.role != "designer" || @user.role != "developer"
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      render '/application/_modal'
     else
       render 'choose_email_password'
     end
