@@ -49,7 +49,7 @@
       <h2 class="custom-user-header"><%= @project.tagline%></h2>
       <h4>Expires <%= @project.date %></h4>
       <% if logged_in? && @project.user == current_user %>
-        <p class="link-color"><%= link_to "edit your project", edit_project_path(@project) %></p>
+        <p class="link-color"><%= link_to raw("edit&#9998;"), edit_project_path(@project) %></p>
       <% end %>
     </div>
 
