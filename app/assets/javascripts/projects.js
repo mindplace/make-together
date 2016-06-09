@@ -14,6 +14,7 @@ $(document).ready(function(){
       url: $(e.target).attr('href')
     }).done(function(response){
       $('#new-project-link').hide();
+      $('.tag-title').hide();
       $('.sorted-projects-list').prepend(response);
       $('.sorted-projects').hide();
     })
@@ -43,6 +44,7 @@ $(document).ready(function(){
       data: $('#search-field').serialize(),
       method: 'POST'
     }).done(function(response){
+      $('#search-field').val("")
       $('#new-project-link').show();
       $('#new-project-div').remove();
       $('.sorted-projects').hide();
@@ -70,8 +72,8 @@ $(document).ready(function(){
     })
   })
   $('.categories').on("click", "a", function(e){
-    debugger;
     selected = $(e.target);
+    $('.tag-title').hide();
     $('.highlight').css("color", "#8E8F91").removeClass('highlight');
     selected.css("color", "#FF8A7A").addClass('highlight');
     $("html, body").animate({ scrollTop: 0 }, "slow");

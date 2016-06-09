@@ -1,15 +1,36 @@
-<% if @not_ajax %>
-  <%= render partial: 'shared/navbar_transparent' %>
-<% end %>
-
 <main class= "Site-content"
   <div class= "container">
-    <div class="panel panel-default panel-body sorted-projects">
-        <h1>Projects with #<%=@tag.body%></h1>
-        <% @projects.each do |project| %>
-          <%= render "projects/index_show", project: project %>
+    <h1 class= "tag-title">Projects with #<%=@tag.body%></h1>
+
+    <% if @projects.length == 1 %>
+      <% if @not_ajax %>
+        <div class="panel panel-body col-md-6">
+      <% else %>
+        <div class="panel panel-body sorted-projects col-md-6">
+      <% end %>
+      <%= render partial: "/projects/index_show", locals: { project: @projects.first } %>
+
+    <% else %>
+    <% if @not_ajax %>
+    <div class="panel panel-body col-md-6">
+      <% else %>
+      <div class="panel panel-body sorted-projects col-md-6">
         <% end %>
+        <% @projects[0...@projects.length/2].each do |project| %>
+          <%= render partial: "/projects/index_show", locals: { project: project } %>
+      <% end %>
+      </div>
+
+<% if @not_ajax %>
+  <div class="panel panel-body col-md-6">
+      <% else %>
+      <div class="panel panel-body sorted-projects col-md-6">
+        <% end %>
+        <% @projects[@projects.length/2..-1].each do |project| %>
+          <%= render partial: "/projects/index_show", locals: { project: project } %>
+      <% end %>
       </div>
   </div>
+  <% end %>
+  </div>
 </main>
-
