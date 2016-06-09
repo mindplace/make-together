@@ -1,9 +1,9 @@
-<div class="container-fluid row">
-   <div class="col-md-4">
-    <div class="panel panel-default panel-body">
+
+  
+    <div class="panel-body">
    
       <div id = "new-skill-form">
-        <h1> add new skill </h1>
+       
           <%= form_for @skill do |f| %>
   
           <%= f.text_field :body, autofocus: true, placeholder: "new skill" %>
@@ -12,6 +12,4 @@
          <%= f.submit %>
         <%end%>
       </div>
-    </div>
-  <div>
-</div>
+   
