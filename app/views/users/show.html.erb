@@ -121,9 +121,26 @@
         <div class="custom-user-header padding-bottom">
           <h2>Seeking Collaborators On:</h2>
         </div>
-        <% @user.projects.each do |project| %>
-          <%= render partial: "/projects/index_show", locals: { project: project } %>
-        <% end %>
+        <div class="row">
+          <% if @user.projects.length == 1 %>
+            <div class="col-md-12">
+              <% @user.projects.each do |project| %>
+                <%= render partial: "/projects/index_show", locals: { project: project } %>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="col-md-6">
+              <% @user.projects[0...@user.projects.length/2].each do |project| %>
+                <%= render partial: "/projects/index_show", locals: { project: project } %>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <% @user.projects[@user.projects.length/2..-1].each do |project| %>
+                <%= render partial: "/projects/index_show", locals: { project: project } %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       <% end %>
 
       <%if logged_in? && current_user != @user %>
@@ -131,14 +148,13 @@
         <span id="new-review-link"><%=link_to 'Leave a Review', new_review_path(user_id: @user.id)  %></span>
       <%end%>
 
-
       <div id= "review-list">
       <% if @user.reviews.length > 0 %>
-          <% @user.reviews.each do |review| %>
-<div class="panel panel-default">
-              <%= render "/reviews/individual_review", review: review %>
-            </div>
-          <% end %>
+        <% @user.reviews.each do |review| %>
+          <div class="panel panel-default">
+            <%= render "/reviews/individual_review", review: review %>
+          </div>
+        <% end %>
       <% end %>
       </div>
 
