@@ -78,4 +78,22 @@ $(document).ready(function(){
     $(clicked).removeClass('hidden');
     $(clicked).addClass('active');
   })
+  $('.following-div').on("click", '.follow-button a', function(e){
+    e.preventDefault();
+    $.ajax({
+        url: $(e.target).attr('href'),
+        method: "POST"
+    }).done(function(response){
+        $(this).replaceWith(response);
+    }.bind(this))
+  })
+  $('.following-div').on("click", '.unfollow-button a', function(e){
+    e.preventDefault();
+    $.ajax({
+        url: $(e.target).attr('href'),
+        method: "DELETE"
+    }).done(function(response){
+        $(this).replaceWith(response);
+    }.bind(this))
+  })
 })

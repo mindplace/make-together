@@ -11,15 +11,16 @@
 
 
     <div class="panel panel-default panel-body">
-      <div class="col-md-12">
+      <div class="col-md-12 following-div">
         <h4><%= @user.followers.length %><%= link_to " followers", followings_path(id: @user.id), class: "link-color" %></h4>
         <h4><%= @user.followed_users.length %><%= link_to " following", followings_path(id: @user.id), class: "link-color" %><h4>
 
+
         <% if logged_in? && @user != current_user%>
           <% if !is_following?(@user) %>
-            <%= link_to "Follow", followings_path(id: @user.id), method: :post, class: "link-color" %>
+            <%= render '/followings/follow', layout: false, user: @user %>
           <% else %>
-            <%= link_to "Unfollow", following_path(Following.find_or_create_by(followed_user_id: @user.id, follower_id: current_user.id), id: @user.id), method: :delete, class: "link-color"%>
+            <%= render '/followings/unfollow', layout: false, user: @user %>
           <% end %>
         <% end %>
       </div>

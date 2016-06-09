@@ -14,7 +14,14 @@
     <% else %>
         <h5 class="top-padded"><%user.avg_star_rating.times do %> &#9734; <%end%></h5>
     <% end %>
-    <h5><%= current_projects(user) %></h5 >
+    <h5><%= current_projects(user) %></h5>
+    <div class= "following-div">
+    <% if logged_in? && user != current_user && !is_following?(user) %>
+    <h5><%= render '/followings/follow', layout: false, user: user %></h5>
+    <% elsif logged_in? && user != current_user &&is_following?(user) %>
+      <h5><%= render '/followings/unfollow', layout: false, user: user %></h5>
+    <% end %>
+  </div>
   </div>
 
   <div class="col-xs-12 col-md-12 no-margin">
