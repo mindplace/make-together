@@ -9,4 +9,4 @@ Please reach out directly to one of us via our contact information below if you 
 
 **Make Together** is maintained by [Esther Leytush](https://github.com/mindplace), [Lisa Buch](https://github.com/LisaBee224), [Samantha Holmes](https://github.com/samanthavholmes), and [Caitlin Hoffman](https://github.com/choff999).
 
-See [our other projects]("community") or [hire us]("hire") to help build your product.
+See [our other projects](../blob/master/community) or [hire us](../blob/master/hire) to help build your product.
