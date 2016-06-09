@@ -33,8 +33,6 @@
               </h4>
 </div>
 
-
-
          <h4><% if current_user %>
                 <% if (current_user == @project.user) && @project.is_flagged %>
                   Reported
@@ -50,20 +48,20 @@
               <%end%>
          </h4>
 
-
-
   <div class="panel panel-default panel-body col-md-11">
   <h4>Description:</h4>
   <p><%=@project.description%></p>
   </div>
 </div>
 
-<div id="tags">
-  <h4>Tags:</h4>
-  <% @project.tags.each do |tag| %>
-    #<%= link_to tag.body, tag_path(tag) %>
-  <% end %>
-</div>
+<% if @project.tags.length > 0 %>
+  <div id="tags">
+    <h4>Tags:</h4>
+    <% @project.tags.each do |tag| %>
+      #<%= link_to tag.body, tag_path(tag) %>
+    <% end %>
+  </div>
+<% end %>
 
 </div>
 

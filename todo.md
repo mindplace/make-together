@@ -1,7 +1,6 @@
 # Todos
 
 ## Followers/Following
-- if current user == @user AND current user isn't following anyone, should suggest 2 people to follow (that would involve adding a helper method)
 - follower/following should be rendered in two columns like the user index page
 
 ## Inbox
@@ -14,8 +13,6 @@
 
 ## Project show page
 - Bring header up to match photo
-- if no tags, tags box shouldn't show up
-- tags box should show up above description box
 - heart, report, posted, expiring dates should be in a box on the right (like with user show)
 - back to projects link should be taken down
 - image should be a bigger part of the page
