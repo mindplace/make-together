@@ -18,6 +18,9 @@
     </div>
 
     <div class="col-xs-12 col-md-8" id= "inbox-div">
+      <% if @conversation %>
+        <%= render 'inbox_show', layout: false, conversation: @conversation, messages: @messages, receiver: @receiver %>
+      <% end %>
     </div>
 </div>
   </div>
