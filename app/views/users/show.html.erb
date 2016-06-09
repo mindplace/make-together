@@ -126,20 +126,21 @@
         <% end %>
       <% end %>
 
-    <% if current_user == @user && @user.reviews.length == 0 %>
       <%if logged_in? && current_user != @user %>
         <h2>Reviews</h2>
         <span id="new-review-link"><%=link_to 'Leave a Review', new_review_path(user_id: @user.id)  %></span>
       <%end%>
 
+
       <div id= "review-list">
       <% if @user.reviews.length > 0 %>
           <% @user.reviews.each do |review| %>
+<div class="panel panel-default">
               <%= render "/reviews/individual_review", review: review %>
+            </div>
           <% end %>
       <% end %>
       </div>
-    <% end %>
 
     </div>
   </div>
