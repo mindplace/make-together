@@ -1,5 +1,5 @@
 <main class = "Site-content">
-  <h1 class="text-center container panel-body">Your Posted Projects</h1>
+  <h1 class="text-center container panel-body">Your Projects</h1>
   <div class="container panel-body">
     <% if @projects.length > 0 %>
       <% @projects[0...@projects.length/2].each do |project| %>
@@ -17,7 +17,7 @@
       <div class="col-md-4">
       </div>
       <div class="col-md-4">
-        <h3 class="text-center"><i>No projects posted!</i></h3>
+        <h3 class="text-center"><i>No projects posted! Go out and make something!</i></h3>
         <h3 class="text-center"><i></i></h3>
       </div>
     <% end %>

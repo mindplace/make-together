@@ -416,11 +416,11 @@ fadeIn
   }
   60% {
     transform: scale(1);
-
+    opacity: 0.5;
   }
   80% {
     transform: scale(1);
-    opacity: 0.5;
+    opacity: 0.75;
   }
   100% {
     transform: scale(1);
@@ -435,11 +435,11 @@ fadeIn
   }
   60% {
     -webkit-transform: scale(1);
-
+    opacity: 0.5;
   }
   80% {
     -webkit-transform: scale(1);
-    opacity: 0.5;
+    opacity: 0.75;
   }
   100% {
     -webkit-transform: scale(1);

@@ -4,11 +4,12 @@
 .sorted-projects-list {
   margin-left: 4%;
   margin-top: 3%;
+  animation: fadeIn 1.2s;
 }
 .custom-project-header {
   margin-top: 0;
 }
-.custom-project-header a {
+.custom-project-header.chat-button {
   color: #fff;
 }
 .project-img {
