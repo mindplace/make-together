@@ -9,13 +9,13 @@ $(document).ready(function(){
     });
   });
 
-  $('.edit-review-link').on('click', function(e){
+  $('#review-list').on('click', '.edit-review-link a', function(e){
     e.preventDefault();
     $.ajax({
       url: $(e.target).attr('href')
     }).done(function(response){
       $('#new-review-link').hide();
-      $('#'+ this.parentElement.id).replaceWith(response)
+      $(this.parentElement.parentElement.parentElement).replaceWith(response)
     }.bind(this))
   });
   $('#review-list').on("submit", "form.edit_review", function(e){
@@ -25,8 +25,7 @@ $(document).ready(function(){
       method: "PUT",
       data: $(e.target).serialize()
     }).done(function(response){
-      $('.edit_review').remove();
-      $('#review-list').prepend(response);
+      $(this).replaceWith(response);
     }.bind(this))
   });
     $('#review-list').on("submit", "#new-review-form", function(e){
