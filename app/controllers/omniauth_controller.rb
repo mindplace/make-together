@@ -45,7 +45,7 @@ class OmniauthController < ApplicationController
         else
           session[:user_id] = @both_user.id
         end
-        redirect_to root_path
+        render '/application/_modal'
 
       elsif @github_user || @neither_user
         if @github_user
