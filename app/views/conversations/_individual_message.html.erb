@@ -1,15 +1,13 @@
- <div class="col-md-8">
-
-    <div class="panel body messages">
-     <%if message.user == current_user %>
-      <div class= "message-body sender">
+<div class="col-md-8">
+  <div class="panel body messages">
+    <%if message.user == current_user %>
+    <div class= "message-body sender">
       <%= message.body %> -- <%= message.user.visible_name %>
-       </div>
-      <%else%>
+    </div>
+    <%else%>
       <div class= "message-body receiver">
-       <%= message.body %> -- <%= message.user.visible_name %>
+        <%= message.body %> -- <%= message.user.visible_name %>
       </div>
-      <%end%>
-    </div>
-    </div>
+    <%end%>
   </div>
+</div>

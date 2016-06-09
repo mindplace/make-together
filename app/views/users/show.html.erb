@@ -110,6 +110,7 @@
           <%= f.hidden_field :sender_id, value: current_user.id %>
           <%= f.hidden_field :receiver_id, value: @user.id %>
           <%= f.hidden_field :conversation_type, value: "inbox_message" %>
+          <%= f.hidden_field :send_message, value: "send_message" %>
           <%= f.submit "Send Message", class: "btn btn-success btn-xs  small-custom start-mail-conversation"%>
           <% end %>
         <% end %>
