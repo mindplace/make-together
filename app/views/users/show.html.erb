@@ -152,9 +152,7 @@
       <div id= "review-list">
       <% if @user.reviews.length > 0 %>
         <% @user.reviews.each do |review| %>
-          <div class="panel panel-default">
             <%= render "/reviews/individual_review", review: review %>
-          </div>
         <% end %>
       <% end %>
       </div>
