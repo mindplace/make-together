@@ -32,7 +32,7 @@ User.create(
   first_name: "Christyn", last_name: "Budzyna", email: "cbudzyna@gmail.com", password: "password", role: "developer", img: "https://avatars1.githubusercontent.com/u/10655625?v=3&s=460"
 )
 User.create(
-  first_name: "David", last_name: "Walden", email: "dwalden@gmail.com", password: "password", role: "developer", img: "https://avatars0.githubusercontent.com/u/17076507?v=3&s=460"
+  first_name: "David", last_name: "Walden", email: "dwalden@gmail.com", password: "password", role: "designer", img: "https://avatars0.githubusercontent.com/u/17076507?v=3&s=460"
 )
 User.create(
   first_name: "Diana", last_name: "Eromosele", email: "diana@eromosele.com", password: "password", role: "developer",  img: "https://avatars3.githubusercontent.com/u/16394607?v=3&s=460"
@@ -57,11 +57,11 @@ User.create(
 # Project.create(title: , description: , tagline: , img: , user_id: )
 Project.create(title: "Grocery app that learns your preferences", tagline: "Seeking designer and front-end developer", img: "http://dingo.care2.com/pictures/causes/2984/2983383.large.jpg", user_id: 2, description: "This is a grocery app that will present users with lists that become shorter and more on-point the more they are used, based on which items the user checks off when they go shopping.")
 
-Project.create(title: "Chair rating app", tagline: "Seeking developer and collaborators", img: "http://ep.yimg.com/ay/monticellostore/campeachy-chair-258.jpg", user_id: 4, description: "Ever watch Big Bang Theory? Sheldon got one thing right: your seat matters. Want to build an app that lets you rate chairs.")
+Project.create(title: "Chair rating app", tagline: "Seeking developer and collaborators", img: "http://ep.yimg.com/ay/monticellostore/campeachy-chair-258.jpg", user_id: 4, description: "Ever watch Big Bang Theory? Sheldon got one thing right: your seat matters. Want to build an app that lets you rate chairs.", expiration: 2.days.from_now)
 
 Project.create(title: "National Energy", tagline: "Seeking designer", img: "http://cdn.zmescience.com/wp-content/uploads/2015/05/bigstock-Solar-Panel-On-A-Red-Roof-14532428.jpg", user_id: 1, description: "I want to build a data aggregation app that shows which energy sources are being funded in the United States, by what agents, and maybe some media included to educate users.")
 
-Project.create(title: "Media Imaginator", tagline: "Seeking designer and front-end developer", img: "http://img04.deviantart.net/2ab3/i/2013/251/7/0/your_book__your_imagination_by_mikropolka-d6lihtj.jpg", description: "There's no app out there that lets you curate your own front-end page that shares the experience of reading, watching a movie, or listening to a song. I envision an app that bases itself on templates and allows a non-technical user to curate images, text, sounds, colors, and visuals to share with others the subjective and personal experience of media.", user_id: 3)
+Project.create(title: "Media Imaginator", tagline: "Seeking designer and front-end developer", img: "http://img04.deviantart.net/2ab3/i/2013/251/7/0/your_book__your_imagination_by_mikropolka-d6lihtj.jpg", description: "There's no app out there that lets you curate your own front-end page that shares the experience of reading, watching a movie, or listening to a song. I envision an app that bases itself on templates and allows a non-technical user to curate images, text, sounds, colors, and visuals to share with others the subjective and personal experience of media.", user_id: 3, expiration: 2.days.from_now)
 
 Project.create(title: "OnTheWay", tagline: "Seeking front-end designer", img: "http://a.abcnews.com/images/Lifestyle/HT_food_maps_usa_jtm_140313_16x13_1600.jpg", description: "Ever go on a roadtrip and get stuck in the middle of the road trying to find somewhere to eat? I want this app to meet that need by helping users find high-rated restaurants on their way.", user_id: 5)
 

@@ -1,7 +1,15 @@
 <div id="expiring" class= "sorted-projects">
-  <% expiring_soon.each do |project| %>
+  <div class="col-md-6">
+  <% expiring_soon[0...expiring_soon.length/2].each do |project| %>
     <%= render partial: "index_show", locals: { project: project } %>
    <% end %>
+ </div>
+
+ <div class="col-md-6">
+ <% expiring_soon[expiring_soon.length/2..-1].each do |project| %>
+   <%= render partial: "index_show", locals: { project: project } %>
+  <% end %>
+</div>
 </div>
 
 <div class="spacer"></div>
