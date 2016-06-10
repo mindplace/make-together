@@ -10,7 +10,7 @@ User.create(
   first_name: "Katherine", last_name: "Broner", email: "katherine.broner@gmail.com", password: "password", role: "developer", img: "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAkGAAAAJDQ2NjlkYzU2LWVjMzQtNDYyMC1iM2M1LWJlZTVmNTcwZmNmNA.jpg"
 )
 User.create(
-  first_name: "Samantha", last_name: "Holmes", email: "samanthavholmes@gmail.com", password: "password", role: "designer", img: "https://avatars1.githubusercontent.com/u/16512986?v=3&s=460"
+  first_name: "Samantha", last_name: "Holmes", email: "samanthavholmes@gmail.com", password: "password", role: "developer", img: "https://avatars1.githubusercontent.com/u/16512986?v=3&s=460"
 )
 User.create(
   first_name: "Mike", last_name: "Creative", email: "mike@creativemints.com", password: "password", role: "designer", img: "https://d13yacurqjgara.cloudfront.net/users/13307/avatars/normal/Mike3.jpg?1382537343",
@@ -76,3 +76,31 @@ Project.create(title: "Google trends API", tagline: "Seeking collaborative devel
 Project.create(title: "StackForYourself", tagline: "Seeking developer", description: "Coding bootcamps are creatively disrupting the technical community and allowing tons of people to enter programming. But they're expensive in time and dedication. As an alternative, people suggest you self-teach from books...or sign up for Free Code Camp, take Coursera and Codecademy, and go through the Odin Project. These are awesome but do not fully meet the need for diverse technical offerings that provide high quality and low or no cost. I want to build Stack For Yourself, which is a complete curriculum to take you to a junior fullstack developer level at your own pace, allowing you to track your progress and connect to a community that is working side-by-side with you.", user_id: 12, img: "https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/08/1409261668002.png")
 
 Project.create(title: "Ruby Talks", tagline: "Seeking designer", description: "I want to build a suggestion box for Ruby talks, a place to share talks, and a place to make comments on talks or ideas.", user_id: 15, img: "https://udemy-images.udemy.com/course/750x422/10681_968c_6.jpg")
+
+Tag.create(body: "Rails")
+Tag.create(body: "JavaScript")
+Tag.create(body: "Birds")
+Tag.create(body: "React")
+Tag.create(body: "Photoshop")
+Tag.create(body: "Seeking Developer")
+Tag.create(body: "Seeking Designer")
+
+TagProject.create(tag_id: 1, project_id: 1)
+TagProject.create(tag_id: 1, project_id: 2)
+TagProject.create(tag_id: 1, project_id: 4)
+TagProject.create(tag_id: 2, project_id: 3)
+TagProject.create(tag_id: 2, project_id: 4)
+TagProject.create(tag_id: 2, project_id: 5)
+TagProject.create(tag_id: 3, project_id: 6)
+TagProject.create(tag_id: 3, project_id: 7)
+TagProject.create(tag_id: 3, project_id: 8)
+TagProject.create(tag_id: 4, project_id: 9)
+TagProject.create(tag_id: 4, project_id: 10)
+TagProject.create(tag_id: 4, project_id: 1)
+TagProject.create(tag_id: 5, project_id: 2)
+TagProject.create(tag_id: 5, project_id: 3)
+TagProject.create(tag_id: 5, project_id: 4)
+TagProject.create(tag_id: 6, project_id: 5)
+TagProject.create(tag_id: 6, project_id: 6)
+TagProject.create(tag_id: 7, project_id: 7)
+TagProject.create(tag_id: 7, project_id: 8)
