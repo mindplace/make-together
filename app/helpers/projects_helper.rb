@@ -30,5 +30,4 @@ module ProjectsHelper
   def rand_design_projects
     Project.joins(:user).where("projects.user_id !=? AND users.role = 'designer'", current_user).limit(2)
   end
-
 end

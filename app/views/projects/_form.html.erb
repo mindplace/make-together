@@ -1,46 +1,46 @@
-  <div class = "container">
-    <div id= "new-project-div" class ="center-block">
-      <div id="proj-form">
+<div class = "container">
+  <div id= "new-project-div" class ="center-block">
+    <div id="proj-form">
 
       <%= form_for @project, :html =>{:class =>"form-horizontal center"} do |f| %>
-      <%= render partial: 'shared/error_messages', locals: { object: @project } %>
+        <%= render partial: 'shared/error_messages', locals: { object: @project } %>
 
-      <div class="form-group">
-        <%= f.label 'upload an image' %>
-       <%= f.text_field :img, class: "form-control", placeholder:
-       "image url" %>
-      </div>
+        <div class="form-group">
+          <%= f.label 'upload an image' %>
+         <%= f.text_field :img, class: "form-control", placeholder:
+         "image url" %>
+        </div>
 
-      <div class="form-group">
-        <%= f.label 'Project title' %>
-       <%= f.text_field :title, autofocus: true, class: "form-control",  placeholder: "project title" %>
-      </div>
+        <div class="form-group">
+          <%= f.label 'Project title' %>
+         <%= f.text_field :title, autofocus: true, class: "form-control",  placeholder: "project title" %>
+        </div>
 
-      <div class="form-group">
-        <%= f.label :tagline %>
-       <%= f.text_field :tagline, class: "form-control",  placeholder: "what kind of collaborator are you looking for?" %>
-      </div>
+        <div class="form-group">
+          <%= f.label :tagline %>
+         <%= f.text_field :tagline, class: "form-control",  placeholder: "what kind of collaborator are you looking for?" %>
+        </div>
 
-      <div class="form-group">
-        <%= f.label :description %>
-       <%=f.text_area :description, class: "form-control",  placeholder: "i.e. 'single page application to help pups find a new home...'" %>
-      </div>
+        <div class="form-group">
+          <%= f.label :description %>
+         <%=f.text_area :description, class: "form-control",  placeholder: "i.e. 'single page application to help pups find a new home...'" %>
+        </div>
 
-      <div class="form-group">
-       <%= f.label :expiration %>
-       <%= f.date_field :expiration, class: "form-control" %>
-      </div>
+        <div class="form-group">
+         <%= f.label :expiration %>
+         <%= f.date_field :expiration, class: "form-control" %>
+        </div>
 
-      <div class="form-group">
-       <%= f.label :tags, "Enter tags as a comma separated list"%><br>
-       <%= f.text_field :tags, autofocus: true, class: "form-control", value: format_tags(@project), placeholder: "AngularJS, Bootstrap, Anglerfish" %>
-      </div>
+        <div class="form-group">
+         <%= f.label :tags, "Enter tags as a comma separated list"%><br>
+         <%= f.text_field :tags, autofocus: true, class: "form-control", value: format_tags(@project), placeholder: "AngularJS, Bootstrap, Anglerfish" %>
+        </div>
 
-      <div class="form-group">
-       <%= f.hidden_field :user_id, value: current_user.id %>
-       <%= f.submit "add project", class: 'btn btn-primary btn-lg'%>
-      <%end%>
-      </div>
+        <div class="form-group">
+         <%= f.hidden_field :user_id, value: current_user.id %>
+         <%= f.submit "add project", class: 'btn btn-primary btn-lg'%>
+        <%end%>
+        </div>
     </div>
   </div>
 </div>

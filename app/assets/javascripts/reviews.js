@@ -8,7 +8,6 @@ $(document).ready(function(){
       $('#review-list').prepend(response)
     });
   });
-
   $('#review-list').on('click', '.edit-review-link a', function(e){
     e.preventDefault();
     $.ajax({
@@ -50,14 +49,4 @@ $(document).ready(function(){
       $('.edit_review').remove();
       $('#new-review-link').show();
     })
-    // $('#review-list').on("click", ".delete", function(e){
-    //   e.preventDefault();
-    //   $.ajax({
-    //     url '/reviews'
-    //     method: 'DELETE'
-    //   }).done(function(reponse){
-    //     $('.edit_review').remove();
-    //     $('#new-review-link').show();
-    //   })
-    // })
-  })
+})

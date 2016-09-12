@@ -7,7 +7,6 @@
       <p>Date: <%= report.created_at.strftime("%D") %></p>
       <p>User: <%= link_to report.user.visible_name, user_path(report.user) %></p>
       <p>Message: <%= report.body %></p>
-
     <% end %>
   </div>
 </main>
