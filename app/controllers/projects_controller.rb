@@ -7,14 +7,11 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    if logged_in?
-        @project = Project.new
-        if request.xhr?
-          render :_form, layout: false
-        end
-     else
-       redirect_to root_path
-     end
+    redirect_to root_path unless logged_in?
+    @project = Project.new
+    if request.xhr?
+      render :_form, layout: false
+    end
   end
 
   def next
@@ -25,15 +22,12 @@ class ProjectsController < ApplicationController
     self.class.where("id < ?", id).last
   end
 
-
   def create
     @project = Project.new(project_params)
-    if @project.img == ""
-      set_image
-    end
+    set_image if @project.img == ""
     Tag.build_from_string(params[:project][:tags]).each do |tag|
-         @project.tags << tag unless @project.tags.include?(tag)
-       end
+      @project.tags << tag unless @project.tags.include?(tag)
+    end
     if @project.save
       if request.xhr?
         render :_index_show, layout: false, locals: {project: @project}

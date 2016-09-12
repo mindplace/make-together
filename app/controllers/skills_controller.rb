@@ -1,13 +1,11 @@
 class SkillsController < ApplicationController
   before_action :set_skill, except: [:new, :create]
+
   def new
-    if logged_in?
-      @skill = Skill.new
-      if request.xhr?
-        render :_form, layout: false
-      end
-    else
-      redirect_to root_path
+    redirect_to root_path unless logged_in?
+    @skill = Skill.new
+    if request.xhr?
+      render :_form, layout: false
     end
   end
 
