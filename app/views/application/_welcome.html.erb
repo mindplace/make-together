@@ -1,23 +1,20 @@
+<h1 class="text-center">Welcome, <%= current_user.first_name.capitalize %>!</h1>
 
+<div class="panel-body">
+  <h2 id="welcome">Some projects you may be interested in: </h2>
+</div>
 
-      <h1 class="text-center">Welcome, <%= current_user.first_name.capitalize %>!</h1>
+<% if current_user.role == "designer" %>
+  <% rand_dev_projects.each do |project| %>
+    <div class="col-md-6">
+      <%= render '/projects/index_show', project: project  %>
     </div>
-
-    <div class="panel-body">
-      <h2 id="welcome">Some projects you may be interested in: </h2>
+  <% end %>
+<% else %>
+  <% rand_design_projects.each do |project| %>
+    <div class="col-md-6">
+      <%= render '/projects/index_show', project: project  %>
     </div>
-
-    <% if current_user.role == "designer" %>
-        <% rand_dev_projects.each do |project| %>
-          <div class="col-md-6">
-            <%= render '/projects/index_show', project: project  %>
-          </div>
-        <% end %>
-    <% else %>
-        <% rand_design_projects.each do |project| %>
-          <div class="col-md-6">
-            <%= render '/projects/index_show', project: project  %>
-          </div>
-        <% end %>
-    <% end %>
+  <% end %>
+<% end %>
 

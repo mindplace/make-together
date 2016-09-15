@@ -2,14 +2,11 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :update, :destroy]
 
   def new
-    if logged_in?
-      @user = User.find_by(id: params[:user_id])
-      @review = Review.new
-      if request.xhr?
-        render :_form, layout: false
-      end
-    else
-      redirect_to user_path(@user)
+    redirect_to user_path(@user) unless logged_in?
+    @user = User.find_by(id: params[:user_id])
+    @review = Review.new
+    if request.xhr?
+      render :_form, layout: false
     end
   end
 

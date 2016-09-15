@@ -1,17 +1,16 @@
 <div class="panel panel-default">
-
-    <div class="panel-body row">
-      <div class="col-xs-12 col-md-12">
-        <h1>Feedback</h1>
-      </div>
+  <div class="panel-body row">
+    <div class="col-xs-12 col-md-12">
+      <h1>Feedback</h1>
     </div>
   </div>
-    <div class="panel panel-default">
+</div>
+
+  <div class="panel panel-default">
     <div class="panel-body row">
       <div class="col-xs-12 col-md-12">
         <%= form_for @report do |f| %>
-          <%= render partial: "/shared/error_messages", locals: {
-    object: @report } %>
+          <%= render partial: "/shared/error_messages", locals: { object: @report } %>
 
           <h4><%= f.label :body, "Enter feedback here..." %> </h4>
 
@@ -20,6 +19,6 @@
           <%= f.submit "Send", class: 'btn btn-primary btn-lg' %>
         <%end%>
       </div>
-</div>
-</div>
+    </div>
+  </div>
 </div>

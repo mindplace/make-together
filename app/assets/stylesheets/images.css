@@ -3,6 +3,7 @@
     height: 25%;
     overflow: hidden;
 }
+
 .img-container img {
     height: 220px;
 }
@@ -11,9 +12,11 @@
   overflow: hidden;
   padding: 10px;
 }
+
 .img-container-small img {
   height: 150px;
 }
+
 .heart {
   width: 25px;
 }

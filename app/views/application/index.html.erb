@@ -1,33 +1,30 @@
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-          <div class="item active">
-            <%= image_tag "man.jpeg" %>
-               <div class="carousel-content">
-                <h1>MAKE TOGETHER</h1>
+    <div class="item active">
+      <%= image_tag "man.jpeg" %>
+      <div class="carousel-content">
+        <h1>MAKE TOGETHER</h1>
+      </div>
+    </div>
 
-              </div>
-          </div>
-          <div class="item">
-            <%= image_tag "carousel-2.jpg" %>
-                  <div class="carousel-content-2">
-                      <%= image_tag "LOGO_white.png" %>
-              </div>
-          </div>
-           <div class="item">
-            <%= image_tag "carousel-3.jpg" %>
-                  <div class="carousel-content-3">
-                  <h1>CONNECTING COLLABORATORS</h1>
-                <h2><i>since 2016</i></h2>
-
-              </div>
-              <div class="carousel-caption">
-
-              </div>
-          </div>
+    <div class="item">
+      <%= image_tag "carousel-2.jpg" %>
+        <div class="carousel-content-2">
+          <%= image_tag "LOGO_white.png" %>
         </div>
+    </div>
 
+    <div class="item">
+      <%= image_tag "carousel-3.jpg" %>
+      <div class="carousel-content-3">
+        <h1>CONNECTING COLLABORATORS</h1>
+        <h2><i>since 2016</i></h2>
+      </div>
 
-
-<%= render partial: 'creators' %>
+      <div class="carousel-caption">
+      </div>
+    </div>
+  </div>
+  <%= render partial: 'creators' %>
 </div>

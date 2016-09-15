@@ -33,6 +33,4 @@ class Project < ActiveRecord::Base
       self.tagline = "Seeking collaborators"
     end
   end
-
-
 end

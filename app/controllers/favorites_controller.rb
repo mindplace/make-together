@@ -1,11 +1,8 @@
 class FavoritesController < ApplicationController
 
   def index
-    if current_user
-      @favorites = current_user.favorites
-    else
-      redirect_to root_path
-    end
+    redirect_to root_path if !current_user
+    @favorites = current_user.favorites
   end
 
   def create

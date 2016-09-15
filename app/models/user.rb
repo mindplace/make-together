@@ -53,5 +53,4 @@ class User < ActiveRecord::Base
   def num_of_followed_users
     @user.followed_users.length
   end
-
 end
