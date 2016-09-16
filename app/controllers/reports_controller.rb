@@ -6,7 +6,11 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_params.merge(user_id: current_user.id))
-    @report.save ? render 'thank_you' : render :new
+    if @report.save
+      render 'thank_you'
+    else
+      render :new
+    end
   end
 
   private
