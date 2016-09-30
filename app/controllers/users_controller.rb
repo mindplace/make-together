@@ -25,6 +25,46 @@ class UsersController < ApplicationController
     end
   end
 
+  def add_dribbble_info
+    if params[:success] != "true"
+      # data has failed to return for some reason
+      # write to the console to log this issue
+      write_to_log("Dribbble call failed. Info: '#{params[:message]}'")
+
+      # build message showing failure
+      flash[:message] = "Dribbble authentication was unsuccessful."
+      if current_user # send back to their user page
+        @user = current_user
+        render :show
+      else # send back to login page
+        @user = User.new
+        render :new
+      end
+      return
+    end
+
+    # if there's been data found, create or append user info
+    data = params[:user_data]
+    if current_user # append to user model
+      @user = current_user
+      @user.update_attributes(img: data[:avatar_url], bio: data[:bio], dribbble: true, dribbble_uid: data[:id], dribbble_url: data[:html_url], role: "designer", first_name: data[:name].split[0], last_name: data[:name].split[1])
+
+      if @user.save
+        render :show
+      end
+
+    else # user is not signed in, or user is not registered
+      @user = User.find_by(dribbble_uid: data[:id])
+      if @user
+        session[:user_id] = @user.id
+        render 'show'
+      else
+        @user = User.new(img: data[:avatar_url], bio: data[:bio], dribbble: true, dribbble_uid: data[:id], dribbble_url: data[:projects_url], role: "designer", first_name: data[:name].split[0], last_name: data[:name].split[1])
+        render 'omniauth/choose_email_password'
+      end
+    end
+  end
+
   def show
     if @user.nil?
       redirect_to root_path
@@ -54,6 +94,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def dribbble_user
+    @dribbble_user = params[:user_data]
+    binding.pry # TODO: check, is this a hash?
+  end
 
   def set_user
     @user = User.find_by(id: params[:id])

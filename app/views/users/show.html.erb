@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <% if @user.github || @user.dribbble || current_user == @user %>
+    <% if current_user == @user || @user.github || @user.dribbble %>
     <div class="panel panel-default panel-body">
       <% if current_user && current_user == @user %>
         <div class="col-md-7"><h4>Github</h4></div>
@@ -43,7 +43,7 @@
           <% if @user.dribbble %>
             <h4 class="link-color"><%= link_to "projects", @user.dribbble_url, class: "link-color" %></h4>
           <% else %>
-            <h4 class="link-color"><%= link_to "connect", user_dribbble_oauth_request_path(user_id: @user.id), class: "link-color" %></h4>
+            <h4 class="link-color"><%= link_to "connect", dribbble_request_path(user_id: @user.id), class: "link-color" %></h4>
           <% end %>
         </div>
       <% end %>

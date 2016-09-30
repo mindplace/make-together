@@ -53,4 +53,8 @@ class User < ActiveRecord::Base
   def num_of_followed_users
     @user.followed_users.length
   end
+
+  def image
+    self.img || ""
+  end
 end
