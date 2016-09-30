@@ -23,7 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt'
 gem 'omniauth'
 gem 'omniauth-github'
-
+gem 'rails-dribbble-oauth'
 gem 'private_pub'
 gem 'thin'
 
@@ -55,5 +55,3 @@ group :production do
   gem 'puma'
   gem 'rails_12factor'
 end
-
-

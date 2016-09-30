@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
+  include RailsDribbbleOauth
+
   def current_user
     User.find_by(id: session[:user_id])
   end
@@ -23,5 +25,10 @@ class ApplicationController < ActionController::Base
 
   def record_not_found
     redirect_to root_path
+  end
+
+  def write_to_log(message)
+    Rails.logger.info(message)
+    puts message
   end
 end
